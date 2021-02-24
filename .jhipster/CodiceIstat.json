@@ -1,0 +1,30 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "codiceIstat",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "comune",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "provincia",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "regione",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160701090017",
+  "dto": "no",
+  "pagination": "pager",
+  "service": "serviceClass",
+  "entityTableName": "codice_istat"
+}

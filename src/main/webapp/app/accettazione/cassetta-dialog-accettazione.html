@@ -1,0 +1,383 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCassettaLabel" translate="italgaslabApp.cassetta.home.createOrEditLabel">Create or edit a Cassetta</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row">
+            <div class="col-md-6">
+
+
+                <div class="form-group" ng-show="vm.cassetta.id">
+                    <label for="id" translate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                            ng-model="vm.cassetta.id" readonly />
+                    <p translate="entity.validation.autogen" class="help-block">
+                        Generato automaticamente.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.codiceCassetta" for="field_codiceCassetta">Codice Cassetta</label>
+                    <input readonly type="text" class="form-control" name="codiceCassetta" id="field_codiceCassetta"
+                            ng-model="vm.cassetta.codiceCassetta"
+                             />
+                     <p translate="entity.validation.autogen" class="help-block">
+                         Generato automaticamente.
+                     </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.odl" for="field_odl">Odl</label>
+                    <input type="text" class="form-control" name="odl" id="field_odl"
+                            ng-model="vm.cassetta.odl"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.rifGeografo" for="field_rifGeografo">Rif Geografo</label>
+                    <input type="text" class="form-control" name="rifGeografo" id="field_rifGeografo"
+                            ng-model="vm.cassetta.rifGeografo"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.prioritario" for="field_prioritario">Prioritario</label>
+                    <input type="checkbox" class="form-control" name="prioritario" id="field_prioritario"
+                            ng-model="vm.cassetta.prioritario"
+                             />
+                </div>
+                <div class="form-group">
+                    <label translate="italgaslabApp.cassetta.codiceIstat" for="field_codiceIstat">Codice Istat</label>
+                    <!-- <select class="form-control" id="field_codiceIstat" name="codiceIstat" ng-model="vm.cassetta.codiceIstat" ng-options="codiceIstat as codiceIstat.comune for codiceIstat in vm.codiceistats track by codiceIstat.id">
+                        <option value=""></option>
+                    </select> -->
+                    <input type="text" id="field_CodiceIstat" name="codiceIstat" ng-model="vm.cassetta.codiceIstat" placeholder="CodiceIstat" uib-typeahead="codiceIstat as (codiceIstat.codiceIstat + ' - ' +codiceIstat.comune + ' (' + codiceIstat.provincia + ', ' + codiceIstat.regione + ')') for codiceIstat in vm.loadCodiciIstat($viewValue)" typeahead-editable="false" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+        		    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+        		    <div ng-show="noResults">
+        		      <i class="glyphicon glyphicon-remove"></i> No Results Found
+        		    </div>
+                    <p class="help-block">
+                        Digitare il nome del comune o il codice ISTAT e selezionare un risultato dalla lista.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.indirizzoScavo" for="field_indirizzoScavo">Indirizzo Scavo</label>
+                    <input type="text" class="form-control" name="indirizzoScavo" id="field_indirizzoScavo"
+                            ng-model="vm.cassetta.indirizzoScavo"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.denomCantiere" for="field_denomCantiere">Denom Cantiere</label>
+                    <input type="text" class="form-control" name="denomCantiere" id="field_denomCantiere"
+                            ng-model="vm.cassetta.denomCantiere"
+                             />
+                </div>
+                <!-- <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.codiceRdc" for="field_codiceRdc">Codice Rdc</label>
+                    <input type="text" class="form-control" name="codiceRdc" id="field_codiceRdc"
+                            ng-model="vm.cassetta.codiceRdc"
+                             />
+                </div> -->
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.dataScavo" for="field_dataScavo">Data Scavo</label>
+                        <div class="input-group">
+                            <input id="field_dataScavo" type="text" class="form-control" name="dataScavo" uib-datepicker-popup="{{dateformat}}" ng-model="vm.cassetta.dataScavo" is-open="vm.datePickerOpenStatus.dataScavo"
+                            />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dataScavo')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.coordGpsN" for="field_coordGpsN">Coord Gps N</label>
+                    <input type="text" class="form-control" name="coordGpsN" id="field_coordGpsN" ui-mask="?99° 99' 99&quot;" ui-options="{allowInvalidValue: true, clearOnBlur: false}" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true"
+                            ng-model="vm.cassetta.coordGpsN"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.coordGpsE" for="field_coordGpsE">Coord Gps E</label>
+                    <input type="text" class="form-control" name="coordGpsE" id="field_coordGpsE" ui-mask="?99° 99' 99&quot;" ui-options="{allowInvalidValue: true, clearOnBlur: false}" ui-mask-placeholder ui-mask-placeholder-char="_" model-view-value="true"
+                            ng-model="vm.cassetta.coordGpsE"
+                             />
+                </div>
+                <!-- <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.coordX" for="field_coordX">Coord X</label>
+                    <input type="number" class="form-control" name="coordX" id="field_coordX"
+                            ng-model="vm.cassetta.coordX"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.coordY" for="field_coordY">Coord Y</label>
+                    <input type="number" class="form-control" name="coordY" id="field_coordY"
+                            ng-model="vm.cassetta.coordY"
+                             />
+                </div> -->
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.centroOperativo" for="field_centroOperativo">Centro Operativo</label>
+                    <input type="text" class="form-control" name="centroOperativo" id="field_centroOperativo"
+                            ng-model="vm.cassetta.centroOperativo"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.impresaAppaltatrice" for="field_impresaAppaltatrice">Impresa Appaltatrice</label>
+                    <input type="text" class="form-control" name="impresaAppaltatrice" id="field_impresaAppaltatrice"
+                            ng-model="vm.cassetta.impresaAppaltatrice"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.incaricatoAppaltatore" for="field_incaricatoAppaltatore">Incaricato Appaltatore</label>
+                    <input type="text" class="form-control" name="incaricatoAppaltatore" id="field_incaricatoAppaltatore"
+                            ng-model="vm.cassetta.incaricatoAppaltatore"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.tecnicoItgResp" for="field_tecnicoItgResp">Tecnico Itg Resp</label>
+                    <input type="text" class="form-control" name="tecnicoItgResp" id="field_tecnicoItgResp"
+                            ng-model="vm.cassetta.tecnicoItgResp"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.numCampioni" for="field_numCampioni">Num Campioni</label>
+                    <input type="text" class="form-control" name="numCampioni" id="field_numCampioni"
+                            ng-model="vm.cassetta.numCampioni"
+                             />
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione10" for="field_presenzaCampione10">Presenza Campione 10</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione10" id="field_presenzaCampione10"
+                            ng-model="vm.cassetta.presenzaCampione10"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione11" for="field_presenzaCampione11">Presenza Campione 11</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione11" id="field_presenzaCampione11"
+                            ng-model="vm.cassetta.presenzaCampione11"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione12" for="field_presenzaCampione12">Presenza Campione 12</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione12" id="field_presenzaCampione12"
+                            ng-model="vm.cassetta.presenzaCampione12"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione13" for="field_presenzaCampione13">Presenza Campione 13</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione13" id="field_presenzaCampione13"
+                            ng-model="vm.cassetta.presenzaCampione13"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione14" for="field_presenzaCampione14">Presenza Campione 14</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione14" id="field_presenzaCampione14"
+                            ng-model="vm.cassetta.presenzaCampione14"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione15" for="field_presenzaCampione15">Presenza Campione 15</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione15" id="field_presenzaCampione15"
+                            ng-model="vm.cassetta.presenzaCampione15"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione16" for="field_presenzaCampione16">Presenza Campione 16</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione16" id="field_presenzaCampione16"
+                            ng-model="vm.cassetta.presenzaCampione16"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCampione17" for="field_presenzaCampione17">Presenza Campione 17</label>
+                    <input type="checkbox" class="form-control" name="presenzaCampione17" id="field_presenzaCampione17"
+                            ng-model="vm.cassetta.presenzaCampione17"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.statoContenitore" for="field_statoContenitore">Stato Contenitore</label>
+                    <select class="form-control" name="statoContenitore" ng-model="vm.cassetta.statoContenitore" id="field_statoContenitore">
+                        <option value="INTEGRO_CONTENUTO_INTEGRO" translate="italgaslabApp.StatoContenitore.INTEGRO_CONTENUTO_INTEGRO">INTEGRO_CONTENUTO_INTEGRO</option>
+                        <option value="INTEGRO_CONTENUTO_DANNEGGIATO" translate="italgaslabApp.StatoContenitore.INTEGRO_CONTENUTO_DANNEGGIATO">INTEGRO_CONTENUTO_DANNEGGIATO</option>
+                        <option value="DANNEGGIATO_CONTENUTO_INTEGRO" translate="italgaslabApp.StatoContenitore.DANNEGGIATO_CONTENUTO_INTEGRO">DANNEGGIATO_CONTENUTO_INTEGRO</option>
+                        <option value="DANNEGGIATO_CONTENUTO_DANNEGGIATO" translate="italgaslabApp.StatoContenitore.DANNEGGIATO_CONTENUTO_DANNEGGIATO">DANNEGGIATO_CONTENUTO_DANNEGGIATO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.statoAttualeCassetta" for="field_statoAttualeCassetta">Stato Attuale Cassetta</label>
+                    <select class="form-control" name="statoAttualeCassetta" ng-model="vm.cassetta.statoAttualeCassetta" id="field_statoAttualeCassetta">
+                        <option value="IN_LAVORAZIONE" translate="italgaslabApp.StatoAttualeCassetta.IN_LAVORAZIONE">IN_LAVORAZIONE</option>
+                        <option value="RIFIUTATA" translate="italgaslabApp.StatoAttualeCassetta.RIFIUTATA">RIFIUTATA</option>
+                        <option value="TRATTAMENTO_INQUINAMENTO" translate="italgaslabApp.StatoAttualeCassetta.TRATTAMENTO_INQUINAMENTO">TRATTAMENTO_INQUINAMENTO</option>
+                        <option value="LAVORAZIONE_TERMINATA" translate="italgaslabApp.StatoAttualeCassetta.LAVORAZIONE_TERMINATA">LAVORAZIONE_TERMINATA</option>
+                        <option value="RESTITUITA" translate="italgaslabApp.StatoAttualeCassetta.RESTITUITA">RESTITUITA</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.contenutoInquinato" for="field_contenutoInquinato">Contenuto Inquinato</label>
+                    <input type="checkbox" class="form-control" name="contenutoInquinato" id="field_contenutoInquinato"
+                            ng-model="vm.cassetta.contenutoInquinato"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.conglomeratoBituminoso" for="field_conglomeratoBituminoso">Conglomerato Bituminoso</label>
+                    <input type="checkbox" class="form-control" name="conglomeratoBituminoso" id="field_conglomeratoBituminoso"
+                            ng-model="vm.cassetta.conglomeratoBituminoso"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCbu" for="field_presenzaCbu">CB Strato di Usura</label>
+                    <input type="checkbox" class="form-control" name="presenzaCbu" id="field_presenzaCbu"
+                            ng-model="vm.cassetta.presenzaCbu"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCbb1s" for="field_presenzaCbb1s">Conglomerato Bituminoso</label>
+                    <input type="checkbox" class="form-control" name="presenzaCbb1s" id="field_presenzaCbb1s"
+                            ng-model="vm.cassetta.presenzaCbb1s"
+                             />
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label" translate="italgaslabApp.cassetta.presenzaCbb2s" for="field_presenzaCbb2s">Conglomerato Bituminoso</label>
+                    <input type="checkbox" class="form-control" name="presenzaCbb2s" id="field_presenzaCbb2s"
+                            ng-model="vm.cassetta.presenzaCbb2s"
+                             />
+                </div>
+
+                <div class="form-group" ngf-drop ngf-change="vm.setFotoContenitore($file, vm.cassetta)" ngf-pattern="'image/*'">
+                    <label class="control-label" translate="italgaslabApp.cassetta.fotoContenitore" for="field_fotoContenitore">Foto Contenitore</label>
+                    <div ng-if="vm.cassetta.fotoContenitoreContentType && !vm.cassetta.fotoContenitore" class="help-block clearfix">
+                        <span class="pull-left">
+                            <img no-cache-src="api/cassettas/{{vm.cassetta.id}}/fotocontenitore" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                        </span>
+                        <button ng-click="vm.cassetta.fotoContenitore=null;vm.cassetta.fotoContenitoreContentType=null;"
+                                class="btn btn-default btn-xs pull-right">
+                            <span>Elimina</span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <img data-ng-src="{{'data:' + vm.cassetta.fotoContenitoreContentType + ';base64,' + vm.cassetta.fotoContenitore}}" style="max-height: 100px;" ng-if="vm.cassetta.fotoContenitore"/>
+                        <div ng-if="vm.cassetta.fotoContenitore" class="help-block clearfix">
+                            <span class="pull-left">{{vm.cassetta.fotoContenitoreContentType}}, {{vm.byteSize(vm.cassetta.fotoContenitore)}}</span>
+                            <button ng-click="vm.cassetta.fotoContenitore=null;vm.cassetta.fotoContenitoreContentType=null;"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        <button type="file" ngf-select class="btn btn-default btn-block"
+                                ngf-change="vm.setFotoContenitore($file, vm.cassetta)" accept="image/*" translate="entity.action.addimage">
+                            Add image
+                        </button>
+                    </div>
+                    <input type="hidden" class="form-control" name="fotoContenitore" id="field_fotoContenitore"
+                            ng-model="vm.cassetta.fotoContenitore"
+                             />
+                    <input type="hidden" class="form-control" name="fotoContenitoreContentType" id="field_fotoContenitoreContentType"
+                            ng-model="vm.cassetta.fotoContenitoreContentType" />
+                </div>
+
+                <div class="form-group" ngf-drop ngf-change="vm.setCertificatoPdf($file, vm.cassetta)">
+                    <label class="control-label" translate="italgaslabApp.cassetta.certificatoPdf" for="field_certificatoPdf">Certificato Pdf</label>
+
+                    <div ng-if="vm.cassetta.certificatoPdfContentType && !vm.cassetta.certificatoPdf" class="help-block clearfix">
+                        <span class="pull-left">
+                            File presente:&nbsp;
+                            <a target="_blank" href="api/cassettas/{{vm.cassetta.id}}/cert" translate="entity.action.open">open</a>
+                        </span>
+                        <button ng-click="vm.cassetta.certificatoPdf=null;vm.cassetta.certificatoPdfContentType=null;"
+                                class="btn btn-default btn-xs pull-right">
+                            <span>Elimina</span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <div ng-if="vm.cassetta.certificatoPdf" class="help-block clearfix">
+                            <a class="pull-left" ng-click="vm.openFile(vm.cassetta.certificatoPdfContentType, vm.cassetta.certificatoPdf)" translate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{vm.cassetta.certificatoPdfContentType}}, {{vm.byteSize(vm.cassetta.certificatoPdf)}}</span>
+                            <button ng-click="vm.cassetta.certificatoPdf=null;vm.cassetta.certificatoPdfContentType=null;"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        <button type="file" ngf-select class="btn btn-default btn-block"
+                                ngf-change="vm.setCertificatoPdf($file, vm.cassetta)" translate="entity.action.addblob">
+                            Add blob
+                        </button>
+                    </div>
+                    <input type="hidden" class="form-control" name="certificatoPdf" id="field_certificatoPdf"
+                            ng-model="vm.cassetta.certificatoPdf"
+                             />
+                    <input type="hidden" class="form-control" name="certificatoPdfContentType" id="field_certificatoPdfContentType"
+                            ng-model="vm.cassetta.certificatoPdfContentType" />
+                    <p ng-show="!vm.cassetta.certificatoPdfContentType" class="help-block">
+                        Può essere inserito successivamente.
+                    </p>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.cassetta.numProtocolloCertificato" for="field_numProtocolloCertificato">Num Protocollo Certificato</label>
+                    <input type="text" class="form-control" name="numProtocolloCertificato" id="field_numProtocolloCertificato"
+                            ng-model="vm.cassetta.numProtocolloCertificato"
+                             />
+                     <p ng-show="!vm.cassetta.numProtocolloCertificato" class="help-block">
+                         Può essere inserito successivamente.
+                     </p>
+                </div>
+
+                <div class="form-group">
+                    <label translate="italgaslabApp.cassetta.consegna" for="field_consegna">Consegna</label>
+                    <select disabled class="form-control" id="field_consegna" name="consegna" ng-model="vm.cassetta.consegna" ng-options="consegna as consegna.dataConsegna for consegna in vm.consegnas track by consegna.id">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.cassetta.msSismicitaLocale" for="field_msSismicitaLocale">Ms Sismicita Locale</label>
+            <input type="text" class="form-control" name="msSismicitaLocale" id="field_msSismicitaLocale"
+                    ng-model="vm.cassetta.msSismicitaLocale"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.cassetta.msValAccelerazione" for="field_msValAccelerazione">Ms Val Accelerazione</label>
+            <input type="text" class="form-control" name="msValAccelerazione" id="field_msValAccelerazione"
+                    ng-model="vm.cassetta.msValAccelerazione"
+                     />
+             <p class="help-block">
+                 Accelerazione con probabilità di superamento pari al 10% in 50 anni (ag)
+             </p>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.cassetta.note" for="field_note">Note</label>
+            <textarea rows="4" class="form-control" name="note" id="field_note"
+                    ng-model="vm.cassetta.note"
+                    ng-maxlength="65534" ></textarea>
+            <div ng-show="editForm.note.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.note.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                    This field cannot be longer than 65534 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

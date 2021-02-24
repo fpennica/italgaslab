@@ -1,0 +1,42 @@
+{
+    "italgaslabApp": {
+        "pesata" : {
+            "home": {
+                "title": "Pesatas",
+                "createLabel": "Create a new Pesata",
+                "createOrEditLabel": "Create or edit a Pesata",
+                "search": "Search for Pesata"
+            },
+            "created": "A new Pesata is created with identifier {{ param }}",
+            "updated": "A Pesata is updated with identifier {{ param }}",
+            "deleted": "A Pesata is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Pesata {{ id }}?"
+            },
+            "detail": {
+                "title": "Pesata"
+            },
+            "numPesata": "Num Pesata",
+            "pesoNetto": "Peso Netto",
+            "tratt125Mm": "Tratt 125 Mm",
+            "tratt63Mm": "Tratt 63 Mm",
+            "tratt31V5Mm": "Tratt 31 V 5 Mm",
+            "tratt16Mm": "Tratt 16 Mm",
+            "tratt8Mm": "Tratt 8 Mm",
+            "tratt6V3Mm": "Tratt 6 V 3 Mm",
+            "tratt4Mm": "Tratt 4 Mm",
+            "tratt2Mm": "Tratt 2 Mm",
+            "tratt1Mm": "Tratt 1 Mm",
+            "tratt0V5Mm": "Tratt 0 V 5 Mm",
+            "tratt0V25Mm": "Tratt 0 V 25 Mm",
+            "tratt0V125Mm": "Tratt 0 V 125 Mm",
+            "tratt0V075Mm": "Tratt 0 V 075 Mm",
+            "trattB100Mm": "Tratt B 100 Mm",
+            "trattB6V3Mm": "Tratt B 6 V 3 Mm",
+            "trattB2Mm": "Tratt B 2 Mm",
+            "trattB0V5Mm": "Tratt B 0 V 5 Mm",
+            "fondo": "Fondo",
+            "campione": "Campione"
+        }
+    }
+}

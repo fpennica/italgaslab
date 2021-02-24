@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Campione.
+    -->
+    <changeSet id="20160701090022-1" author="jhipster">
+        <createTable tableName="campione">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="codice_campione" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="sigla_campione" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="tipo_campione" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            
+            <column name="descrizione_campione" type="varchar(65534)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="foto_sacchetto" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="foto_sacchetto_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="foto_campione" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="foto_campione_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="data_analisi" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="ripartizione_quartatura" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="essiccamento" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="setacciatura_secco" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="lavaggio_setacciatura" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="essiccamento_num_teglia" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="essiccamento_peso_teglia" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="essiccamento_peso_campione_lordo_iniziale" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="essiccamento_peso_campione_lordo_24_h" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="essiccamento_peso_campione_lordo_48_h" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="sabbia" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="ghiaia" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="materiale_risulta_vagliato" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="detriti" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="materiale_fine" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="materiale_organico" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="elementi_magg_125_mm" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="detriti_conglomerato" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="argilla" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="argilla_mat_alterabile" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="granuli_cementati" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="elementi_arrotondati" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="elementi_spigolosi" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="sfabbricidi" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="tipo_b_conforme" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <!--
+		        Conglomerato bituminoso
+		    -->
+		    
+		    <!-- ###Spessori -->
+            <column name="cbu_spess_est1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_spess_est1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_spess_est1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_spess_est1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <column name="cbu_spess_med_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_spess_med_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_spess_med_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_spess_med_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <column name="cbu_spess_est2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_spess_est2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_spess_est2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_spess_est2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <!-- ###SSD -->
+            <column name="cbu_ssd_m1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_ssd_m1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_m1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_m1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <column name="cbu_ssd_m2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_ssd_m2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_m2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_m2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <column name="cbu_ssd_m3_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_ssd_m3_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_m3_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_m3_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <column name="cbu_ssd_t_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_ssd_t_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_t_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_ssd_t_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <!-- ### %Legante -->
+            <column name="cbu_leg_mm_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_leg_mm_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_leg_mm_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbu_leg_ma_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_leg_ma_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_leg_ma_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <!-- ### MVA (36) -->
+            <column name="cbu_mva_m0_pic1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbu_mva_m0_pic2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_mva_m0_pic1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_m0_pic1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_m0_pic2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_m0_pic2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <column name="cbu_mva_mpw_pic1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbu_mva_mpw_pic2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_mva_mpw_pic1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_mpw_pic1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_mpw_pic2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_mpw_pic2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <column name="cbu_mva_t1_pic1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbu_mva_t1_pic2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_mva_t1_pic1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_t1_pic1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_t1_pic2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_t1_pic2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <column name="cbu_mva_mpa_pic1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbu_mva_mpa_pic2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_mva_mpa_pic1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_mpa_pic1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_mpa_pic2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_mpa_pic2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <column name="cbu_mva_m2_pic1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbu_mva_m2_pic2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_mva_m2_pic1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_m2_pic1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_m2_pic2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_m2_pic2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <column name="cbu_mva_t2_pic1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbu_mva_t2_pic2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cbb_mva_t2_pic1_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_t2_pic1_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_t2_pic2_p1" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_mva_t2_pic2_p2" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <!-- ### Lavaggio -->
+            <column name="cbu_p_post_lav" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbb_p_post_lav" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            <!-- ### Foto etichetta -->
+            <column name="foto_etichetta" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="foto_etichetta_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <!-- ### Curva Binder -->
+            <column name="curva_binder" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="curva_binder_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            
+            
+            <column name="curva" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="curva_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="classificazione_geotecnica" type="varchar(65534)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="note" type="varchar(65534)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="lavorazione_conclusa" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cassetta_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="operatore_analisi_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+            <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+</databaseChangeLog>

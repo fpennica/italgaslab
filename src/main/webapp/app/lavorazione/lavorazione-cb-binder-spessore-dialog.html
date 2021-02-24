@@ -1,0 +1,84 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel">Spessore Binder</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Esterno 1 (mm)</th>
+                    <th>Punto medio (mm)</th>
+                    <th>Esterno 2 (mm)</th>
+                    <th>Spessore medio (mm)</th>
+                    <th>Media (mm)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Provino 1</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbSpessEst1p1" id="field_cbbSpessEst1p1"
+                                ng-model="vm.campione.cbbSpessEst1p1"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbSpessMedp1" id="field_cbbSpessMedp1"
+                                ng-model="vm.campione.cbbSpessMedp1"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbSpessEst2p1" id="field_cbbSpessEst2p1"
+                                ng-model="vm.campione.cbbSpessEst2p1"
+                                 />
+                    </div></td>
+                    <td>{{ medp1 = (vm.campione.cbbSpessEst1p1 + vm.campione.cbbSpessMedp1 + vm.campione.cbbSpessEst2p1) / 3; medp1 | number:2 }}</td>
+                    <td>{{ medp2 ? med = ((vm.campione.cbbSpessEst1p1 + vm.campione.cbbSpessMedp1 + vm.campione.cbbSpessEst2p1) / 3  +
+                    (vm.campione.cbbSpessEst1p2 + vm.campione.cbbSpessMedp2 + vm.campione.cbbSpessEst2p2) / 3) / 2 : med = medp1; med | number:2 }}</td>
+                </tr>
+                <tr>
+                    <td>Provino 2</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbSpessEst1p2" id="field_cbbSpessEst1p2"
+                                ng-model="vm.campione.cbbSpessEst1p2"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbSpessMedp2" id="field_cbbSpessMedp2"
+                                ng-model="vm.campione.cbbSpessMedp2"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbSpessEst2p2" id="field_cbbSpessEst2p2"
+                                ng-model="vm.campione.cbbSpessEst2p2"
+                                 />
+                    </div></td>
+                    <td>{{ medp2 = ((vm.campione.cbbSpessEst1p2 + vm.campione.cbbSpessMedp2 + vm.campione.cbbSpessEst2p2) / 3); medp2 | number:2}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

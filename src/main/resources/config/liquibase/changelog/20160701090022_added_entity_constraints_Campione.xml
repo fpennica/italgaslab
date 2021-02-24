@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Campione.
+    -->
+    <changeSet id="20160701090022-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="cassetta_id"
+                                 baseTableName="campione"
+                                 constraintName="fk_campione_cassetta_id"
+                                 onDelete="CASCADE"
+            					 onUpdate="CASCADE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cassetta"/>
+
+        <addForeignKeyConstraint baseColumnNames="operatore_analisi_id"
+                                 baseTableName="campione"
+                                 constraintName="fk_campione_operatoreanalisi_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="operatore"/>
+
+    </changeSet>
+</databaseChangeLog>

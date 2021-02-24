@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-02-25T18:20:18 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificato_book" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<parameter name="ISTITUTO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ISTITUTO_DESC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_FOTO_ETICHETTA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_SPESSORE_MEDIO" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_DENSITA_BSSD" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_MASSA_LEGANTE" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PERC_BIT_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PERC_BIT_MISC" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_DENSITA_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PERC_VUOTI" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PASSANTE0063" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_SPESSORE_MEDIO" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_DENSITA_BSSD" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_MASSA_LEGANTE" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PERC_BIT_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PERC_BIT_MISC" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_DENSITA_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PERC_VUOTI" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PASSANTE0063" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<detail>
+		<part uuid="f88f1d6e-6334-40ee-a791-6991284486a2">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="ISTITUTO">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_DESC">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_ETICHETTA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_ETICHETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_cb_lavorazione1.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="37383800-24a8-447e-89ab-72f4d8e3aee8">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="ISTITUTO">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_DESC">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_ETICHETTA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_ETICHETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_cb_lavorazione2.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="eb232b4e-b64d-4468-8b74-815d60d551ae">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="ISTITUTO">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_DESC">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_ETICHETTA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_ETICHETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_cb_lavorazione3.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="b9e03817-63d6-404f-b8d9-cacbcc14cb0a">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="ISTITUTO">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_DESC">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_FOTO_ETICHETTA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_FOTO_ETICHETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_USURA_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_SPESSORE_MEDIO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_SPESSORE_MEDIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_BSSD">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_BSSD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_MASSA_LEGANTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_MASSA_LEGANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_BIT_MISC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_BIT_MISC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_DENSITA_AGGR">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_DENSITA_AGGR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PERC_VUOTI">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PERC_VUOTI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PASSANTE0063">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PASSANTE0063}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_BINDER_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_BINDER_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_CB_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_CB_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_cb_lavorazione4.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+	</detail>
+</jasperReport>

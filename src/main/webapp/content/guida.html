@@ -1,0 +1,438 @@
+<!DOCTYPE html> <html> <head> <title>guida</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced { font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; color: rgb(171, 178, 191); overflow: initial; margin: 10px 13px; padding: 2em; box-sizing: border-box; word-wrap: break-word; background-color: rgb(40, 44, 52); }
+.markdown-preview-enhanced[data-use-github-style] { color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced[is="space-pen-div"] { width: 100%; margin: 0px; z-index: 999; overflow: scroll; font-size: 16px; display: block; position: absolute; }
+.markdown-preview-enhanced[is="space-pen-div"][data-use-github-style] { }
+.markdown-preview-enhanced[is="space-pen-div"][data-use-github-style] ::-webkit-scrollbar-track { box-shadow: rgba(218, 218, 218, 0.6) 0px 0px 3px inset; background-color: rgb(244, 244, 244); }
+.markdown-preview-enhanced[is="space-pen-div"][data-use-github-style] ::-webkit-scrollbar-thumb { border-radius: 10px; border-color: transparent; background-color: rgb(204, 204, 204); }
+.markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { line-height: 1.2; margin-top: 1em; margin-bottom: 16px; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5 { color: rgb(51, 51, 51); font-weight: 600; }
+.markdown-preview-enhanced[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(119, 119, 119); }
+.markdown-preview-enhanced h1 { font-size: 2.25em; font-weight: 300; padding-bottom: 0.3em; border-bottom: 1px solid rgb(75, 83, 98); }
+.markdown-preview-enhanced h2 { font-size: 1.75em; font-weight: 400; padding-bottom: 0.3em; border-bottom: 1px solid rgb(75, 83, 98); }
+.markdown-preview-enhanced h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview-enhanced h4 { font-size: 1.25em; font-weight: 600; }
+.markdown-preview-enhanced h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview-enhanced h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2 { border-bottom: 1px solid rgb(231, 231, 231); }
+.markdown-preview-enhanced strong { color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] strong { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced del { color: rgb(124, 135, 156); }
+.markdown-preview-enhanced a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview-enhanced a { color: rgb(0, 136, 204); text-decoration: none; }
+.markdown-preview-enhanced a:hover { color: rgb(0, 80, 163); text-decoration: none; }
+.markdown-preview-enhanced img, .markdown-preview-enhanced svg { max-width: 100%; }
+.markdown-preview-enhanced > p { margin-top: 0px; margin-bottom: 16px; word-wrap: break-word; }
+.markdown-preview-enhanced > ul, .markdown-preview-enhanced > ol { margin-bottom: 16px; }
+.markdown-preview-enhanced ul, .markdown-preview-enhanced ol { padding-left: 2em; }
+.markdown-preview-enhanced ul.no-list, .markdown-preview-enhanced ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview-enhanced ul ul, .markdown-preview-enhanced ul ol, .markdown-preview-enhanced ol ol, .markdown-preview-enhanced ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced li { margin-bottom: 0px; }
+.markdown-preview-enhanced li.task-list-item { list-style: none; }
+.markdown-preview-enhanced li > p { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced .task-list-item-checkbox { margin: 0px 0.2em 0.25em -1.6em; vertical-align: middle; }
+.markdown-preview-enhanced .task-list-item-checkbox:hover { cursor: pointer; }
+.markdown-preview-enhanced blockquote { margin: 16px 0px; font-size: inherit; padding: 0px 15px; color: rgb(124, 135, 156); border-left: 4px solid rgb(75, 83, 98); }
+.markdown-preview-enhanced blockquote > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); border-left: 4px solid rgb(221, 221, 221); }
+.markdown-preview-enhanced hr { height: 4px; margin: 32px 0px; border: 0px none; background-color: rgb(75, 83, 98); }
+.markdown-preview-enhanced[data-use-github-style] hr { background-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced table { margin: 10px 0px 15px; border-collapse: collapse; border-spacing: 0px; display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview-enhanced table th { font-weight: bold; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced table td, .markdown-preview-enhanced table th { border: 1px solid rgb(75, 83, 98); padding: 6px 13px; }
+.markdown-preview-enhanced[data-use-github-style] th { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] td, .markdown-preview-enhanced[data-use-github-style] th { border: 1px solid rgb(221, 221, 221); }
+.markdown-preview-enhanced dl { padding: 0px; }
+.markdown-preview-enhanced dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview-enhanced dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview-enhanced code { font-family: Menlo, Monaco, Consolas, "Courier New", monospace; color: rgb(255, 255, 255); border-radius: 3px; padding: 0.2em 0px; font-size: 0.85em !important; background-color: rgb(58, 63, 75); }
+.markdown-preview-enhanced code::before, .markdown-preview-enhanced code::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview-enhanced[data-use-github-style] code { color: inherit; background-color: rgba(0, 0, 0, 0.0392157) !important; }
+.markdown-preview-enhanced pre > code { padding: 0px; margin: 0px; word-break: normal; white-space: pre; border: 0px; font-size: 0.85em !important; background: transparent; }
+.markdown-preview-enhanced .highlight { margin-bottom: 16px; }
+.markdown-preview-enhanced .highlight pre, .markdown-preview-enhanced pre { font-family: Menlo, Monaco, Consolas, "Courier New", monospace; padding: 16px; overflow: auto; line-height: 1.45; color: rgb(171, 178, 191); border: rgb(75, 83, 98); border-radius: 3px; font-size: 0.85em !important; background-color: rgb(49, 54, 63); }
+.markdown-preview-enhanced .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview-enhanced pre { word-wrap: break-word; white-space: normal; word-break: break-all; }
+.markdown-preview-enhanced pre .section { opacity: 1; }
+.markdown-preview-enhanced pre code, .markdown-preview-enhanced pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview-enhanced pre code::before, .markdown-preview-enhanced pre tt::before, .markdown-preview-enhanced pre code::after, .markdown-preview-enhanced pre tt::after { content: normal; }
+.markdown-preview-enhanced p, .markdown-preview-enhanced blockquote, .markdown-preview-enhanced ul, .markdown-preview-enhanced ol, .markdown-preview-enhanced dl, .markdown-preview-enhanced pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview-enhanced pre.editor-colors { margin: 16px 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(49, 54, 63); }
+.markdown-preview-enhanced kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(75, 83, 98) rgb(75, 83, 98) rgb(62, 68, 81); padding: 2px 4px; background-color: rgb(58, 63, 75); }
+.markdown-preview-enhanced[data-use-github-style] kbd { color: rgb(51, 51, 51); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview-enhanced .pagebreak, .markdown-preview-enhanced .newpage { break-before: page; }
+@media screen and (min-width: 914px) {
+  .markdown-preview-enhanced { width: 980px; margin: 10px auto; background: rgb(40, 44, 52); }
+}
+@media screen and (max-width: 400px) {
+  .markdown-preview-enhanced { font-size: 14px; margin: 0px auto; padding: 15px; }
+}
+@media screen and (min-width: 914px) {
+  .markdown-preview-enhanced[data-use-github-style] { background: rgb(255, 255, 255); }
+}
+@media print {
+  .markdown-preview-enhanced { background-color: rgb(40, 44, 52); }
+  .markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { color: rgb(255, 255, 255); break-after: avoid; }
+  .markdown-preview-enhanced blockquote { color: rgb(124, 135, 156); }
+  .markdown-preview-enhanced table, .markdown-preview-enhanced pre { break-inside: avoid; }
+  .markdown-preview-enhanced table { display: table; }
+  .markdown-preview-enhanced img { display: block; max-width: 100%; max-height: 100%; }
+  .markdown-preview-enhanced pre, .markdown-preview-enhanced code { word-wrap: break-word; white-space: normal; }
+}
+@media print {
+  .markdown-preview-enhanced[data-use-github-style] { background-color: rgb(255, 255, 255); }
+  .markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(34, 34, 34); }
+  .markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); }
+  .markdown-preview-enhanced[data-use-github-style] pre { border: 2px solid rgb(246, 246, 246); }
+}
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk { position: relative; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .output-div { overflow-x: auto; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .output-div svg { display: block; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk pre { cursor: text; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group { position: absolute; right: 0px; top: 0px; display: none; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .run-btn, .markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .run-all-btn { float: right; margin-left: 4px; border-radius: 3px; font-size: 0.8em; color: rgb(238, 238, 238); border: none; background-image: none; background-color: rgb(82, 139, 255); }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .run-btn:hover, .markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .run-all-btn:hover { cursor: pointer; background-color: rgb(75, 127, 232); }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk:hover .btn-group { display: block; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .status { position: absolute; right: 0px; top: 0px; font-size: 0.85em; color: inherit; padding: 2px 6px; display: none; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk.running .btn-group { display: none; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk.running .status { display: block; }
+.markdown-preview-enhanced[is="space-pen-div"] .back-to-top-btn, .markdown-preview-enhanced[is="space-pen-div"] .refresh-btn { position: fixed; display: none; right: 24px; top: 54px; }
+.markdown-preview-enhanced[is="space-pen-div"] .back-to-top-btn { right: 72px; }
+.markdown-preview-enhanced[is="space-pen-div"]:hover .back-to-top-btn, .markdown-preview-enhanced[is="space-pen-div"]:hover .refresh-btn { display: block; opacity: 0.4; }
+.markdown-preview-enhanced[is="space-pen-div"]:hover .back-to-top-btn:hover, .markdown-preview-enhanced[is="space-pen-div"]:hover .refresh-btn:hover { opacity: 1; }
+.markdown-preview-enhanced:not([is="space-pen-div"]) .code-chunk .btn-group { display: none; }
+.markdown-preview-enhanced:not([is="space-pen-div"]) .code-chunk .status { display: none; }
+.markdown-preview-enhanced:not([is="space-pen-div"]) .back-to-top-btn { display: none; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .line.cursor-line { background-color: rgb(245, 245, 245); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .invisible { color: rgb(192, 192, 192); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .cursor { border-left: 2px solid rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .selection .region { background-color: rgb(200, 200, 250); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .bracket-matcher .region { border-bottom: 1px solid rgb(0, 0, 0); box-sizing: border-box; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .invisible-character { color: rgb(192, 192, 192); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .indent-guide { color: rgb(192, 192, 192); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .wrap-guide { background-color: rgb(192, 192, 192); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter { color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number { color: rgb(51, 51, 51); -webkit-font-smoothing: antialiased; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line { color: rgb(51, 51, 51); background-color: rgb(245, 245, 245); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line-no-selection { background-color: transparent; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number .icon-right { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before { bottom: -3px; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after { content: ""; position: absolute; left: 0px; bottom: 0px; width: 25px; border-bottom: 1px dotted rgba(255, 236, 236, 0.498039); pointer-events: none; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.folded, .markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number::after, .markdown-preview-enhanced .github-syntax-theme pre.editor-colors .fold-marker::after { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .mpe-syntax--marker .region { border: 1px solid rgb(237, 106, 67); background-color: transparent; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .mpe-syntax--marker.current-result .region { border: 1px solid rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--comment, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--comment, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--comment { color: rgb(150, 152, 150); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--constant, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--entity.mpe-syntax--name.mpe-syntax--constant, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--variable.mpe-syntax--other.mpe-syntax--constant, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--variable.mpe-syntax--language { color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--entity, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--entity.mpe-syntax--name { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(121, 93, 163); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--variable.mpe-syntax--parameter.mpe-syntax--function { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--entity.mpe-syntax--name.mpe-syntax--tag { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--keyword { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(167, 29, 93); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--storage, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--storage.mpe-syntax--type { color: rgb(167, 29, 93); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--storage.mpe-syntax--modifier.mpe-syntax--package, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--storage.mpe-syntax--modifier.mpe-syntax--import, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--storage.mpe-syntax--type.mpe-syntax--java { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--string, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string .mpe-syntax--punctuation.mpe-syntax--section.mpe-syntax--embedded .mpe-syntax--source { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(24, 54, 145); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--support { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--property-name { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--variable { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(237, 106, 67); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--variable.mpe-syntax--other { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--invalid.mpe-syntax--broken { font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--invalid.mpe-syntax--deprecated { font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--invalid.mpe-syntax--illegal { font-style: italic; text-decoration: underline; color: rgb(248, 248, 248); background-color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--carriage-return { font-style: italic; text-decoration: underline; color: rgb(248, 248, 248); background-color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--invalid.mpe-syntax--unimplemented { font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--message.mpe-syntax--error { color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string .mpe-syntax--source { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string .mpe-syntax--variable { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--source.mpe-syntax--regexp, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--regexp { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(24, 54, 145); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--regexp.mpe-syntax--character-class, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--constant.mpe-syntax--character.mpe-syntax--escape, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--source.mpe-syntax--ruby.mpe-syntax--embedded, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--string.mpe-syntax--regexp.mpe-syntax--arbitrary-repitition { color: rgb(24, 54, 145); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--constant.mpe-syntax--character.mpe-syntax--escape { font-weight: bold; color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--support.mpe-syntax--constant { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--support.mpe-syntax--variable { color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--module-reference { color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--list { color: rgb(105, 58, 23); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--heading, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--heading .mpe-syntax--entity.mpe-syntax--name { font-weight: bold; color: rgb(29, 62, 129); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--quote { color: rgb(0, 128, 128); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--italic { font-style: italic; color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--bold { font-weight: bold; color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--raw { font-weight: normal; font-style: normal; text-decoration: none; color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--deleted, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--header.mpe-syntax--from-file, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--deleted { color: rgb(189, 44, 0); background-color: rgb(255, 236, 236); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--inserted, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--header.mpe-syntax--to-file, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--inserted { color: rgb(85, 165, 50); background-color: rgb(234, 255, 234); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--changed, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--changed { color: rgb(239, 151, 0); background-color: rgb(255, 227, 180); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--ignored, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--markup.mpe-syntax--untracked { color: rgb(216, 216, 216); background-color: rgb(128, 128, 128); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--range { color: rgb(121, 93, 163); font-weight: bold; }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--header { color: rgb(0, 134, 179); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--separator { font-weight: bold; color: rgb(29, 62, 129); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--meta.mpe-syntax--output { color: rgb(29, 62, 129); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--tag, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--curly, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--round, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--square, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--angle, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--quote { color: rgb(89, 94, 98); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--brackethighlighter.mpe-syntax--unmatched { color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--sublimelinter.mpe-syntax--mark.mpe-syntax--error { color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--sublimelinter.mpe-syntax--mark.mpe-syntax--warning { color: rgb(237, 106, 67); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--sublimelinter.mpe-syntax--gutter-mark { color: rgb(192, 192, 192); }
+.markdown-preview-enhanced .github-syntax-theme .mpe-syntax--constant.mpe-syntax--other.mpe-syntax--reference.mpe-syntax--link, .markdown-preview-enhanced .github-syntax-theme .mpe-syntax--string.mpe-syntax--other.mpe-syntax--link { color: rgb(24, 54, 145); text-decoration: underline; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .line.cursor-line { background-color: rgb(245, 245, 245) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .invisible { color: rgb(192, 192, 192) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .cursor { border-left: 2px solid rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .selection .region { background-color: rgb(200, 200, 250) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .bracket-matcher .region { border-bottom: 1px solid rgb(0, 0, 0) !important; box-sizing: border-box !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .invisible-character { color: rgb(192, 192, 192) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .indent-guide { color: rgb(192, 192, 192) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .wrap-guide { background-color: rgb(192, 192, 192) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter { color: rgb(51, 51, 51) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number { color: rgb(51, 51, 51) !important; -webkit-font-smoothing: antialiased !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line { color: rgb(51, 51, 51) !important; background-color: rgb(245, 245, 245) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line-no-selection { background-color: transparent !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number .icon-right { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before { bottom: -3px !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after { content: "" !important; position: absolute !important; left: 0px !important; bottom: 0px !important; width: 25px !important; border-bottom: 1px dotted rgba(255, 236, 236, 0.498039) !important; pointer-events: none !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.folded, .markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number::after, .markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .fold-marker::after { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .mpe-syntax--marker .region { border: 1px solid rgb(237, 106, 67) !important; background-color: transparent !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .mpe-syntax--marker.current-result .region { border: 1px solid rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--comment, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--comment, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--comment { color: rgb(150, 152, 150) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--constant, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--entity.mpe-syntax--name.mpe-syntax--constant, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--variable.mpe-syntax--other.mpe-syntax--constant, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--variable.mpe-syntax--language { color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--entity, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--entity.mpe-syntax--name { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(121, 93, 163) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--variable.mpe-syntax--parameter.mpe-syntax--function { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--entity.mpe-syntax--name.mpe-syntax--tag { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--keyword { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(167, 29, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--storage, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--storage.mpe-syntax--type { color: rgb(167, 29, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--storage.mpe-syntax--modifier.mpe-syntax--package, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--storage.mpe-syntax--modifier.mpe-syntax--import, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--storage.mpe-syntax--type.mpe-syntax--java { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--string, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string .mpe-syntax--punctuation.mpe-syntax--section.mpe-syntax--embedded .mpe-syntax--source { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(24, 54, 145) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--support { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--property-name { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--variable { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(237, 106, 67) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--variable.mpe-syntax--other { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--invalid.mpe-syntax--broken { font-weight: bold !important; font-style: italic !important; text-decoration: underline !important; color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--invalid.mpe-syntax--deprecated { font-weight: bold !important; font-style: italic !important; text-decoration: underline !important; color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--invalid.mpe-syntax--illegal { font-style: italic !important; text-decoration: underline !important; color: rgb(248, 248, 248) !important; background-color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--carriage-return { font-style: italic !important; text-decoration: underline !important; color: rgb(248, 248, 248) !important; background-color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--invalid.mpe-syntax--unimplemented { font-weight: bold !important; font-style: italic !important; text-decoration: underline !important; color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--message.mpe-syntax--error { color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string .mpe-syntax--source { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string .mpe-syntax--variable { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--source.mpe-syntax--regexp, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--regexp { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(24, 54, 145) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--regexp.mpe-syntax--character-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--constant.mpe-syntax--character.mpe-syntax--escape, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--source.mpe-syntax--ruby.mpe-syntax--embedded, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--string.mpe-syntax--regexp.mpe-syntax--arbitrary-repitition { color: rgb(24, 54, 145) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--regexp .mpe-syntax--constant.mpe-syntax--character.mpe-syntax--escape { font-weight: bold !important; color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--support.mpe-syntax--constant { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--support.mpe-syntax--variable { color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--module-reference { color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--list { color: rgb(105, 58, 23) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--heading, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--heading .mpe-syntax--entity.mpe-syntax--name { font-weight: bold !important; color: rgb(29, 62, 129) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--quote { color: rgb(0, 128, 128) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--italic { font-style: italic !important; color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--bold { font-weight: bold !important; color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--raw { font-weight: normal !important; font-style: normal !important; text-decoration: none !important; color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--deleted, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--header.mpe-syntax--from-file, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--deleted { color: rgb(189, 44, 0) !important; background-color: rgb(255, 236, 236) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--inserted, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--header.mpe-syntax--to-file, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--inserted { color: rgb(85, 165, 50) !important; background-color: rgb(234, 255, 234) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--changed, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--punctuation.mpe-syntax--definition.mpe-syntax--changed { color: rgb(239, 151, 0) !important; background-color: rgb(255, 227, 180) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--ignored, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--markup.mpe-syntax--untracked { color: rgb(216, 216, 216) !important; background-color: rgb(128, 128, 128) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--range { color: rgb(121, 93, 163) !important; font-weight: bold !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--diff.mpe-syntax--header { color: rgb(0, 134, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--separator { font-weight: bold !important; color: rgb(29, 62, 129) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--meta.mpe-syntax--output { color: rgb(29, 62, 129) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--tag, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--curly, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--round, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--square, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--angle, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--quote { color: rgb(89, 94, 98) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--brackethighlighter.mpe-syntax--unmatched { color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--sublimelinter.mpe-syntax--mark.mpe-syntax--error { color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--sublimelinter.mpe-syntax--mark.mpe-syntax--warning { color: rgb(237, 106, 67) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--sublimelinter.mpe-syntax--gutter-mark { color: rgb(192, 192, 192) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--constant.mpe-syntax--other.mpe-syntax--reference.mpe-syntax--link, .markdown-preview-enhanced[data-use-github-syntax-theme] .mpe-syntax--string.mpe-syntax--other.mpe-syntax--link { color: rgb(24, 54, 145) !important; text-decoration: underline !important; }
+.markdown-preview-enhanced[data-presentation-mode] { font-size: 24px; width: 100%; box-sizing: border-box; margin: 0px; padding: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] h1, .markdown-preview-enhanced[data-presentation-mode] h2, .markdown-preview-enhanced[data-presentation-mode] h3, .markdown-preview-enhanced[data-presentation-mode] h4, .markdown-preview-enhanced[data-presentation-mode] h5, .markdown-preview-enhanced[data-presentation-mode] h6 { margin-top: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] strong { font-weight: bold; }
+.markdown-preview-enhanced[data-presentation-mode]::-webkit-scrollbar { display: none; }
+.markdown-preview-enhanced .slides { text-align: left !important; } </style> <link rel="stylesheet" href="file:////home/francesco/.atom/packages/markdown-preview-enhanced/node_modules/katex/dist/katex.min.css">  </head> <body class="markdown-preview-enhanced " data-use-github-style data-use-github-syntax-theme > <h1 id="itg-lab-guida-utilizzo">ITG-LAB - Guida utilizzo</h1>
+<ul>
+<li><p><a href="#accesso-ed-utenze">Accesso ed utenze</a></p></li>
+<li><p><a href="#attivit&#xE0;-principali">Attività principali</a></p></li>
+<li><p><a href="#accettazione">Accettazione</a>
+<ul>
+<li><p><a href="#1-step-inizio-procedura">1° step: Inizio procedura</a></p></li>
+<li><p><a href="#2-step-inserimento-dati-della-consegna">2° step: Inserimento dati della consegna</a></p></li>
+<li><p><a href="#3-step-inserimento-dati-delle-cassette">3° step: Inserimento dati delle cassette</a></p></li>
+<li><p><a href="#4-step-inserimento-dati-dei-campioni">4° step: Inserimento dati dei campioni</a></p></li>
+</ul></p></li>
+<li><p><a href="#lavorazione">Lavorazione</a>
+<ul>
+<li><p><a href="#1-step-inizio-procedura-1">1° step: Inizio procedura</a></p></li>
+<li><p><a href="#2-step-selezione-della-consegna">2° step: Selezione della consegna</a></p></li>
+<li><p><a href="#3-step-selezione-della-cassetta">3° step: Selezione della cassetta</a></p></li>
+<li><p><a href="#4-step-lavorazione-dei-campioni">4° step: Lavorazione dei campioni</a></p></li>
+<li><p><a href="#operatore-analisi">Operatore analisi</a></p></li>
+<li><p><a href="#lavorazione-dei-campioni-a-e-a1">Lavorazione dei campioni A e A1</a>
+<ul>
+<li><p><a href="#dati-campione">Dati campione</a></p></li>
+<li><p><a href="#pesatura">Pesatura</a></p></li>
+<li><p><a href="#setacciatura">Setacciatura</a></p></li>
+</ul></p></li>
+<li><p><a href="#lavorazione-del-campione-b">Lavorazione del campione B</a></p></li>
+<li><p><a href="#lavorazione-del-campione-c">Lavorazione del campione C</a></p></li>
+<li><p><a href="#lavorazione-campioni-cb_a-e-cb_b">Lavorazione campioni CB_A e CB_B</a></p></li>
+</ul></p></li>
+<li><p><a href="#generazione-rapporti-e-file-di-esportazione">Generazione rapporti e file di esportazione</a></p></li>
+</ul>
+<h2 id="accesso-ed-utenze">Accesso ed utenze</h2>
+<p>Per accedere al sito è necessario avere un <strong>account</strong> registrato associato ad uno dei laboratori che partecipano al progetto.</p>
+<p>Per accedere, cliccare su <code>login</code> oppure selezionare il menu <code>Utente - Accesso</code>.</p>
+<p><img src="images/01_login.png" alt=""></p>
+<p>Una volta effettuato l'accesso con la password iniziale, è <strong>indispensabile impostare la propria password personale</strong> tramite il menu <code>Utente - Password</code>.</p>
+<p><img src="images/02_pw.png" alt=""></p>
+<h2 id="attivit&#xE0;-principali">Attività principali</h2>
+<p>Le attività principali, raggiungibili tramite i pulsanti posti nella home o tramite il menu <code>Attività</code>, si dividono in:</p>
+<ul>
+<li><p><strong>Accettazione</strong></p></li>
+<li><p><strong>Lavorazione</strong></p></li>
+</ul>
+<p><img src="images/03_attivita.png" alt=""></p>
+<p>Sono presenti inoltre le voci:</p>
+<ul>
+<li><p>Registrazione teglie</p></li>
+<li><p>Registrazione setacci</p></li>
+</ul>
+<p>per inserire i dati di peso di teglie, setacci e coperchi utilizzati. In questo modo sarà possibile sottrarre automaticamente questi valori dalle pesate effettuate sui campioni.</p>
+<h2 id="accettazione">Accettazione</h2>
+<p>La procedura di <strong>Accettazione</strong> permette di:</p>
+<ol>
+<li><p>Inserire i dati relativi ad una <strong>consegna</strong></p></li>
+<li><p>Inserire i dati relativi alle <strong>cassette</strong> consegnate</p></li>
+<li><p>Inserire alcuni dati principali relativi ai <strong>campioni</strong> contenuti in ogni cassetta.</p></li>
+</ol>
+<p>La procedura è guidata e suddivisa in step successivi:</p>
+<h3 id="1-step-inizio-procedura">1° step: Inizio procedura</h3>
+<p><img src="images/04_accettazione1.png" alt=""></p>
+<h3 id="2-step-inserimento-dati-della-consegna">2° step: Inserimento dati della consegna</h3>
+<p><img src="images/04_accettazione2.png" alt=""></p>
+<p>Per inserire una nuova consegna, cliccare sul pulsante <code>Inserisci nuova Consegna</code>.</p>
+<p>Se la consegna è già stata inserita e si vuole procedere all'inserimento di cassette e campioni, <strong>selezionare una consegna</strong> presente nella lista cliccando sul pulsante verde <code>Seleziona</code>.</p>
+<blockquote>
+<p>In tutte le <strong>liste</strong> i dati vengono visualizzati in &quot;pagine&quot; (gruppi di 20). Per visualizzare la pagina precedete o successiva, utilizzare i pulsanti <code>Pag. precedente</code> e <code>Pag. successiva</code> posti in fondo alla lista.</p>
+</blockquote>
+<p>E' possibile:</p>
+<ul>
+<li><p><strong>Visualizzare i dati della consegna</strong> cliccando sul primo pulsante celeste sulla destra di una delle consegna in lista;</p></li>
+<li><p><strong>Modificare</strong> i dati già inseriti cliccando sul pulsante blu con un simbolo &quot;matita&quot;;</p></li>
+<li><p><strong>Eliminare</strong> una consegna cliccando sul pulsante rosso.</p></li>
+</ul>
+<p>Nota: <strong>Eliminare</strong> una consegna comporta l'eliminazione di tutte le cassette, i campioni e i dati di lavorazione associati.</p>
+<p><img src="images/04_accettazione3.png" alt=""></p>
+<p>Selezionando tramite il pulsante verde una consegna, si accede allo step successivo.</p>
+<h3 id="3-step-inserimento-dati-delle-cassette">3° step: Inserimento dati delle cassette</h3>
+<p><img src="images/04_accettazione4.png" alt=""></p>
+<p>Per inserire una nuova cassetta, cliccare sul pulsante <code>Inserisci nuova Cassetta</code>.</p>
+<blockquote>
+<p><strong>Codice cassetta</strong>: una volta salvata, alla cassetta viene assegnato automaticamente un codice composto in questo modo: <code>[laboratorio di appartenenza]-[data consegna]-[id del database]-[mslink (rif. geografo)]-[odl (ods)]</code>.<br>
+Ad esempio: <code>IGAG-TO-20170109-ID2-MSL605-ODL20001019950</code></p>
+</blockquote>
+<p>Se la cassetta è già stata inserita e si vuole procedere all'inserimento dei campioni, <strong>selezionare una cassetta</strong> presente nella lista cliccando sul pulsante verde <code>Seleziona</code>.</p>
+<blockquote>
+<p>In tutte le <strong>liste</strong> i dati vengono visualizzati in &quot;pagine&quot; (gruppi di 20). Per visualizzare la pagina precedete o successiva, utilizzare i pulsanti <code>Pag. precedente</code> e <code>Pag. successiva</code> posti in fondo alla lista.</p>
+</blockquote>
+<p>E' possibile:</p>
+<ul>
+<li><p><strong>Visualizzare i dati della cassetta</strong> cliccando sul primo pulsante celeste sulla destra di una delle cassette in lista;</p></li>
+<li><p><strong>Modificare</strong> i dati già inseriti cliccando sul pulsante blu con un simbolo &quot;matita&quot;;</p></li>
+<li><p><strong>Eliminare</strong> una cassetta cliccando sul pulsante rosso.</p></li>
+</ul>
+<p>Nota: <strong>Eliminare</strong> una cassetta comporta l'eliminazione di tutte i campioni e i dati di lavorazione associati.</p>
+<p>Selezionando tramite il pulsante verde una cassetta, si accede allo step successivo.</p>
+<h3 id="4-step-inserimento-dati-dei-campioni">4° step: Inserimento dati dei campioni</h3>
+<p><img src="images/04_accettazione5.png" alt=""></p>
+<p>Per inserire una nuovo campione, cliccare sul pulsante <code>Inserisci nuovo Campione</code>. I dati dei campioni inseriti in questa fase sono solo quelli di base. I dati di <strong>lavorazione</strong> dei campioni vengono inseriti tramite la procedura di lavorazione.</p>
+<p>Il pulsante verde <code>Lavorazione</code> permette di accedere direttamente allo step finale della procedura di lavorazione senza passare attraverso la selezione della consegna e della cassetta cui appartengono i campioni.</p>
+<blockquote>
+<p><strong>Codice campione</strong>: una volta salvato, al campione viene assegnato automaticamente un codice composto in questo modo: <code>[codice cassetta]-[tipo campione]</code>.<br>
+Ad esempio: <code>IGAG-TO-20170109-ID2-MSL605-ODL20001019950-A1</code></p>
+</blockquote>
+<h2 id="lavorazione">Lavorazione</h2>
+<p>La procedura di lavorazione permette di inserire i dati di lavorazione relativi ai campioni. Prima di inserire i dati di lavorazione dei campioni è necessario selezionare nel database la <strong>Consegna</strong> e la <strong>Cassetta</strong> cui appartengono i campioni lavorati.</p>
+<h3 id="1-step-inizio-procedura-1">1° step: Inizio procedura</h3>
+<p><img src="images/04_lavorazione1.png" alt=""></p>
+<h3 id="2-step-selezione-della-consegna">2° step: Selezione della consegna</h3>
+<p><img src="images/04_lavorazione2.png" alt=""></p>
+<p>Nella procedura di lavorazione, è necessario in primo luogo <strong>selezionare</strong> la consegna già inserita. Sono assenti in questo caso i pulsanti di inserimento, modifica e cancellazione, che riguardano la procedura di <strong>accettazione</strong>.</p>
+<blockquote>
+<p>In tutte le <strong>liste</strong> i dati vengono visualizzati in &quot;pagine&quot; (gruppi di 20). Per visualizzare la pagina precedete o successiva, utilizzare i pulsanti <code>Pag. precedente</code> e <code>Pag. successiva</code> posti in fondo alla lista.</p>
+</blockquote>
+<p>Selezionando tramite il pulsante verde <code>Seleziona</code> una consegna, si accede allo step successivo.</p>
+<h3 id="3-step-selezione-della-cassetta">3° step: Selezione della cassetta</h3>
+<p><img src="images/04_lavorazione3.png" alt=""></p>
+<p>In questo step viene selezionata la cassetta già inserita contenente i campioni in lavorazione. Sono assenti in questo caso i pulsanti di inserimento, modifica e cancellazione, che riguardano la procedura di <strong>accettazione</strong>.</p>
+<p>Selezionando tramite il pulsante verde <code>Seleziona</code> una cassetta, si accede allo step successivo.</p>
+<h3 id="4-step-lavorazione-dei-campioni">4° step: Lavorazione dei campioni</h3>
+<p><img src="images/04_lavorazione4.png" alt=""></p>
+<p>In questo step vengono inseriti i dati di lavorazione di tutti i campioni relativi alla cassetta selezionata nel precedente step.</p>
+<p>La selezione del campione corrente avviene tramite il menu a tendina <code>Seleziona il campione in lavorazione</code>. A seconda della tipologia di campione selezionata, il resto della pagina conterrà elementi differenti:</p>
+<ul>
+<li><p>Campione <strong>A, A1, B</strong>: la pagina conterrà le sezioni:
+<ul>
+<li><p><code>Dati campione</code></p></li>
+<li><p><code>Pesatura</code></p></li>
+<li><p><code>Setacciatura</code></p></li>
+</ul></p></li>
+<li><p>Campione <strong>C</strong>: la pagina conterrà la sezione:
+<ul>
+<li><p><code>Dati campione</code></p></li>
+</ul></p></li>
+<li><p>Campioni <strong>CB_A, CB_B</strong>: la pagina conterrà le sezioni:
+<ul>
+<li><p><code>Dati campione</code></p></li>
+<li><p><code>Spessore</code> (suddiviso per usura e binder)</p></li>
+<li><p><code>Massa Volumica Apparente - Superficie Satura Secca (SSD)</code> (suddiviso per usura e binder)</p></li>
+<li><p><code>Percentuale di legante</code> (suddiviso per usura e binder)</p></li>
+<li><p><code>Massa Volumica dei granuli dell'aggregato</code> (suddiviso per usura e binder)</p></li>
+<li><p><code>Percentuale dei vuoti</code> (suddiviso per usura e binder)</p></li>
+<li><p><code>Lavaggio allo 0.063 mm</code> (suddiviso per usura e binder)</p></li>
+<li><p><code>Setacciatura</code> (usura)</p></li>
+<li><p><code>Setacciatura</code> (binder)</p></li>
+</ul></p></li>
+</ul>
+<p>In ogni sezione è presente un pulsante <code>Modifica</code> per inserire e modificare i dati di lavorazione.</p>
+<h3 id="operatore-analisi">Operatore analisi</h3>
+<p>Per tutti i tipi di campione, nella sezione <code>Dati di lavorazione</code> dell'interfaccia di inserimento vengono inseriti dati quali la data dell'analisi e l'operatore che esegue l'analisi.</p>
+<p><img src="images/05_lavorazione2.png" alt=""></p>
+<p>Per quanto riguarda l'<strong>operatore</strong>, è possibile selezionarne uno tramite il menu a tendina <em>fra quelli registrati per il laboratorio corrente</em>, ma è anche possibile inserire <strong>uno o più nomi di operatori non registrati</strong> tramite le note, secondo le modalità descritte:</p>
+<p><img src="images/05_lavorazione3.png" alt=""></p>
+<p>Lasciando vuoto il campo <code>Operatore Analisi</code> ed inserendo il/i nomi nelle note come illustrato, nel <strong>rapporto di prova</strong> verrà inserito, come operatore che ha eseguito l'analisi, &quot;Mario Rossi&quot;.</p>
+<h3 id="lavorazione-dei-campioni-a-e-a1">Lavorazione dei campioni A e A1</h3>
+<h4 id="dati-campione">Dati campione</h4>
+<p><img src="images/05_lavorazione1.png" alt=""></p>
+<p>L'inserimento dei dati del campione avviene selezionando il pulsante <code>Modifica</code> della sezione <code>Dati campione</code>.</p>
+<h4 id="pesatura">Pesatura</h4>
+<p><img src="images/05_lavorazione4.png" alt=""></p>
+<p>L'inserimento dei dati avviene in modo simile a quanto avviene nel file Excel.</p>
+<p>E' possibile inserire manualmente il peso della teglia (tara) oppure selezionare una delle teglie inserite nella sezione <code>Registrazione teglie</code>.</p>
+<h4 id="setacciatura">Setacciatura</h4>
+<p><img src="images/05_lavorazione5.png" alt=""></p>
+<p>Per inserire i dati di setacciatura, cliccare sul pulsante <code>Modifica</code>.</p>
+<p><img src="images/05_lavorazione6.png" alt=""></p>
+<p>Per inserire una serie di pesate, utilizzare il pulsante <code>Aggiungi pesata</code> e riempire le celle.</p>
+<p>E' possibile sottrarre automaticamente dai valori inseriti i pesi dei setacci e/o dei coperchi inseriti nella sezione <code>Registrazione setacci</code>, tramite i pulsanti <code>Sottrai peso setacci</code> e <code>Sottrai peso coperchio</code>.</p>
+<p>Una volta inserite le setacciature, la <strong>classificazione geotecnica</strong> viene generata <em>automaticamente</em> per i campioni <strong>A</strong> e <strong>A1</strong>, e per il campione <strong>B nel caso in cui sia stata fatta setacciatura completa</strong>.</p>
+<p>La classificazione geotecnica va invece inserita <em>manualmente</em>, tramite la scheda in alto &quot;Dati campione&quot;, per il campione <strong>B (nel caso in cui sia stata fatta solo la setacciatura a 100 mm)</strong> e per il campione <strong>C</strong>.</p>
+<p>Per generare o aggiornare la <strong>curva granulometrica</strong>, cliccare sul pulsante <code>Genera curva granulometrica</code>.</p>
+<h3 id="lavorazione-del-campione-b">Lavorazione del campione B</h3>
+<p>Il campione <strong>B</strong> si distingue da A e A1 per la fase di setacciatura:</p>
+<p><img src="images/05_lavorazione7.png" alt=""></p>
+<p>In questo caso, vanno inseriti obbligatoriamente solo i valori di <strong>Peso Netto</strong> e <strong>Fondo</strong> e il <strong>trattenuto a 100 mm</strong>. Se non sono state fatte ulteriori setacciature, lasciare gli altri valori a 0 ed inserire manualmente la classificazione geotecnica tramite la scheda &quot;Dati Campione&quot;.</p>
+<h3 id="lavorazione-del-campione-c">Lavorazione del campione C</h3>
+<p>Per il campione C non sono presenti le sezioni <code>Pesatura</code> e <code>Setacciatura</code>.</p>
+<p>La <strong>classificazione geotecnica</strong> va inserita manualmente nell'apposito campo durante l'inserimento dei <code>Dati campione</code>.</p>
+<h3 id="lavorazione-campioni-cb_a-e-cb_b">Lavorazione campioni CB_A e CB_B</h3>
+<p><img src="images/05_lavorazione8.png" alt=""></p>
+<p><img src="images/05_lavorazione9.png" alt=""></p>
+<p>Per i campioni di conglomerato (CB_A e CB_B), sono presenti diverse sezioni, suddivise a loro volta per <strong>Usura</strong> e <strong>Binder</strong>.</p>
+<p>L'inserimento dei dati per ogni sezione avviene in modo simile al file Excel.</p>
+<p>L'inserimento delle setacciature e la generazione delle curve granulometriche avviene in modo simile ai campioni A e A1, a parte i diversi diametri dei setacci.</p>
+<h2 id="generazione-rapporti-e-file-di-esportazione">Generazione rapporti e file di esportazione</h2>
+<p><img src="images/05_lavorazione10.png" alt=""></p>
+<p>Nella pagina di lavorazione dei campioni, dopo aver inserito i dati di tutti i campioni relativi alla cassetta corrente, cliccare sul pulsante <code>Rapporto ed esportazione</code> per generare il/i rapporti di prova e file Excel di esportazione.</p>
+<p>Verrà scaricato un file <strong>.zip</strong> contenente:</p>
+<ul>
+<li><p>Rapporto di prova per i campioni A, A1, B, C</p></li>
+<li><p>Rapporto di prova campione CB_A (se presente)</p></li>
+<li><p>Rapporto di prova campione CB_B (se presente)</p></li>
+<li><p>File Excel contenente i dati inseriti ed utilizzabile da parte di Italgas per l'estrazione di informazioni. <strong>Il file Excel contiene tutti i dati tranne le foto ed i segni di spunta</strong>.</p></li>
+</ul>
+<p>Esempio di contenuto dell'archivio <strong>zip</strong>:</p>
+<p><img src="images/06_esportazione1.png" alt=""></p>
+ </body>  </html>

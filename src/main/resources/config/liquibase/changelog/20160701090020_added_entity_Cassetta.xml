@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Cassetta.
+    -->
+    <changeSet id="20160701090020-1" author="jhipster">
+        <createTable tableName="cassetta">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="codice_cassetta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="odl" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="rif_geografo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="prioritario" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="indirizzo_scavo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="denom_cantiere" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="codice_rdc" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="data_scavo" type="date">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="coord_gps_n" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="coord_gps_e" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="coord_x" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="coord_y" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="centro_operativo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="impresa_appaltatrice" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="incaricato_appaltatore" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="tecnico_itg_resp" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="num_campioni" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_10" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_11" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_12" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_13" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_14" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_15" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_16" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_campione_17" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="stato_contenitore" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="stato_attuale_cassetta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="contenuto_inquinato" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="conglomerato_bituminoso" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_cbu" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_cbb1s" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="presenza_cbb2s" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="foto_contenitore" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="foto_contenitore_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="foto_contenuto" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="foto_contenuto_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="ms_sismicita_locale" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="ms_val_accelerazione" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="note" type="varchar(65534)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="certificato_pdf" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <column name="certificato_pdf_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="num_protocollo_certificato" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="codice_istat_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="consegna_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+            <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+</databaseChangeLog>

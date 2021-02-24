@@ -1,0 +1,23 @@
+{
+    "italgaslabApp": {
+        "operatore" : {
+            "home": {
+                "title": "Operatore",
+                "createLabel": "Create a new Operatore",
+                "createOrEditLabel": "Create or edit a Operatore",
+                "search": "Search for Operatore"
+            },
+            "created": "A new Operatore is created with identifier {{ param }}",
+            "updated": "A Operatore is updated with identifier {{ param }}",
+            "deleted": "A Operatore is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Operatore {{ id }}?"
+            },
+            "detail": {
+                "title": "Operatore"
+            },
+            "user": "User",
+            "laboratorio": "Laboratorio"
+        }
+    }
+}

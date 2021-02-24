@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-02-25T17:37:39 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificato_campione_A" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="50" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="da4e426c-5243-4b50-a7ba-cd317988cf5f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="ListaSetacci" uuid="a2160dc9-0f8d-4a33-8e60-e2c4bd9ef4e6">
+		<parameter name="CAMPIONE_CB_USURA_PASSANTE0063" class="java.math.BigDecimal">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="setaccio" class="java.math.BigDecimal"/>
+		<field name="massa" class="java.math.BigDecimal"/>
+		<field name="trattenutoPerc" class="java.math.BigDecimal"/>
+		<field name="trattenutoCumPerc" class="java.math.BigDecimal"/>
+		<field name="passanteCumPerc" class="java.math.BigDecimal"/>
+		<variable name="massa1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+			<variableExpression><![CDATA[$F{massa}]]></variableExpression>
+		</variable>
+		<variable name="trattenutoPerc1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+			<variableExpression><![CDATA[$F{trattenutoPerc}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="ISTITUTO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ISTITUTO_DESC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_FOTO_ETICHETTA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_SPESSORE_MEDIO" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_DENSITA_BSSD" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_MASSA_LEGANTE" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PERC_BIT_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PERC_BIT_MISC" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_DENSITA_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PERC_VUOTI" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PASSANTE0063" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_USURA_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_SPESSORE_MEDIO" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_DENSITA_BSSD" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_MASSA_LEGANTE" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PERC_BIT_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PERC_BIT_MISC" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_DENSITA_AGGR" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PERC_VUOTI" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PASSANTE0063" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_BINDER_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_CB_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="727">
+			<rectangle>
+				<reportElement x="0" y="116" width="494" height="184" uuid="1716b643-70bb-4489-a633-6b1cd678f934"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="134" width="490" height="164" uuid="7298dcf4-3c58-4e9a-a424-2b1c6f409fb6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="118" width="490" height="14" uuid="af4702a2-4408-478c-84fc-ec303d0cc2e3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="118" width="454" height="14" uuid="c53278ee-e64c-49bf-9a45-8816e374b97a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAVORAZIONE CAMPIONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="140" width="58" height="16" uuid="e51b2eb0-0647-4999-84ea-923374527374"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Operatore:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="139" width="100" height="18" uuid="d3f3b8de-fb6c-447a-aa56-8322c45d2320"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data della prova:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="139" width="90" height="18" uuid="9755f585-27c6-4a91-84c4-54cdff6e3766"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CAMPIONE_CB}.getDataAnalisi().toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="75" y="140" width="146" height="16" uuid="2ccaabc8-ad04-4711-8d1a-d9936ae57557"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_OPERATORE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="157" width="170" height="18" uuid="fd788d48-9b23-4026-8a2a-6c53ce4fd0fc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Riferimento geografo (MSLINK):]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="157" width="90" height="18" uuid="3b8a427c-ccf1-4c9e-890a-28498dd64899"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB}.getCassetta().getRifGeografo()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="175" width="58" height="18" uuid="27033f66-ac76-4115-9e1d-9e750c00c43b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comune:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="75" y="175" width="146" height="18" uuid="5d6b63ec-ada6-4d7e-b8db-dd6796ec3462"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB}.getCassetta().getCodiceIstat().getComune()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="193" width="128" height="18" uuid="0abeeca0-8fce-4212-8731-86eb847e9e42"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipologia del campione:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="234" width="14" height="14" uuid="f17fbac6-26b2-4423-a053-fb0e9faa489c"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_CB}.getCassetta().getPresenzaCbu() != null && $P{CAMPIONE_CB}.getCassetta().getPresenzaCbu() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="234" width="195" height="14" uuid="fa0f6d1e-6119-4d4b-90c5-38d782bad9b1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Usura]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="253" width="14" height="14" uuid="506e2f81-91d8-4516-9315-87761beae6f7"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_CB}.getCassetta().getPresenzaCbb1s() != null && $P{CAMPIONE_CB}.getCassetta().getPresenzaCbb1s() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="253" width="195" height="14" uuid="07b919cb-f631-47fc-9e6b-3c8a9e8cb5cc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Binder (1 strato)]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="272" width="14" height="14" uuid="73d10977-13ce-4378-a195-a17785745768"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_CB}.getCassetta().getPresenzaCbb2s() != null && $P{CAMPIONE_CB}.getCassetta().getPresenzaCbb2s() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="272" width="195" height="14" uuid="87789533-a8ee-46c0-9cce-3f501b15e855"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Binder (2 strati)]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="1" y="308" width="242" height="180" uuid="b954326f-4602-48a1-b14b-6bd1038e9f1a"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_CB_FOTO_SACCHETTO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="27" y="496" width="195" height="14" uuid="cba59f24-ca40-415c-a7ea-6ab1687ac110"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Foto campione]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="250" y="308" width="243" height="180" uuid="48b63eb4-8ca3-4d01-b4ad-edfa53a0baa8"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_CB_FOTO_CAMPIONE}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="272" y="496" width="195" height="14" uuid="27921297-79fa-4ad9-97a4-b63bb96c3e58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Foto campione]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="494" height="80" uuid="e9d26ac9-d0ca-4f3d-aa4e-ba4e47abe8c3"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="2" width="134" height="76" uuid="ca8dccfb-f77b-4586-93c6-7e4a5f761ea8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="138" y="2" width="354" height="76" uuid="fd4f3149-82dc-4c08-8a85-e9703d31a746"/>
+			</rectangle>
+			<image hAlign="Center">
+				<reportElement x="30" y="0" width="80" height="80" uuid="0e3a1e06-2452-45f3-a213-962507e77b0d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA["logo_cnr.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="177" y="4" width="279" height="31" uuid="ef6ece9e-7889-4d47-8887-9decb4f752ba"/>
+				<imageExpression><![CDATA["cnr_corsivo.gif"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="138" y="38" width="354" height="10" uuid="b074ea11-d7c6-4b13-97d0-419720c148bf"/>
+				<textElement textAlignment="Center">
+					<font fontName="ItalgaslabDejaVuSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ISTITUTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="48" width="354" height="28" uuid="ffa53637-53e0-4bd4-8ad8-7e5cd0938034"/>
+				<box padding="3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="ItalgaslabDejaVuSerif" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ISTITUTO_DESC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="175" width="122" height="18" uuid="e954b9ad-c80c-45d8-bd97-347071059b98"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ordine di Servizio:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="368" y="175" width="122" height="18" uuid="f12adee5-6728-4385-8931-2992f1548e68"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB}.getCassetta().getOdl()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="212" width="138" height="18" uuid="930d13e1-00e2-4027-b640-e39ed483eec6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Denominazione campione:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="368" y="212" width="122" height="18" uuid="6d33a307-bf74-4329-9b12-f7aec391cb01"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB}.getTipoCampione()]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="130" y="518" width="243" height="180" uuid="f6058798-b7d2-4f83-b58f-ba59e745f5d0"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_CB_FOTO_ETICHETTA}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="152" y="724" width="195" height="1" uuid="75cd9074-c8c0-4187-98aa-81d2a478db60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Foto campione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="704" width="195" height="14" uuid="0637b85c-c3ab-498b-b663-1292c2351e49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Foto etichetta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="212" width="182" height="18" uuid="d9819d54-86d9-4646-8a5c-8a49a16dbc0f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Composizione del campione:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="194" width="122" height="18" uuid="5b1ac172-b373-4560-9a80-d4aef52cc1e9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Congl. Bitum.]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="305" y="118" width="42" height="14" uuid="477258f9-b642-43bf-817e-1f957c749f2b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB}.getTipoCampione()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="481" y="0" width="14" height="12" uuid="646517c2-6fff-4465-b42c-b9f5bad38a94"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="592" splitType="Stretch">
+			<rectangle radius="4">
+				<reportElement x="12" y="318" width="476" height="14" backcolor="#000000" uuid="aada2c66-7b42-4244-9fb4-812962064871"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement x="10" y="316" width="476" height="14" uuid="5199f64d-ec92-41f5-906a-570d9e0497a6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="316" width="476" height="14" uuid="5fd60567-1827-4bbf-aeea-4628ae87b113"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISTRIBUZIONE GRANULOMETRICA AGGREGATO]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="341" width="495" height="75" uuid="4acb5380-af69-4c42-beaa-51f4d80e4182">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="ListaSetacci" uuid="6730fc9b-7a04-42e1-8a9a-c9e167e8188a">
+						<datasetParameter name="CAMPIONE_CB_USURA_PASSANTE0063">
+							<datasetParameterExpression><![CDATA[$P{CAMPIONE_CB_USURA_PASSANTE0063}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{CAMPIONE_CB_USURA_GRANULOMETRIA})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="83" uuid="95f08e01-11d2-4886-98dd-537087e35553">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna1"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<jr:tableHeader style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="13">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="83" uuid="3c387c97-a712-4093-900b-0d164c496fea">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna2"/>
+						<jr:tableHeader style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="13" uuid="983a1e61-22d8-4f15-a525-fe438928012f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SETACCIO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="13" uuid="be49f635-a58c-41ce-beb5-0ca92510474c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[(mm)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="13">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="83" height="13" uuid="6593fdfd-c7cb-4a36-b97d-60f04cd79036"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{setaccio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="90873d4e-4ddf-47e8-b13a-bb17fa79d422">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna3"/>
+						<jr:tableHeader style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="13" uuid="8599dae8-9bdf-4800-9174-713811970bff"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Massa]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="13" uuid="4c0780b7-6bb2-4b01-ba4f-82bf6fec96cc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[(g)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="13" uuid="84401127-1de4-4e0a-b6d1-1bf208eb8970"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{massa1}]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="13">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="13" uuid="399a0d4b-def2-4b34-b1ca-20bffb5e8471"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{massa}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="69a6dd69-a766-4426-b3dd-14a988f109eb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna4"/>
+						<jr:tableHeader style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="13" uuid="2565c11c-bb99-41e5-9819-f51b443ae0f7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TRATTENUTO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="13" uuid="63989c05-97ac-4d26-bd23-4b78044bcbb4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[(%)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="13" uuid="7642e86d-0893-4829-9555-6494b5b0636d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{trattenutoPerc1}.setScale(2, BigDecimal.ROUND_HALF_EVEN)]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="13">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="13" uuid="6994e932-521d-4c1b-8315-e3247cc5715c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{trattenutoPerc}.setScale(2, BigDecimal.ROUND_HALF_EVEN)]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="83" uuid="c3f907d8-c2ba-4402-b8c6-531eb5d38c8a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna5"/>
+						<jr:tableHeader style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="13" uuid="ba3813c0-9a64-41af-bf00-1aff83308bfc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TRATTENUTO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="13" uuid="c19edf8c-a6b3-45f7-a338-98863fb91d83"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Massa Totale (g)]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="83" height="13" uuid="a7e897a0-21e2-404f-932f-f7f079ad99c8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[cumulato (%)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="13">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="83" height="13" uuid="00d0bdf0-61d9-4fbd-b5a3-c9e0aa78cabf"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{trattenutoCumPerc}.setScale(2, BigDecimal.ROUND_HALF_EVEN)]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="ff2bfc75-0c33-4deb-aebf-f5bc9f83cbad">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna6"/>
+						<jr:tableHeader style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="13" uuid="7cad6bca-ab58-4f53-a48d-dd9dffe99e7c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[PASSANTE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="13" uuid="530f4d39-b279-482e-baf3-4ff54df4dba8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{massa1}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="13" uuid="ede15b83-8fd8-404e-b436-7d865804e373"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[cumulato (%)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="13" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:columnFooter>
+						<jr:detailCell style="Table_TD" height="13">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="13" uuid="df978c44-f312-4b0d-bae0-8b9851bd6e2a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{passanteCumPerc}.setScale(2, BigDecimal.ROUND_HALF_EVEN)]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<rectangle>
+				<reportElement mode="Opaque" x="18" y="372" width="50" height="173" backcolor="#000000" uuid="c3a674b3-36bd-4ff6-a0eb-d32baa0cc41a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="17" y="371" width="50" height="172" uuid="2105dde2-e4db-41b4-834d-5b88c9d2976b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="17" y="379" width="48" height="152" uuid="af214b90-699a-4343-b039-0ed473f33409"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[analisi con setacci]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="181" width="494" height="61" uuid="dd9730eb-5014-47f8-bd98-c6d5a888e25b"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="183" width="490" height="57" uuid="c31737be-3892-44bd-a273-7fbc888b4ef5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="191" width="372" height="18" uuid="63d30085-e856-470d-8ab6-757d99504174"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Normative di riferimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="215" width="472" height="14" uuid="fa851b94-d6ba-440a-ad14-84a5bf9dcfd8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[CNR B.U. n. 39; CNR B.U. n. 38; UNI EN 1097-6:2013; UNI EN 12697-6:2003]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="4" width="494" height="43" uuid="e64fd3b5-ba0b-4860-82e6-ef4d7a7fc687"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="6" width="490" height="39" uuid="683f8a81-0a4f-494e-9cd3-e9534c84c8bc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="17" width="474" height="18" uuid="9760d0ef-0ad8-47d8-abf3-f93932ade19d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prove su conglomerato bituminoso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="310" height="16" uuid="48b57ff7-702b-4f7f-b74b-0ff00a7a545f"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Spessore medio]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="64" width="94" height="16" uuid="5545a2e3-99ee-495b-862c-9f561bf5e7ba"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_SPESSORE_MEDIO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="48" width="494" height="16" uuid="4646c321-821d-4c41-9769-4a8ad0b72e73"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Campione " + $P{CAMPIONE_CB}.getTipoCampione() + ": USURA"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="64" width="90" height="16" uuid="65dd9268-054f-43f5-9ead-a51e29a56bf6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[mm]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="310" height="16" uuid="bc80537a-da11-4d45-b349-700247a11c94"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Densità del campione (ρ&rho;bssd)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="80" width="90" height="16" uuid="1abaff82-9954-493f-8842-d26b1e5deaa0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[g/cm ]]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="80" width="94" height="16" uuid="be2053f9-4641-4d37-b9cb-4e0ae9bab960"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_BSSD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="96" width="310" height="16" uuid="2cb91671-fdd3-4f86-a84b-8efe45960a32"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Massa del legante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="96" width="90" height="16" uuid="1afaac61-42bd-4649-8125-8e8d6f30fad6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[g]]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="96" width="94" height="16" uuid="25eb5780-c5e4-452c-988f-3ec76bd6caa3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_MASSA_LEGANTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="112" width="310" height="16" uuid="9fe2e92c-3152-4938-8f76-35745ef27230"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Percentuale di bitume rispetto all'aggregato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="112" width="90" height="16" uuid="d065b2d4-6931-4aca-8785-a5ee0541ba60"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[%]]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="112" width="94" height="16" uuid="3b951250-817b-48d8-b80a-861af72a49af"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_AGGR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="128" width="310" height="16" uuid="b05a4f8b-7f63-4dbc-a8c9-5da83c2298c4"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Percentuale di bitume rispetto alla miscela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="128" width="90" height="16" uuid="e88e4dd3-3502-4c6f-be4e-66ee045c06c1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[%]]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="128" width="94" height="16" uuid="320034b7-1ac1-46ba-8f5f-6e97faf69ff9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_BIT_MISC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="144" width="310" height="16" uuid="22bb5043-3f2c-43f8-bf55-f0d577245a13"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Densità dell'aggregato]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="144" width="94" height="16" uuid="483c5b5c-b694-48db-b38b-46127a35dffc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_DENSITA_AGGR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="160" width="310" height="16" uuid="fadf4949-d8cf-48ae-a9a1-7200d34107c2"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Percentuale dei vuoti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="160" width="90" height="16" uuid="da44b05a-8bf5-4237-a398-45978b425b66"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[%]]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="160" width="94" height="16" uuid="64fea07e-a4a4-428d-bf3d-0968dbefa5bc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_CB_USURA_PERC_VUOTI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="80" width="16" height="12" uuid="1dd396a3-6661-4ed8-9008-6a6f0458bba0"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="144" width="90" height="16" uuid="92e85141-ef0d-4332-a4b1-50171b682062"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[[g/cm ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="144" width="16" height="12" uuid="a796a171-f63d-4830-b6fa-0f2b207fe39e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="267" width="494" height="43" uuid="8a073746-c5d0-4ccc-a955-a6442021b735"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="269" width="490" height="39" uuid="c0b9a738-2419-4c2c-bf22-246b497ec7b7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="280" width="474" height="18" uuid="add0154d-016f-42cb-bb0d-473da601f0e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caratterizzazione granulometrica]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

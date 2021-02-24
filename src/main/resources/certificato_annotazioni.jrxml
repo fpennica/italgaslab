@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-11T10:15:50 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificato_CAMPIONE_C" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="50" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="da4e426c-5243-4b50-a7ba-cd317988cf5f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="ListaSetacci" uuid="a2160dc9-0f8d-4a33-8e60-e2c4bd9ef4e6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="setaccio" class="java.math.BigDecimal"/>
+		<field name="massa" class="java.math.BigDecimal"/>
+		<field name="trattenutoPerc" class="java.math.BigDecimal"/>
+		<field name="trattenutoCumPerc" class="java.math.BigDecimal"/>
+		<field name="passanteCumPerc" class="java.math.BigDecimal"/>
+		<variable name="massa1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+			<variableExpression><![CDATA[$F{massa}]]></variableExpression>
+		</variable>
+		<variable name="trattenutoPerc1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+			<variableExpression><![CDATA[$F{trattenutoPerc}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="CASSETTA" class="it.cnr.igag.italgas.domain.Cassetta" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_CONFORME" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_CONFORME" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_PASSANTE_100" class="java.math.BigDecimal" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="729">
+			<rectangle>
+				<reportElement x="0" y="38" width="494" height="188" uuid="1716b643-70bb-4489-a633-6b1cd678f934"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="56" width="490" height="168" uuid="7298dcf4-3c58-4e9a-a424-2b1c6f409fb6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="40" width="490" height="14" uuid="af4702a2-4408-478c-84fc-ec303d0cc2e3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="40" width="490" height="14" uuid="c53278ee-e64c-49bf-9a45-8816e374b97a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOCALIZZAZIONE DEL PRELIEVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="94" width="170" height="18" uuid="fd788d48-9b23-4026-8a2a-6c53ce4fd0fc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Riferimento geografo (MSLINK):]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="181" y="94" width="90" height="18" uuid="3b8a427c-ccf1-4c9e-890a-28498dd64899"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getRifGeografo()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="112" width="78" height="18" uuid="27033f66-ac76-4115-9e1d-9e750c00c43b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comune:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="352" y="112" width="134" height="18" uuid="5d6b63ec-ada6-4d7e-b8db-dd6796ec3462"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCodiceIstat().getComune()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="242" width="494" height="318" uuid="929902d6-d649-453d-a72f-62a8e93304c9"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="244" width="490" height="158" uuid="12c617a8-7260-4859-9c04-8eb2714225d8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="62" width="190" height="16" uuid="3dc2cd2a-895d-40b0-81b3-a142265d48c1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Denominazione cantiere di scavo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="200" y="62" width="286" height="16" uuid="f5e0a7a5-2ee1-4e57-b6f3-6b02bc5507f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getDenomCantiere()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="200" y="78" width="286" height="16" uuid="c18b7988-6bf6-41e7-b2a4-8e9d03ef2716"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getIndirizzoScavo()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="94" width="78" height="18" uuid="df254109-6bb1-475d-bff1-61283c39aa33"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[O.d.S. (O.d.L.):]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="352" y="94" width="134" height="18" uuid="84c8c2a9-ae62-4fc1-9798-e3d3e0a19ec2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getOdl()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="168" width="94" height="18" uuid="99a0321d-6b85-4f6d-912d-244cc416ded3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Centro Operativo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="108" y="168" width="376" height="18" uuid="6b02d13c-aa69-4ef9-b586-fd119392b844"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCentroOperativo()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="149" width="78" height="18" uuid="b66253b3-0101-48bc-9afc-497a4bff4554"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regione:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="352" y="149" width="134" height="18" uuid="303ad7ab-d2fa-4e37-b5a9-3cc55a0b1ee1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCodiceIstat().getRegione()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="130" width="78" height="18" uuid="6fe4481f-5a24-43ca-9e87-633c3c03a0eb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provincia:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="352" y="130" width="134" height="18" uuid="1bfa5009-3c75-4a62-b473-cae8dcedf3ec"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCodiceIstat().getProvincia()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="188" width="66" height="18" uuid="d31a1f23-5078-4fee-ad46-69c341033da4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data scavo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="108" y="188" width="94" height="18" uuid="1932d0aa-88d3-4b8e-b39b-bcd8b49cb0f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CASSETTA}.getDataScavo().toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="372" y="186" width="114" height="18" uuid="c94d5770-a9e9-41cb-a4c6-b3701e16ced4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCoordGpsN()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="372" y="204" width="114" height="18" uuid="654d4c84-5de6-4f7c-8dd3-9451107cb062"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCoordGpsE()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="246" y="204" width="120" height="18" uuid="60fd7e5d-b366-40eb-87c4-aa97bc6ec589"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coordinate GPS Est:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="186" width="120" height="18" uuid="91908a44-0064-4685-92dc-75f008284881"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coordinate GPS Nord:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="268" width="472" height="14" uuid="bd5d5371-d475-4ad0-bbb9-62aff88c20ff"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[D.M. 16/04/2008 - UNI 9165]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="248" width="372" height="18" uuid="871c3df9-9961-4b42-b9b8-8a152cfb6ac3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Normative di riferimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="288" width="472" height="14" uuid="5aa0092c-bade-49a1-bc7a-c6db5dbd8aa9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA["Il fondo dello scavo deve essere piano, costituito da materiale uniforme privo di spigoli vivi e trovanti"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="310" width="472" height="38" uuid="4e649aa3-45f0-4fe2-94fe-363f803ea3da"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="10.0"/>
+				</textElement>
+				<text><![CDATA["In presenza di terreni rocciosi, ghiaiosi o di riporto ed in ogni caso in cui sul fondo dello scavo non sia possibile realizzare condizioni adatte per l'appoggio, i tubi devono essere posati su letto di sabbia o materiale inerte di equivalenti caratteristiche granulometriche, di adeguato spessore."]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="356" width="472" height="40" uuid="313b00ed-e4db-4d04-8ae3-c112cb969c7e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="10.0"/>
+				</textElement>
+				<text><![CDATA["Il rinterro dello scavo deve essere effettuato sino ad assicurare una adeguata copertura delle condotte con materiali inerti di granulometria tale da evitare danneggiamenti ai tubi, al loro rivestimento o alle opere di protezione, ove presenti."]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="404" width="490" height="14" uuid="654f8231-b468-4535-a2a1-cd003fed3782"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="404" width="490" height="14" uuid="01726ba3-d476-4d19-b415-dead968a8d9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PRESCRIZIONE DA CAPITOLATO SPECIALE DI APPALTO ITALGAS PER MATERIALI DI TIPO A-A1]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="420" width="490" height="60" uuid="03ac3b8d-6c08-49ee-bab4-78e0ab0f49f4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="80" y="422" width="78" height="14" uuid="803e10a3-aa57-484f-adc0-6ce805a732b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[VAGLI (mm)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="422" width="78" height="14" uuid="986bfb22-0d29-4a7b-9a5a-e4de0e3b30e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PASSANTI (%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="422" width="196" height="14" uuid="fc269f98-f54e-4859-bfcc-d8fd856fcacb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CARATTERISTICHE QUALITATIVE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="436" width="78" height="14" uuid="48bb6bfe-61d5-43d0-9352-0a618603be3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="450" width="78" height="14" uuid="5dae48b4-8d0f-4979-a0bc-45ccef7abfb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="464" width="78" height="14" uuid="e1db616a-6434-4931-b46d-d6924ee3e5ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[0,075]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="436" width="78" height="14" uuid="395adc71-af7d-4634-b38a-94c877960e7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[> 95]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="464" width="78" height="14" uuid="94982758-f761-42af-8874-78ba94ad869b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[< 5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="450" width="78" height="14" uuid="603aed42-6f51-44e3-895a-fe75624562dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[> 70]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="436" width="196" height="14" uuid="4977cdfc-aa36-40fb-983a-a7a9751d0b8f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Sabbia, pozzolana o materiale fine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="464" width="196" height="14" uuid="e210c730-5ec6-4f58-a106-307f64f5ee24"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Assenza di materiale organico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="450" width="196" height="14" uuid="bb835cd3-24e9-446d-aa29-115076c3bd15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Assenza di detriti]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="482" width="490" height="14" uuid="a0d30dea-0b8a-40bf-bfa2-991832ab4f18"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="482" width="490" height="14" uuid="aa944d4f-530d-4b1f-8766-ed1f19754070"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PRESCRIZIONE DA CAPITOLATO SPECIALE DI APPALTO ITALGAS PER MATERIALI DI TIPO B]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="498" width="490" height="60" uuid="a9b6ff89-00b2-456b-9df2-fa824a8e97e2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="236" y="528" width="196" height="14" uuid="679a7da4-1c6b-490d-b6b6-33aed65c5e78"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Assenza di detriti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="542" width="196" height="14" uuid="0cf5712b-cb26-4118-8191-f4fa6de48f69"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Assenza di argilla e materiale alterabile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="514" width="196" height="14" uuid="bc204806-2d0b-434b-b140-6d0a2bd94737"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Materiale di risulta opportunamente vagliato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="500" width="78" height="14" uuid="567fc156-9c83-4f3c-ae93-349d0f9d970a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PASSANTI (%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="514" width="78" height="14" uuid="86838ef9-70a3-4609-a5fb-828ba497e146"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[100]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="500" width="196" height="14" uuid="2501c603-5353-45e8-bdff-70eac3e05876"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CARATTERISTICHE QUALITATIVE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="514" width="78" height="14" uuid="82d394e7-da73-44d2-ae96-ee6c2ede92f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[100]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="500" width="78" height="14" uuid="4e21de75-2a48-4085-b75e-271cf35968e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[VAGLI (mm)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="572" width="494" height="152" uuid="73ccc744-a241-4927-962b-793df831a24b"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="574" width="490" height="14" uuid="bb3d8750-1daa-4d18-8a9b-6a624d2d73f8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="590" width="490" height="132" uuid="8f410b32-67e1-4819-885f-ef6b90ffa4e8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="574" width="490" height="14" uuid="0fe6aa41-1b73-4854-af45-cea6245d3b38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EVIDENZE SPERIMENTALI]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="603" width="478" height="25" uuid="6485911d-f37f-49da-99d1-7780b5d3ace9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_A_CONFORME} ? "- Il fuso granulometrico del materiale di tipo A è conforme a quanto previsto dal capitolato speciale di appalto Italgas.(C.S.A. 2010)" : "- Il fuso granulometrico del materiale di tipo A non è conforme a quanto previsto dal capitolato speciale di appalto Italgas.(C.S.A. 2010)"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="647" width="478" height="25" uuid="a175097f-8606-4541-b477-1ae742c1a874">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_A1_CONFORME} ? "- Il fuso granulometrico del materiale di tipo A1 è conforme a quanto previsto dal capitolato speciale di appalto Italgas.(C.S.A. 2010)" : "- Il fuso granulometrico del materiale di tipo A1 non è conforme a quanto previsto dal capitolato speciale di appalto Italgas.(C.S.A. 2010)"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="690" width="478" height="25" uuid="a96427dd-8ce0-4027-8e69-845cfbbc971f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B_PASSANTE_100}.compareTo(new BigDecimal("100")) == 0 ? "- Il fuso granulometrico del materiale di tipo B è conforme a quanto previsto dal capitolato speciale di appalto Italgas.(C.S.A. 2010)" : "- Il fuso granulometrico del materiale di tipo B non è conforme a quanto previsto dal capitolato speciale di appalto Italgas.(C.S.A. 2010)"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="4" width="494" height="18" uuid="1fd3d274-95ab-4320-9da5-a6ead311edbd"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="6" width="490" height="14" uuid="b4e6626a-310b-4fb8-8149-daf9797b305b">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="6" width="490" height="14" uuid="24c21e86-3624-47c7-bbbf-6ba277236cce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANNOTAZIONI A MARGINE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="481" y="0" width="14" height="12" uuid="646517c2-6fff-4465-b42c-b9f5bad38a94"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + 10]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="202">
+			<rectangle>
+				<reportElement x="0" y="7" width="494" height="167" uuid="80cbf065-b689-42a0-9d3c-12171ac76ece"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="9" width="490" height="14" uuid="864b4dd2-a0e0-4993-a172-a4cc334cadd5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="9" width="490" height="14" uuid="63871150-536d-4997-af17-ed533cc8298f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANALISI SISMICA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="25" width="490" height="147" uuid="3e5beef0-5942-4b13-b8fc-118d44dc8f1d"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="102" y="29" width="384" height="36" uuid="f1d1b4ab-c2d1-4132-a622-9bdc6bf53e2e"/>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getMsSismicitaLocale()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="356" y="75" width="130" height="18" uuid="e6d202aa-7aa3-4af6-bb41-a6181196a940"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getMsValAccelerazione()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="29" width="92" height="18" uuid="f771ac8a-9142-433b-bac1-572783e2a61c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sismicità locale:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="75" width="340" height="18" uuid="1d5d64ba-391c-42a3-ae0c-cefe6bfcf6e2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accelerazione con probabilità di superamento pari al 10% in 50 anni (ag):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="115" width="372" height="18" uuid="787fe3c3-9686-44cb-ac7c-092cd10140bd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Normative di riferimento sismica:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="135" width="472" height="28" uuid="033aacd2-6311-45ea-b32f-52a3e3bdd975"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Suddivisione delle zone sismiche in relazione all'accelerazione di picco su terreno rigido (OPCM 3519/06)]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

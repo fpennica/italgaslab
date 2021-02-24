@@ -1,0 +1,10 @@
+{
+    "accettazione": {
+        "title": "Check-in",
+        "subtitle": "Samples check-in",
+        "logged": {
+            "message": "You are logged in as user \"{{username}}\"."
+        },
+        "select": "Select"
+    }
+}

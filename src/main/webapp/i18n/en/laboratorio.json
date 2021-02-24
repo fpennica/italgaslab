@@ -1,0 +1,26 @@
+{
+    "italgaslabApp": {
+        "laboratorio" : {
+            "home": {
+                "title": "Laboratorios",
+                "createLabel": "Create a new Laboratorio",
+                "createOrEditLabel": "Create or edit a Laboratorio",
+                "search": "Search for Laboratorio"
+            },
+            "created": "A new Laboratorio is created with identifier {{ param }}",
+            "updated": "A Laboratorio is updated with identifier {{ param }}",
+            "deleted": "A Laboratorio is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Laboratorio {{ id }}?"
+            },
+            "detail": {
+                "title": "Laboratorio"
+            },
+            "nome": "Nome",
+            "istituto": "Istituto",
+            "responsabile": "Responsabile",
+            "indirizzo": "Indirizzo",
+            "logo": "Logo"
+        }
+    }
+}

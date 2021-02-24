@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span>Registrazione peso setacci - Laboratorio</span> {{vm.laboratorio.istituto}}</h2>
+    <hr>
+
+    <!-- <jhi-alert></jhi-alert> -->
+
+
+
+    <fieldset  ng-repeat="setaccio in vm.setacci">
+        <label class="control-label">Setaccio</label>
+        <input type="text" disabled ng-model="setaccio.id" name="" placeholder="Setaccio">
+        <input type="number" ng-model="setaccio.peso" name="" placeholder="Peso setaccio (g)">
+
+    </fieldset>
+
+    <button class="addfields" ng-click="vm.ripristina()">Azzera tutto</button>
+
+    <p>&nbsp;</p>
+
+    <h3>Coperchi</h3>
+    <fieldset ng-repeat="coperchio in vm.coperchi">
+        <input type="text" ng-model="coperchio.id" name="" placeholder="Nome Coperchio">
+        <input type="number" ng-model="coperchio.peso" name="" placeholder="Peso coperchio (g)">
+        <button class="remove" ng-click="vm.removeCoperchio($index)">Elimina</button>
+    </fieldset>
+    <button class="addfields" ng-click="vm.addCoperchio()">Aggiungi coperchio</button>
+
+    <p>&nbsp;</p>
+
+    <div class="alert alert-success" ng-show="vm.msg">
+        {{vm.msg}}
+    </div>
+
+    <div>
+        <button type="submit" ng-disabled="vm.isSaving" class="btn btn-primary"  ng-click="vm.save()">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+
+    <p>&nbsp;</p>
+
+
+    <div>
+        <button type="submit"
+                onclick="window.history.back()"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+        </button>
+    </div>
+</div>

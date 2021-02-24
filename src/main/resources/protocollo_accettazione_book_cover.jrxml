@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-10T14:52:10 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Accettazione Campioni Italgas" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" uuid="c50b24eb-eb33-413f-8e75-e7e20a5341fd">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<parameter name="ISTITUTO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Istituto di Geologia Ambientale e Geoingegneria"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ISTITUTO_DESC" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA["Unità Operativa di Supporto (U.O.S.) di Torino <br/> c/o DIATI, Politecnico di Torino, C.so Duca degli Abruzzi 24, 10129 Torino <br/> Tel +39 011 0907618; Fax +39 011 0907679"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CONSEGNA_DATA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ISTITUTO_COMUNE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Roma"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CONSEGNA_NUM_CASSETTE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CONSEGNA_TRASPORTATORE" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="435">
+			<image>
+				<reportElement x="115" y="0" width="330" height="50" uuid="e272cb90-db22-49d8-b78b-2f9b69b04e0a"/>
+				<imageExpression><![CDATA["logo_cnr_2010.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="32" y="50" width="489" height="20" uuid="4f3b268c-63ce-4711-b49a-89609d8d0b63"/>
+				<textElement textAlignment="Center">
+					<font fontName="ItalgaslabDejaVuSerif" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ISTITUTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="70" width="489" height="50" uuid="f4c294f5-8149-4c8a-8625-296d3b941b88"/>
+				<box padding="3"/>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="ItalgaslabDejaVuSerif" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ISTITUTO_DESC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="134" width="100" height="30" uuid="0c2e1690-0b22-44e7-807b-b9f5fcc23f2c"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<text><![CDATA[Prot.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="134" width="100" height="30" uuid="ec05e046-0e21-4e1b-add4-b64e1a83f619"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<text><![CDATA[Spett.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="270" width="490" height="30" uuid="ef8dff86-8b31-435d-812e-b181064a5803"/>
+				<textElement markup="html">
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<text><![CDATA[<b>Oggetto:</b> ricevuta per la consegna di contenitori di campioni relativi al contratto Italgas - CNR]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="30" y="230" width="490" height="20" uuid="8bf5a470-1066-4959-9a85-5158e7eab71d"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ISTITUTO_COMUNE} + " lì, " + $P{CONSEGNA_DATA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="345" width="490" height="90" uuid="3f96c6da-c328-4930-a305-d037890eca88"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="ItalgaslabDejaVuSerif" size="10"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="1.2" firstLineIndent="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA["In data odierna l'Istituto CNR in intestazione riceve n° " + $P{CONSEGNA_NUM_CASSETTE} + "  contenitori di campioni di 'materiali di rinterro' da incaricati della ditta '" + $P{CONSEGNA_TRASPORTATORE} + "' senza controllo del contenuto."]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="522" y="0" width="28" height="20" uuid="d083f433-48ea-4449-b948-11d8743eaa87"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

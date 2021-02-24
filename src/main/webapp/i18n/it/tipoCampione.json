@@ -1,0 +1,13 @@
+{
+    "italgaslabApp": {
+        "TipoCampione" : {
+            "null": "",
+            "A": "A",
+            "A1": "A1",
+            "B": "B",
+            "C": "C",
+            "CB_A": "CB_A",
+            "CB_B": "CB_B"
+        }
+    }
+}

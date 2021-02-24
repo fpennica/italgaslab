@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.2.final using JasperReports Library version 6.2.2  -->
+<!-- 2016-07-27T15:23:45 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="protocollo_accettazione_book" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<property name="com.jaspersoft.studio.book.group.cover.header" value="Cover and Table of Contents"/>
+	<property name="com.jaspersoft.studio.book.group.cover.footer" value="Backcover"/>
+	<parameter name="LISTA_CASSETTE" class="java.util.List" isForPrompting="false"/>
+	<parameter name="ISTITUTO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Istituto di Geologia Ambientale e Geoingegneria"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ISTITUTO_DESC" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA["Unità Operativa di Supporto (U.O.S.) di Torino <br/> c/o DIATI, Politecnico di Torino, C.so Duca degli Abruzzi 24, 10129 Torino <br/> Tel +39 011 0907618; Fax +39 011 0907679"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ISTITUTO_COMUNE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Roma"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CONSEGNA_NUM_CASSETTE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CONSEGNA_TRASPORTATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CONSEGNA_DATA" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<group name="cover">
+		<groupHeader>
+			<part uuid="215104c5-6e1a-40f2-8e26-1bd91f6f7dd6">
+				<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+					<subreportParameter name="ISTITUTO">
+						<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="ISTITUTO_DESC">
+						<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="ISTITUTO_COMUNE">
+						<subreportParameterExpression><![CDATA[$P{ISTITUTO_COMUNE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="CONSEGNA_NUM_CASSETTE">
+						<subreportParameterExpression><![CDATA[$P{CONSEGNA_NUM_CASSETTE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="CONSEGNA_TRASPORTATORE">
+						<subreportParameterExpression><![CDATA[$P{CONSEGNA_TRASPORTATORE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="CONSEGNA_DATA">
+						<subreportParameterExpression><![CDATA[$P{CONSEGNA_DATA}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression><![CDATA["protocollo_accettazione_book_cover.jasper"]]></subreportExpression>
+				</p:subreportPart>
+			</part>
+		</groupHeader>
+	</group>
+	<detail>
+		<part uuid="10b732fc-c677-411d-9dce-519f6b2f11d3">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="LISTA_CASSETTE">
+					<subreportParameterExpression><![CDATA[$P{LISTA_CASSETTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CONSEGNA_DATA">
+					<subreportParameterExpression><![CDATA[$P{CONSEGNA_DATA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_COMUNE">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_COMUNE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_DESC">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["protocollo_accettazione_tabella.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+	</detail>
+</jasperReport>

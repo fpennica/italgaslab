@@ -1,0 +1,188 @@
+<div>
+	<p class="lead">Inserisci i dati delle cassette consegnate il <strong>{{vm.consegnaEntity.dataConsegna | date:'longDate'}} ({{vm.consegnaEntity.laboratorio.istituto}})</strong></p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> In lista sono visualizzate le cassette già inserite per la consegna selezionata.</p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> Per inserire i dati di base dei campioni relativi ad una cassetta, selezionare la cassetta dalla lista.</p>
+    
+
+	<hr>
+
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="accettazione.cassetta.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="italgaslabApp.cassetta.home.createLabel">
+                        Create new Cassetta
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'italgaslabApp.cassetta.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <!-- <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="codiceCassetta"><span translate="italgaslabApp.cassetta.codiceCassetta">Codice Cassetta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="odl"><span translate="italgaslabApp.cassetta.odl">Odl</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rifGeografo"><span translate="italgaslabApp.cassetta.rifGeografo">Rif Geografo</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="prioritario"><span translate="italgaslabApp.cassetta.prioritario">Prioritario</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="denomCantiere"><span translate="italgaslabApp.cassetta.denomCantiere">Denom Cantiere</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="codiceRdc"><span translate="italgaslabApp.cassetta.codiceRdc">Codice Rdc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dataScavo"><span translate="italgaslabApp.cassetta.dataScavo">Data Scavo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coordGpsN"><span translate="italgaslabApp.cassetta.coordGpsN">Coord Gps N</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coordGpsE"><span translate="italgaslabApp.cassetta.coordGpsE">Coord Gps E</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coordX"><span translate="italgaslabApp.cassetta.coordX">Coord X</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coordY"><span translate="italgaslabApp.cassetta.coordY">Coord Y</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="centroOperativo"><span translate="italgaslabApp.cassetta.centroOperativo">Centro Operativo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="impresaAppaltatrice"><span translate="italgaslabApp.cassetta.impresaAppaltatrice">Impresa Appaltatrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="incaricatoAppaltatore"><span translate="italgaslabApp.cassetta.incaricatoAppaltatore">Incaricato Appaltatore</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tecnicoItgResp"><span translate="italgaslabApp.cassetta.tecnicoItgResp">Tecnico Itg Resp</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="numCampioni"><span translate="italgaslabApp.cassetta.numCampioni">Num Campioni</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="presenzaCampione10"><span translate="italgaslabApp.cassetta.presenzaCampione10">Presenza Campione 10</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione11"><span translate="italgaslabApp.cassetta.presenzaCampione11">Presenza Campione 11</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione12"><span translate="italgaslabApp.cassetta.presenzaCampione12">Presenza Campione 12</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione13"><span translate="italgaslabApp.cassetta.presenzaCampione13">Presenza Campione 13</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione14"><span translate="italgaslabApp.cassetta.presenzaCampione14">Presenza Campione 14</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione15"><span translate="italgaslabApp.cassetta.presenzaCampione15">Presenza Campione 15</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione16"><span translate="italgaslabApp.cassetta.presenzaCampione16">Presenza Campione 16</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="presenzaCampione17"><span translate="italgaslabApp.cassetta.presenzaCampione17">Presenza Campione 17</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statoContenitore"><span translate="italgaslabApp.cassetta.statoContenitore">Stato Contenitore</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statoAttualeCassetta"><span translate="italgaslabApp.cassetta.statoAttualeCassetta">Stato Attuale Cassetta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contenutoInquinato"><span translate="italgaslabApp.cassetta.contenutoInquinato">Contenuto Inquinato</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="conglomeratoBituminoso"><span>CB</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="fotoContenitore"><span translate="italgaslabApp.cassetta.fotoContenitore">Foto Contenitore</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fotoContenuto"><span translate="italgaslabApp.cassetta.fotoContenuto">Foto Contenuto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="msSismicitaLocale"><span translate="italgaslabApp.cassetta.msSismicitaLocale">Ms Sismicita Locale</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="msValAccelerazione"><span translate="italgaslabApp.cassetta.msValAccelerazione">Ms Val Accelerazione</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="certificatoPdf"><span translate="italgaslabApp.cassetta.certificatoPdf">Certificato Pdf</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numProtocolloCertificato"><span translate="italgaslabApp.cassetta.numProtocolloCertificato">Num Protocollo Certificato</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="codiceIstat.comune"><span translate="italgaslabApp.cassetta.codiceIstat">Codice Istat</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="indirizzoScavo"><span translate="italgaslabApp.cassetta.indirizzoScavo">Indirizzo Scavo</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="consegna.dataConsegna"><span translate="italgaslabApp.cassetta.consegna">Consegna</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="note"><span translate="italgaslabApp.cassetta.note">Note</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cassetta in vm.cassettas track by cassetta.id">
+                    <!-- <td><a ui-sref="cassetta-detail({id:cassetta.id})">{{cassetta.id}}</a></td> -->
+                    <td><a ui-sref="cassetta-detail({id:cassetta.id})">{{cassetta.codiceCassetta}}</a></td>
+                    <!-- <td>{{cassetta.odl}}</td>
+                    <td>{{cassetta.rifGeografo}}</td> -->
+                    <!-- <td>{{cassetta.prioritario}}</td> -->
+                    <td><span ng-show="cassetta.prioritario" class="glyphicon glyphicon-ok text-success"></span></td>
+                    <!-- <td>{{cassetta.denomCantiere}}</td>
+                    <td>{{cassetta.codiceRdc}}</td>
+                        <td>{{cassetta.dataScavo | date:'mediumDate'}}</td>
+                    <td>{{cassetta.coordGpsN}}</td>
+                    <td>{{cassetta.coordGpsE}}</td>
+                    <td>{{cassetta.coordX}}</td>
+                    <td>{{cassetta.coordY}}</td>
+                    <td>{{cassetta.centroOperativo}}</td>
+                    <td>{{cassetta.impresaAppaltatrice}}</td>
+                    <td>{{cassetta.incaricatoAppaltatore}}</td>
+                    <td>{{cassetta.tecnicoItgResp}}</td> -->
+                    <!-- <td>{{cassetta.numCampioni}}</td> -->
+                    <!-- <td>{{cassetta.presenzaCampione10}}</td>
+                    <td>{{cassetta.presenzaCampione11}}</td>
+                    <td>{{cassetta.presenzaCampione12}}</td>
+                    <td>{{cassetta.presenzaCampione13}}</td>
+                    <td>{{cassetta.presenzaCampione14}}</td>
+                    <td>{{cassetta.presenzaCampione15}}</td>
+                    <td>{{cassetta.presenzaCampione16}}</td>
+                    <td>{{cassetta.presenzaCampione17}}</td>
+                    <td translate="{{'italgaslabApp.StatoContenitore.' + cassetta.statoContenitore}}">{{cassetta.statoContenitore}}</td>
+                    <td translate="{{'italgaslabApp.StatoAttualeCassetta.' + cassetta.statoAttualeCassetta}}">{{cassetta.statoAttualeCassetta}}</td>
+                    <td>{{cassetta.contenutoInquinato}}</td> -->
+                    <td><span ng-show="cassetta.conglomeratoBituminoso" class="glyphicon glyphicon-ok text-success"></span></td>
+                    <!-- <td>
+                        <a ng-if="cassetta.fotoContenitore" ng-click="vm.openFile(cassetta.fotoContenitoreContentType, cassetta.fotoContenitore)">
+                            <img data-ng-src="{{'data:' + cassetta.fotoContenitoreContentType + ';base64,' + cassetta.fotoContenitore}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="cassetta.fotoContenitore">{{cassetta.fotoContenitoreContentType}}, {{vm.byteSize(cassetta.fotoContenitore)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="cassetta.fotoContenuto" ng-click="vm.openFile(cassetta.fotoContenutoContentType, cassetta.fotoContenuto)">
+                            <img data-ng-src="{{'data:' + cassetta.fotoContenutoContentType + ';base64,' + cassetta.fotoContenuto}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="cassetta.fotoContenuto">{{cassetta.fotoContenutoContentType}}, {{vm.byteSize(cassetta.fotoContenuto)}}</span>
+                    </td>
+                    <td>{{cassetta.msSismicitaLocale}}</td>
+                    <td>{{cassetta.msValAccelerazione}}</td> -->
+                    <!-- <td>
+                        <a ng-if="cassetta.certificatoPdf" ng-click="vm.openFile(cassetta.certificatoPdfContentType, cassetta.certificatoPdf)" translate="entity.action.open">open</a>
+                        <span ng-if="cassetta.certificatoPdf">{{cassetta.certificatoPdfContentType}}, {{vm.byteSize(cassetta.certificatoPdf)}}</span>
+                    </td>
+                    <td>{{cassetta.numProtocolloCertificato}}</td> -->
+                    <td>
+                        <a ui-sref="codice-istat-detail({id:cassetta.codiceIstat.id})">{{cassetta.codiceIstat.comune}}</a>
+                    </td>
+                    <!-- <td>{{cassetta.indirizzoScavo}}</td> -->
+                    <td>{{cassetta.note}}</td>
+                    <!-- <td>
+                        <a ui-sref="consegna-detail({id:cassetta.consegna.id})">{{cassetta.consegna.dataConsegna}}</a>
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="cassetta-detail({id:cassetta.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <!-- <span class="hidden-xs hidden-sm" translate="entity.action.view"></span> -->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="accettazione.cassetta.edit({id:cassetta.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <!-- <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span> -->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="accettazione.cassetta.delete({id:cassetta.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <!-- <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span> -->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="accettazione.campione({idCassetta:cassetta.id})"
+                                    class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span class="hidden-xs hidden-sm" translate="accettazione.select"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+
+    <hr>
+
+    <a class="btn btn-info" ui-sref="accettazione.consegna">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </a>
+
+</div>

@@ -1,0 +1,47 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "laboratorio",
+      "otherEntityName": "laboratorio",
+      "otherEntityField": "istituto"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "dataConsegna",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "trasportatore",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "numCassette",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "numProtocolloAccettazione",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "protocolloAccettazione",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "changelogDate": "20160701090019",
+  "dto": "no",
+  "pagination": "pager",
+  "service": "serviceClass",
+  "entityTableName": "consegna"
+}

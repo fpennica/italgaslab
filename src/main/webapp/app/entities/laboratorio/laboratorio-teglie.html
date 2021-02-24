@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span>Registrazione teglie - Laboratorio</span> {{vm.laboratorio.istituto}}</h2>
+    <hr>
+
+    <!-- <jhi-alert></jhi-alert> -->
+
+    <div class="alert alert-success" ng-show="vm.msg">
+        {{vm.msg}}
+    </div>
+
+    <fieldset  ng-repeat="teglia in vm.teglie">
+        <input type="text" ng-model="teglia.id" name="" placeholder="Nome o numero teglia">
+        <input type="number" ng-model="teglia.peso" name="" placeholder="Peso teglia (g)">
+        <button class="remove" ng-click="vm.removeTeglia($index)">Elimina</button>
+    </fieldset>
+
+    <button class="addfields" ng-click="vm.addTeglia()">Aggiungi teglia</button>
+
+    <p>&nbsp;</p>
+
+    <div>
+        <button type="submit" ng-disabled="vm.isSaving" class="btn btn-primary"  ng-click="vm.save()">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+
+    <p>&nbsp;</p>
+
+
+    <div>
+        <button type="submit"
+                onclick="window.history.back()"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+        </button>
+    </div>
+</div>

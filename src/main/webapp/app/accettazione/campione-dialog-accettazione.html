@@ -1,0 +1,127 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel" translate="italgaslabApp.campione.home.createOrEditLabel">Create or edit a Campione</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group" ng-show="vm.campione.id">
+                    <label for="id" translate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                            ng-model="vm.campione.id" readonly />
+                    <p translate="entity.validation.autogen" class="help-block">
+                        Generato automaticamente.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.codiceCampione" for="field_codiceCampione">Codice Campione</label>
+                    <input disabled type="text" class="form-control" name="codiceCampione" id="field_codiceCampione"
+                            ng-model="vm.campione.codiceCampione"
+                             />
+                    <p translate="entity.validation.autogen" class="help-block">
+                        Generato automaticamente.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.siglaCampione" for="field_siglaCampione">Sigla Campione</label>
+                    <input type="number" class="form-control" name="siglaCampione" id="field_siglaCampione"
+                            ng-model="vm.campione.siglaCampione"
+                            uib-tooltip=" Protocollo 1: A(12,13) - A1(14,15) - B(10,11) - C(16-17) / Protocollo 2: A(11) - A1(12) - B(10) - C(13)"
+                             />
+                     <p class="help-block">
+                         Tipologia del campione in forma numerica (da 10 a 17).
+                     </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.tipoCampione" for="field_tipoCampione">Tipo Campione</label>
+                    <select class="form-control" name="tipoCampione" ng-model="vm.campione.tipoCampione" id="field_tipoCampione" required>
+                        <option value="A" translate="italgaslabApp.TipoCampione.A">A</option>
+                        <option value="A1" translate="italgaslabApp.TipoCampione.A1">A1</option>
+                        <option value="B" translate="italgaslabApp.TipoCampione.B">B</option>
+                        <option value="C" translate="italgaslabApp.TipoCampione.C">C</option>
+                        <option value="CB_A" translate="italgaslabApp.TipoCampione.CB_A">CB_A</option>
+                        <option value="CB_B" translate="italgaslabApp.TipoCampione.CB_B">CB_B</option>
+                    </select>
+                    <div ng-show="editForm.tipoCampione.$invalid">
+                        <p class="help-block"
+                            ng-show="editForm.tipoCampione.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <!-- <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.descrizioneCampione" for="field_descrizioneCampione">Descrizione Campione</label>
+                    <textarea rows="4" class="form-control" name="descrizioneCampione" id="field_descrizioneCampione"
+                            ng-model="vm.campione.descrizioneCampione"
+                            ng-maxlength="65534" ></textarea>
+                    <div ng-show="editForm.descrizioneCampione.$invalid">
+                        <p class="help-block"
+                            ng-show="editForm.descrizioneCampione.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                            This field cannot be longer than 65534 characters.
+                        </p>
+                    </div>
+                </div> -->
+                <div class="form-group" ngf-drop ngf-change="vm.setFotoSacchetto($file, vm.campione)" ngf-pattern="'image/*'">
+                    <label class="control-label" translate="italgaslabApp.campione.fotoSacchetto" for="field_fotoSacchetto">Foto Sacchetto</label>
+                    <div ng-if="vm.campione.fotoSacchettoContentType && !vm.campione.fotoSacchetto" class="help-block clearfix">
+                        <span class="pull-left">
+                            <img no-cache-src="api/campiones/{{vm.campione.id}}/fotosacchetto" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                        </span>
+                        <button ng-click="vm.campione.fotoSacchetto=null;vm.campione.fotoSacchettoContentType=null;"
+                                class="btn btn-default btn-xs pull-right">
+                            <span>Elimina</span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <img data-ng-src="{{'data:' + vm.campione.fotoSacchettoContentType + ';base64,' + vm.campione.fotoSacchetto}}" style="max-height: 100px;" ng-if="vm.campione.fotoSacchetto"/>
+                        <div ng-if="vm.campione.fotoSacchetto" class="help-block clearfix">
+                            <span class="pull-left">{{vm.campione.fotoSacchettoContentType}}, {{vm.byteSize(vm.campione.fotoSacchetto)}}</span>
+                            <button ng-click="vm.campione.fotoSacchetto=null;vm.campione.fotoSacchettoContentType=null;"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        <button type="file" ngf-select class="btn btn-default btn-block"
+                                ngf-change="vm.setFotoSacchetto($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                            Add image
+                        </button>
+                    </div>
+                    <input type="hidden" class="form-control" name="fotoSacchetto" id="field_fotoSacchetto"
+                            ng-model="vm.campione.fotoSacchetto"
+                             />
+                    <input type="hidden" class="form-control" name="fotoSacchettoContentType" id="field_fotoSacchettoContentType"
+                            ng-model="vm.campione.fotoSacchettoContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label translate="italgaslabApp.campione.cassetta" for="field_cassetta">Cassetta</label>
+                    <select disabled class="form-control" id="field_cassetta" name="cassetta" ng-model="vm.campione.cassetta">
+                        <option selected>{{vm.campione.cassetta.codiceCassetta}}</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

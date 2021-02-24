@@ -1,0 +1,27 @@
+{
+    "italgaslabApp": {
+        "consegna" : {
+            "home": {
+                "title": "Consegna",
+                "createLabel": "Inserisci nuova Consegna",
+                "createOrEditLabel": "Inserisci o modifica Consegna",
+                "search": "Ricerca Consegne"
+            },
+            "created": "E' stata inserita una nuova Consegna con id {{ param }}",
+            "updated": "La Consegna con id {{ param }} è stata aggiornata",
+            "deleted": "La Consegna con id {{ param }} è stata eliminata",
+            "delete": {
+                "question": "Sei sicuro di voler eliminare la Consegna {{ id }}?"
+            },
+            "detail": {
+                "title": "Consegna"
+            },
+            "dataConsegna": "Data Consegna",
+            "trasportatore": "Trasportatore",
+            "numCassette": "Num. Cassette",
+            "numProtocolloAccettazione": "Num. Protocollo Accettazione",
+            "protocolloAccettazione": "Protocollo Accettazione",
+            "laboratorio": "Laboratorio"
+        }
+    }
+}

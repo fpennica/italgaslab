@@ -1,0 +1,219 @@
+
+<div>
+    <h2><span translate="italgaslabApp.cassetta.detail.title">Cassetta</span> {{vm.cassetta.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="italgaslabApp.cassetta.codiceCassetta">Codice Cassetta</span></dt>
+        <dd>
+            <span>{{vm.cassetta.codiceCassetta}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.odl">Odl</span></dt>
+        <dd>
+            <span>{{vm.cassetta.odl}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.rifGeografo">Rif Geografo</span></dt>
+        <dd>
+            <span>{{vm.cassetta.rifGeografo}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.prioritario">Prioritario</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.prioritario}}</span> -->
+            <span ng-show="{{vm.cassetta.prioritario}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.indirizzoScavo">Indirizzo Scavo</span></dt>
+        <dd>
+            <span>{{vm.cassetta.indirizzoScavo}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.denomCantiere">Denom Cantiere</span></dt>
+        <dd>
+            <span>{{vm.cassetta.denomCantiere}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.codiceRdc">Codice Rdc</span></dt>
+        <dd>
+            <span>{{vm.cassetta.codiceRdc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.dataScavo">Data Scavo</span></dt>
+        <dd>
+            <span>{{vm.cassetta.dataScavo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.coordGpsN">Coord Gps N</span></dt>
+        <dd>
+            <span>{{vm.cassetta.coordGpsN}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.coordGpsE">Coord Gps E</span></dt>
+        <dd>
+            <span>{{vm.cassetta.coordGpsE}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.coordX">Coord X</span></dt>
+        <dd>
+            <span>{{vm.cassetta.coordX}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.coordY">Coord Y</span></dt>
+        <dd>
+            <span>{{vm.cassetta.coordY}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.centroOperativo">Centro Operativo</span></dt>
+        <dd>
+            <span>{{vm.cassetta.centroOperativo}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.impresaAppaltatrice">Impresa Appaltatrice</span></dt>
+        <dd>
+            <span>{{vm.cassetta.impresaAppaltatrice}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.incaricatoAppaltatore">Incaricato Appaltatore</span></dt>
+        <dd>
+            <span>{{vm.cassetta.incaricatoAppaltatore}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.tecnicoItgResp">Tecnico Itg Resp</span></dt>
+        <dd>
+            <span>{{vm.cassetta.tecnicoItgResp}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.numCampioni">Num Campioni</span></dt>
+        <dd>
+            <span>{{vm.cassetta.numCampioni}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione10">Presenza Campione 10</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione10}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione10}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione11">Presenza Campione 11</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione11}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione11}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione12">Presenza Campione 12</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione12}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione12}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione13">Presenza Campione 13</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione13}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione13}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione14">Presenza Campione 14</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione14}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione14}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione15">Presenza Campione 15</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione15}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione15}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione16">Presenza Campione 16</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione16}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione16}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCampione17">Presenza Campione 17</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.presenzaCampione17}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCampione17}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.conglomeratoBituminoso">Conglomerato Bituminoso</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.conglomeratoBituminoso}}</span> -->
+            <span ng-show="{{vm.cassetta.conglomeratoBituminoso}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCbu">CB Strato di Usura</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.conglomeratoBituminoso}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCbu}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCbb1s">CB Binder (1 strato)</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.conglomeratoBituminoso}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCbb1s}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.presenzaCbb2s">CB Binder (2 strati)</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.conglomeratoBituminoso}}</span> -->
+            <span ng-show="{{vm.cassetta.presenzaCbb2s}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.statoContenitore">Stato Contenitore</span></dt>
+        <dd>
+            <span translate="{{'italgaslabApp.StatoContenitore.' + vm.cassetta.statoContenitore}}">{{vm.cassetta.statoContenitore}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.statoAttualeCassetta">Stato Attuale Cassetta</span></dt>
+        <dd>
+            <span translate="{{'italgaslabApp.StatoAttualeCassetta.' + vm.cassetta.statoAttualeCassetta}}">{{vm.cassetta.statoAttualeCassetta}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.contenutoInquinato">Contenuto Inquinato</span></dt>
+        <dd>
+            <!-- <span>{{vm.cassetta.contenutoInquinato}}</span> -->
+            <span ng-show="{{vm.cassetta.contenutoInquinato}}" class="glyphicon glyphicon-ok text-success"></span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.fotoContenitore">Foto Contenitore</span></dt>
+        <dd>
+            <div ng-if="vm.cassetta.fotoContenitoreContentType">
+                <!-- <a ng-click="vm.openFile(vm.cassetta.fotoContenitoreContentType, vm.cassetta.fotoContenitore)">
+                    <img data-ng-src="{{'data:' + vm.cassetta.fotoContenitoreContentType + ';base64,' + vm.cassetta.fotoContenitore}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.cassetta.fotoContenitoreContentType}}, {{vm.byteSize(vm.cassetta.fotoContenitore)}} -->
+                <img no-cache-src="api/cassettas/{{vm.cassetta.id}}/fotocontenitore" style="max-width: 100%;"/>
+            </div>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.fotoContenuto">Foto Contenuto</span></dt>
+        <dd>
+            <div ng-if="vm.cassetta.fotoContenutoContentType">
+                <!-- <a ng-click="vm.openFile(vm.cassetta.fotoContenutoContentType, vm.cassetta.fotoContenuto)">
+                    <img data-ng-src="{{'data:' + vm.cassetta.fotoContenutoContentType + ';base64,' + vm.cassetta.fotoContenuto}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.cassetta.fotoContenutoContentType}}, {{vm.byteSize(vm.cassetta.fotoContenuto)}} -->
+                <img no-cache-src="api/cassettas/{{vm.cassetta.id}}/fotocontenuto" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            </div>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.msSismicitaLocale">Ms Sismicita Locale</span></dt>
+        <dd>
+            <span>{{vm.cassetta.msSismicitaLocale}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.msValAccelerazione">Ms Val Accelerazione</span></dt>
+        <dd>
+            <span>{{vm.cassetta.msValAccelerazione}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.note">Note</span></dt>
+        <dd>
+            <span>{{vm.cassetta.note}}</span>
+        </dd>
+
+        <!--
+        <dt><span translate="italgaslabApp.cassetta.certificatoPdf">Certificato Pdf</span></dt>
+        <dd>
+            <div ng-if="vm.cassetta.certificatoPdf">
+                <a ng-click="vm.openFile(vm.cassetta.certificatoPdfContentType, vm.cassetta.certificatoPdf)" translate="entity.action.open">open</a>
+                {{vm.cassetta.certificatoPdfContentType}}, {{vm.byteSize(vm.cassetta.certificatoPdf)}}
+            </div>
+        </dd>
+        -->
+
+        <dt><span translate="italgaslabApp.cassetta.certificatoPdf">Certificato Pdf</span></dt>
+        <dd>
+            <div ng-if="vm.cassetta.certificatoPdfContentType">
+                <a target="_blank" href="api/cassettas/{{vm.cassetta.id}}/cert" translate="entity.action.open">open</a> <!-- ng-click="vm.downloadCert(vm.cassetta.id)"-->
+                {{vm.cassetta.certificatoPdfContentType}}
+            </div>
+        </dd>
+
+        <dt><span translate="italgaslabApp.cassetta.numProtocolloCertificato">Num Protocollo Certificato</span></dt>
+        <dd>
+            <span>{{vm.cassetta.numProtocolloCertificato}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.codiceIstat">Codice Istat</span></dt>
+        <dd>
+            <a ui-sref="codice-istat-detail({id:vm.cassetta.codiceIstat.id})">{{vm.cassetta.codiceIstat.comune}}</a>
+        </dd>
+        <dt><span translate="italgaslabApp.cassetta.consegna">Consegna</span></dt>
+        <dd>
+            <a ui-sref="consegna-detail({id:vm.cassetta.consegna.id})">{{vm.cassetta.consegna.dataConsegna}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

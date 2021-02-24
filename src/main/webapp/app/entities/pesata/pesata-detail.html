@@ -1,0 +1,98 @@
+
+<div>
+    <h2><span translate="italgaslabApp.pesata.detail.title">Pesata</span> {{vm.pesata.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="italgaslabApp.pesata.numPesata">Num Pesata</span></dt>
+        <dd>
+            <span>{{vm.pesata.numPesata}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.pesoNetto">Peso Netto</span></dt>
+        <dd>
+            <span>{{vm.pesata.pesoNetto}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt125Mm">Tratt 125 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt125Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt63Mm">Tratt 63 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt63Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt31V5Mm">Tratt 31 V 5 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt31V5Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt16Mm">Tratt 16 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt16Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt8Mm">Tratt 8 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt8Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt6V3Mm">Tratt 6 V 3 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt6V3Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt4Mm">Tratt 4 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt4Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt2Mm">Tratt 2 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt2Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt1Mm">Tratt 1 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt1Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt0V5Mm">Tratt 0 V 5 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt0V5Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt0V25Mm">Tratt 0 V 25 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt0V25Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt0V125Mm">Tratt 0 V 125 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt0V125Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.tratt0V075Mm">Tratt 0 V 075 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.tratt0V075Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.trattB100Mm">Tratt B 100 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.trattB100Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.trattB6V3Mm">Tratt B 6 V 3 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.trattB6V3Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.trattB2Mm">Tratt B 2 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.trattB2Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.trattB0V5Mm">Tratt B 0 V 5 Mm</span></dt>
+        <dd>
+            <span>{{vm.pesata.trattB0V5Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.fondo">Fondo</span></dt>
+        <dd>
+            <span>{{vm.pesata.fondo}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.pesata.campione">Campione</span></dt>
+        <dd>
+            <a ui-sref="campione-detail({id:vm.pesata.campione.id})">{{vm.pesata.campione.codiceCampione}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

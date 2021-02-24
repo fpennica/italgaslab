@@ -1,0 +1,554 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel" translate="italgaslabApp.campione.home.createOrEditLabel">Create or edit a Campione</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.campione.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.campione.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.codiceCampione" for="field_codiceCampione">Codice Campione</label>
+            <input type="text" class="form-control" name="codiceCampione" id="field_codiceCampione"
+                    ng-model="vm.campione.codiceCampione"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.siglaCampione" for="field_siglaCampione">Sigla Campione</label>
+            <input type="number" class="form-control" name="siglaCampione" id="field_siglaCampione"
+                    ng-model="vm.campione.siglaCampione"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.tipoCampione" for="field_tipoCampione">Tipo Campione</label>
+            <select class="form-control" name="tipoCampione" ng-model="vm.campione.tipoCampione" id="field_tipoCampione" required>
+                <option value="A" translate="italgaslabApp.TipoCampione.A">A</option>
+                <option value="A1" translate="italgaslabApp.TipoCampione.A1">A1</option>
+                <option value="B" translate="italgaslabApp.TipoCampione.B">B</option>
+                <option value="C" translate="italgaslabApp.TipoCampione.C">C</option>
+                <option value="CB_A" translate="italgaslabApp.TipoCampione.CB_A">CB_A</option>
+                <option value="CB_B" translate="italgaslabApp.TipoCampione.CB_B">CB_B</option>
+            </select>
+            <div ng-show="editForm.tipoCampione.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tipoCampione.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.descrizioneCampione" for="field_descrizioneCampione">Descrizione Campione</label>
+            <input type="text" class="form-control" name="descrizioneCampione" id="field_descrizioneCampione"
+                    ng-model="vm.campione.descrizioneCampione"
+                    ng-maxlength="65534" />
+            <div ng-show="editForm.descrizioneCampione.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.descrizioneCampione.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                    This field cannot be longer than 65534 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFotoSacchetto($file, vm.campione)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="italgaslabApp.campione.fotoSacchetto" for="field_fotoSacchetto">Foto Sacchetto</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.campione.fotoSacchettoContentType + ';base64,' + vm.campione.fotoSacchetto}}" style="max-height: 100px;" ng-if="vm.campione.fotoSacchetto"/>
+                <div ng-if="vm.campione.fotoSacchetto" class="help-block clearfix">
+                    <span class="pull-left">{{vm.campione.fotoSacchettoContentType}}, {{vm.byteSize(vm.campione.fotoSacchetto)}}</span>
+                    <button ng-click="vm.campione.fotoSacchetto=null;vm.campione.fotoSacchettoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFotoSacchetto($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="fotoSacchetto" id="field_fotoSacchetto"
+                    ng-model="vm.campione.fotoSacchetto"
+                     />
+            <input type="hidden" class="form-control" name="fotoSacchettoContentType" id="field_fotoSacchettoContentType"
+                    ng-model="vm.campione.fotoSacchettoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFotoCampione($file, vm.campione)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="italgaslabApp.campione.fotoCampione" for="field_fotoCampione">Foto Campione</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.campione.fotoCampioneContentType + ';base64,' + vm.campione.fotoCampione}}" style="max-height: 100px;" ng-if="vm.campione.fotoCampione"/>
+                <div ng-if="vm.campione.fotoCampione" class="help-block clearfix">
+                    <span class="pull-left">{{vm.campione.fotoCampioneContentType}}, {{vm.byteSize(vm.campione.fotoCampione)}}</span>
+                    <button ng-click="vm.campione.fotoCampione=null;vm.campione.fotoCampioneContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFotoCampione($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="fotoCampione" id="field_fotoCampione"
+                    ng-model="vm.campione.fotoCampione"
+                     />
+            <input type="hidden" class="form-control" name="fotoCampioneContentType" id="field_fotoCampioneContentType"
+                    ng-model="vm.campione.fotoCampioneContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.dataAnalisi" for="field_dataAnalisi">Data Analisi</label>
+                <div class="input-group">
+                    <input id="field_dataAnalisi" type="text" class="form-control" name="dataAnalisi" uib-datepicker-popup="{{dateformat}}" ng-model="vm.campione.dataAnalisi" is-open="vm.datePickerOpenStatus.dataAnalisi"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dataAnalisi')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.ripartizioneQuartatura" for="field_ripartizioneQuartatura">Ripartizione Quartatura</label>
+            <input type="checkbox" class="form-control" name="ripartizioneQuartatura" id="field_ripartizioneQuartatura"
+                    ng-model="vm.campione.ripartizioneQuartatura"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.essiccamento" for="field_essiccamento">Essiccamento</label>
+            <input type="checkbox" class="form-control" name="essiccamento" id="field_essiccamento"
+                    ng-model="vm.campione.essiccamento"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.setacciaturaSecco" for="field_setacciaturaSecco">Setacciatura Secco</label>
+            <input type="checkbox" class="form-control" name="setacciaturaSecco" id="field_setacciaturaSecco"
+                    ng-model="vm.campione.setacciaturaSecco"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.lavaggioSetacciatura" for="field_lavaggioSetacciatura">Lavaggio Setacciatura</label>
+            <input type="checkbox" class="form-control" name="lavaggioSetacciatura" id="field_lavaggioSetacciatura"
+                    ng-model="vm.campione.lavaggioSetacciatura"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.essiccamentoNumTeglia" for="field_essiccamentoNumTeglia">Essiccamento Num Teglia</label>
+            <input type="text" class="form-control" name="essiccamentoNumTeglia" id="field_essiccamentoNumTeglia"
+                    ng-model="vm.campione.essiccamentoNumTeglia"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoTeglia" for="field_essiccamentoPesoTeglia">Essiccamento Peso Teglia</label>
+            <input type="number" class="form-control" name="essiccamentoPesoTeglia" id="field_essiccamentoPesoTeglia"
+                    ng-model="vm.campione.essiccamentoPesoTeglia"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoCampioneLordoIniziale" for="field_essiccamentoPesoCampioneLordoIniziale">Essiccamento Peso Campione Lordo Iniziale</label>
+            <input type="number" class="form-control" name="essiccamentoPesoCampioneLordoIniziale" id="field_essiccamentoPesoCampioneLordoIniziale"
+                    ng-model="vm.campione.essiccamentoPesoCampioneLordoIniziale"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo24H" for="field_essiccamentoPesoCampioneLordo24H">Essiccamento Peso Campione Lordo 24 H</label>
+            <input type="number" class="form-control" name="essiccamentoPesoCampioneLordo24H" id="field_essiccamentoPesoCampioneLordo24H"
+                    ng-model="vm.campione.essiccamentoPesoCampioneLordo24H"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo48H" for="field_essiccamentoPesoCampioneLordo48H">Essiccamento Peso Campione Lordo 48 H</label>
+            <input type="number" class="form-control" name="essiccamentoPesoCampioneLordo48H" id="field_essiccamentoPesoCampioneLordo48H"
+                    ng-model="vm.campione.essiccamentoPesoCampioneLordo48H"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.sabbia" for="field_sabbia">Sabbia</label>
+            <input type="checkbox" class="form-control" name="sabbia" id="field_sabbia"
+                    ng-model="vm.campione.sabbia"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.ghiaia" for="field_ghiaia">Ghiaia</label>
+            <input type="checkbox" class="form-control" name="ghiaia" id="field_ghiaia"
+                    ng-model="vm.campione.ghiaia"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.materialeRisultaVagliato" for="field_materialeRisultaVagliato">Materiale Risulta Vagliato</label>
+            <input type="checkbox" class="form-control" name="materialeRisultaVagliato" id="field_materialeRisultaVagliato"
+                    ng-model="vm.campione.materialeRisultaVagliato"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.detriti" for="field_detriti">Detriti</label>
+            <input type="checkbox" class="form-control" name="detriti" id="field_detriti"
+                    ng-model="vm.campione.detriti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.materialeFine" for="field_materialeFine">Materiale Fine</label>
+            <input type="checkbox" class="form-control" name="materialeFine" id="field_materialeFine"
+                    ng-model="vm.campione.materialeFine"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.materialeOrganico" for="field_materialeOrganico">Materiale Organico</label>
+            <input type="checkbox" class="form-control" name="materialeOrganico" id="field_materialeOrganico"
+                    ng-model="vm.campione.materialeOrganico"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.elementiMagg125Mm" for="field_elementiMagg125Mm">Elementi Magg 125 Mm</label>
+            <input type="checkbox" class="form-control" name="elementiMagg125Mm" id="field_elementiMagg125Mm"
+                    ng-model="vm.campione.elementiMagg125Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.detritiConglomerato" for="field_detritiConglomerato">Detriti Conglomerato</label>
+            <input type="checkbox" class="form-control" name="detritiConglomerato" id="field_detritiConglomerato"
+                    ng-model="vm.campione.detritiConglomerato"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.argilla" for="field_argilla">Argilla</label>
+            <input type="checkbox" class="form-control" name="argilla" id="field_argilla"
+                    ng-model="vm.campione.argilla"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.argillaMatAlterabile" for="field_argillaMatAlterabile">Argilla Mat Alterabile</label>
+            <input type="checkbox" class="form-control" name="argillaMatAlterabile" id="field_argillaMatAlterabile"
+                    ng-model="vm.campione.argillaMatAlterabile"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.granuliCementati" for="field_granuliCementati">Granuli Cementati</label>
+            <input type="checkbox" class="form-control" name="granuliCementati" id="field_granuliCementati"
+                    ng-model="vm.campione.granuliCementati"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.elementiArrotondati" for="field_elementiArrotondati">Elementi Arrotondati</label>
+            <input type="checkbox" class="form-control" name="elementiArrotondati" id="field_elementiArrotondati"
+                    ng-model="vm.campione.elementiArrotondati"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.elementiSpigolosi" for="field_elementiSpigolosi">Elementi Spigolosi</label>
+            <input type="checkbox" class="form-control" name="elementiSpigolosi" id="field_elementiSpigolosi"
+                    ng-model="vm.campione.elementiSpigolosi"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.sfabbricidi" for="field_sfabbricidi">Sfabbricidi</label>
+            <input type="checkbox" class="form-control" name="sfabbricidi" id="field_sfabbricidi"
+                    ng-model="vm.campione.sfabbricidi"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.tipoBConforme" for="field_tipoBConforme">Tipo B Conforme</label>
+            <input type="checkbox" class="form-control" name="tipoBConforme" id="field_tipoBConforme"
+                    ng-model="vm.campione.tipoBConforme"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbSpessoreTappetino" for="field_cbSpessoreTappetino">Cb Spessore Tappetino</label>
+            <input type="number" class="form-control" name="cbSpessoreTappetino" id="field_cbSpessoreTappetino"
+                    ng-model="vm.campione.cbSpessoreTappetino"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbMassaFiller" for="field_cbMassaFiller">Cb Massa Filler</label>
+            <input type="number" class="form-control" name="cbMassaFiller" id="field_cbMassaFiller"
+                    ng-model="vm.campione.cbMassaFiller"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbMassaMaterialeEstratto" for="field_cbMassaMaterialeEstratto">Cb Massa Materiale Estratto</label>
+            <input type="number" class="form-control" name="cbMassaMaterialeEstratto" id="field_cbMassaMaterialeEstratto"
+                    ng-model="vm.campione.cbMassaMaterialeEstratto"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbMassaInterti" for="field_cbMassaInterti">Cb Massa Interti</label>
+            <input type="number" class="form-control" name="cbMassaInterti" id="field_cbMassaInterti"
+                    ng-model="vm.campione.cbMassaInterti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbMassaMiscela" for="field_cbMassaMiscela">Cb Massa Miscela</label>
+            <input type="number" class="form-control" name="cbMassaMiscela" id="field_cbMassaMiscela"
+                    ng-model="vm.campione.cbMassaMiscela"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbMassaBitume" for="field_cbMassaBitume">Cb Massa Bitume</label>
+            <input type="number" class="form-control" name="cbMassaBitume" id="field_cbMassaBitume"
+                    ng-model="vm.campione.cbMassaBitume"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbPercBitumeRispInterti" for="field_cbPercBitumeRispInterti">Cb Perc Bitume Risp Interti</label>
+            <input type="number" class="form-control" name="cbPercBitumeRispInterti" id="field_cbPercBitumeRispInterti"
+                    ng-model="vm.campione.cbPercBitumeRispInterti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbPercBitumeRispMiscela" for="field_cbPercBitumeRispMiscela">Cb Perc Bitume Risp Miscela</label>
+            <input type="number" class="form-control" name="cbPercBitumeRispMiscela" id="field_cbPercBitumeRispMiscela"
+                    ng-model="vm.campione.cbPercBitumeRispMiscela"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProcDetMassaVol" for="field_cbProcDetMassaVol">Cb Proc Det Massa Vol</label>
+            <select class="form-control" name="cbProcDetMassaVol" ng-model="vm.campione.cbProcDetMassaVol" id="field_cbProcDetMassaVol">
+                <option value="SECCA" translate="italgaslabApp.ProceduraDetMassaVol.SECCA">SECCA</option>
+                <option value="SUPERFICIE_SATURA_ASCIUGATA" translate="italgaslabApp.ProceduraDetMassaVol.SUPERFICIE_SATURA_ASCIUGATA">SUPERFICIE_SATURA_ASCIUGATA</option>
+                <option value="PROVINO_PARAFFINATO" translate="italgaslabApp.ProceduraDetMassaVol.PROVINO_PARAFFINATO">PROVINO_PARAFFINATO</option>
+                <option value="GEOMETRICA" translate="italgaslabApp.ProceduraDetMassaVol.GEOMETRICA">GEOMETRICA</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaSecca" for="field_cbProv1MassaSecca">Cb Prov 1 Massa Secca</label>
+            <input type="number" class="form-control" name="cbProv1MassaSecca" id="field_cbProv1MassaSecca"
+                    ng-model="vm.campione.cbProv1MassaSecca"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1LegantePerc" for="field_cbProv1LegantePerc">Cb Prov 1 Legante Perc</label>
+            <input type="number" class="form-control" name="cbProv1LegantePerc" id="field_cbProv1LegantePerc"
+                    ng-model="vm.campione.cbProv1LegantePerc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaVolLegante" for="field_cbProv1MassaVolLegante">Cb Prov 1 Massa Vol Legante</label>
+            <input type="number" class="form-control" name="cbProv1MassaVolLegante" id="field_cbProv1MassaVolLegante"
+                    ng-model="vm.campione.cbProv1MassaVolLegante"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaInertiPerc" for="field_cbProv1MassaInertiPerc">Cb Prov 1 Massa Inerti Perc</label>
+            <input type="number" class="form-control" name="cbProv1MassaInertiPerc" id="field_cbProv1MassaInertiPerc"
+                    ng-model="vm.campione.cbProv1MassaInertiPerc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaVolInerti" for="field_cbProv1MassaVolInerti">Cb Prov 1 Massa Vol Inerti</label>
+            <input type="number" class="form-control" name="cbProv1MassaVolInerti" id="field_cbProv1MassaVolInerti"
+                    ng-model="vm.campione.cbProv1MassaVolInerti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaVolParaffina" for="field_cbProv1MassaVolParaffina">Cb Prov 1 Massa Vol Paraffina</label>
+            <input type="number" class="form-control" name="cbProv1MassaVolParaffina" id="field_cbProv1MassaVolParaffina"
+                    ng-model="vm.campione.cbProv1MassaVolParaffina"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaVolMax" for="field_cbProv1MassaVolMax">Cb Prov 1 Massa Vol Max</label>
+            <input type="number" class="form-control" name="cbProv1MassaVolMax" id="field_cbProv1MassaVolMax"
+                    ng-model="vm.campione.cbProv1MassaVolMax"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1MassaVolBulk" for="field_cbProv1MassaVolBulk">Cb Prov 1 Massa Vol Bulk</label>
+            <input type="number" class="form-control" name="cbProv1MassaVolBulk" id="field_cbProv1MassaVolBulk"
+                    ng-model="vm.campione.cbProv1MassaVolBulk"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv1PercVuoti" for="field_cbProv1PercVuoti">Cb Prov 1 Perc Vuoti</label>
+            <input type="number" class="form-control" name="cbProv1PercVuoti" id="field_cbProv1PercVuoti"
+                    ng-model="vm.campione.cbProv1PercVuoti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaSecca" for="field_cbProv2MassaSecca">Cb Prov 2 Massa Secca</label>
+            <input type="number" class="form-control" name="cbProv2MassaSecca" id="field_cbProv2MassaSecca"
+                    ng-model="vm.campione.cbProv2MassaSecca"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2LegantePerc" for="field_cbProv2LegantePerc">Cb Prov 2 Legante Perc</label>
+            <input type="number" class="form-control" name="cbProv2LegantePerc" id="field_cbProv2LegantePerc"
+                    ng-model="vm.campione.cbProv2LegantePerc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaVolLegante" for="field_cbProv2MassaVolLegante">Cb Prov 2 Massa Vol Legante</label>
+            <input type="number" class="form-control" name="cbProv2MassaVolLegante" id="field_cbProv2MassaVolLegante"
+                    ng-model="vm.campione.cbProv2MassaVolLegante"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaInertiPerc" for="field_cbProv2MassaInertiPerc">Cb Prov 2 Massa Inerti Perc</label>
+            <input type="number" class="form-control" name="cbProv2MassaInertiPerc" id="field_cbProv2MassaInertiPerc"
+                    ng-model="vm.campione.cbProv2MassaInertiPerc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaVolInerti" for="field_cbProv2MassaVolInerti">Cb Prov 2 Massa Vol Inerti</label>
+            <input type="number" class="form-control" name="cbProv2MassaVolInerti" id="field_cbProv2MassaVolInerti"
+                    ng-model="vm.campione.cbProv2MassaVolInerti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaVolParaffina" for="field_cbProv2MassaVolParaffina">Cb Prov 2 Massa Vol Paraffina</label>
+            <input type="number" class="form-control" name="cbProv2MassaVolParaffina" id="field_cbProv2MassaVolParaffina"
+                    ng-model="vm.campione.cbProv2MassaVolParaffina"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaVolMax" for="field_cbProv2MassaVolMax">Cb Prov 2 Massa Vol Max</label>
+            <input type="number" class="form-control" name="cbProv2MassaVolMax" id="field_cbProv2MassaVolMax"
+                    ng-model="vm.campione.cbProv2MassaVolMax"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2MassaVolBulk" for="field_cbProv2MassaVolBulk">Cb Prov 2 Massa Vol Bulk</label>
+            <input type="number" class="form-control" name="cbProv2MassaVolBulk" id="field_cbProv2MassaVolBulk"
+                    ng-model="vm.campione.cbProv2MassaVolBulk"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv2PercVuoti" for="field_cbProv2PercVuoti">Cb Prov 2 Perc Vuoti</label>
+            <input type="number" class="form-control" name="cbProv2PercVuoti" id="field_cbProv2PercVuoti"
+                    ng-model="vm.campione.cbProv2PercVuoti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaSecca" for="field_cbProv3MassaSecca">Cb Prov 3 Massa Secca</label>
+            <input type="number" class="form-control" name="cbProv3MassaSecca" id="field_cbProv3MassaSecca"
+                    ng-model="vm.campione.cbProv3MassaSecca"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3LegantePerc" for="field_cbProv3LegantePerc">Cb Prov 3 Legante Perc</label>
+            <input type="number" class="form-control" name="cbProv3LegantePerc" id="field_cbProv3LegantePerc"
+                    ng-model="vm.campione.cbProv3LegantePerc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaVolLegante" for="field_cbProv3MassaVolLegante">Cb Prov 3 Massa Vol Legante</label>
+            <input type="number" class="form-control" name="cbProv3MassaVolLegante" id="field_cbProv3MassaVolLegante"
+                    ng-model="vm.campione.cbProv3MassaVolLegante"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaInertiPerc" for="field_cbProv3MassaInertiPerc">Cb Prov 3 Massa Inerti Perc</label>
+            <input type="number" class="form-control" name="cbProv3MassaInertiPerc" id="field_cbProv3MassaInertiPerc"
+                    ng-model="vm.campione.cbProv3MassaInertiPerc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaVolInerti" for="field_cbProv3MassaVolInerti">Cb Prov 3 Massa Vol Inerti</label>
+            <input type="number" class="form-control" name="cbProv3MassaVolInerti" id="field_cbProv3MassaVolInerti"
+                    ng-model="vm.campione.cbProv3MassaVolInerti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaVolParaffina" for="field_cbProv3MassaVolParaffina">Cb Prov 3 Massa Vol Paraffina</label>
+            <input type="number" class="form-control" name="cbProv3MassaVolParaffina" id="field_cbProv3MassaVolParaffina"
+                    ng-model="vm.campione.cbProv3MassaVolParaffina"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaVolMax" for="field_cbProv3MassaVolMax">Cb Prov 3 Massa Vol Max</label>
+            <input type="number" class="form-control" name="cbProv3MassaVolMax" id="field_cbProv3MassaVolMax"
+                    ng-model="vm.campione.cbProv3MassaVolMax"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3MassaVolBulk" for="field_cbProv3MassaVolBulk">Cb Prov 3 Massa Vol Bulk</label>
+            <input type="number" class="form-control" name="cbProv3MassaVolBulk" id="field_cbProv3MassaVolBulk"
+                    ng-model="vm.campione.cbProv3MassaVolBulk"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbProv3PercVuoti" for="field_cbProv3PercVuoti">Cb Prov 3 Perc Vuoti</label>
+            <input type="number" class="form-control" name="cbProv3PercVuoti" id="field_cbProv3PercVuoti"
+                    ng-model="vm.campione.cbProv3PercVuoti"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.cbPercMediaVuoti" for="field_cbPercMediaVuoti">Cb Perc Media Vuoti</label>
+            <input type="number" class="form-control" name="cbPercMediaVuoti" id="field_cbPercMediaVuoti"
+                    ng-model="vm.campione.cbPercMediaVuoti"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setCurva($file, vm.campione)" ngf-pattern="'image/*'">
+            <label class="control-label" translate="italgaslabApp.campione.curva" for="field_curva">Curva</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.campione.curvaContentType + ';base64,' + vm.campione.curva}}" style="max-height: 100px;" ng-if="vm.campione.curva"/>
+                <div ng-if="vm.campione.curva" class="help-block clearfix">
+                    <span class="pull-left">{{vm.campione.curvaContentType}}, {{vm.byteSize(vm.campione.curva)}}</span>
+                    <button ng-click="vm.campione.curva=null;vm.campione.curvaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setCurva($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="curva" id="field_curva"
+                    ng-model="vm.campione.curva"
+                     />
+            <input type="hidden" class="form-control" name="curvaContentType" id="field_curvaContentType"
+                    ng-model="vm.campione.curvaContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.classificazioneGeotecnica" for="field_classificazioneGeotecnica">Classificazione Geotecnica</label>
+            <input type="text" class="form-control" name="classificazioneGeotecnica" id="field_classificazioneGeotecnica"
+                    ng-model="vm.campione.classificazioneGeotecnica"
+                    ng-maxlength="65534" />
+            <div ng-show="editForm.classificazioneGeotecnica.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.classificazioneGeotecnica.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                    This field cannot be longer than 65534 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.note" for="field_note">Note</label>
+            <input type="text" class="form-control" name="note" id="field_note"
+                    ng-model="vm.campione.note"
+                    ng-maxlength="65534" />
+            <div ng-show="editForm.note.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.note.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                    This field cannot be longer than 65534 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.campione.lavorazioneConclusa" for="field_lavorazioneConclusa">Lavorazione Conclusa</label>
+            <input type="checkbox" class="form-control" name="lavorazioneConclusa" id="field_lavorazioneConclusa"
+                    ng-model="vm.campione.lavorazioneConclusa"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="italgaslabApp.campione.cassetta" for="field_cassetta">Cassetta</label>
+            <select class="form-control" id="field_cassetta" name="cassetta" ng-model="vm.campione.cassetta" ng-options="cassetta as cassetta.codiceCassetta for cassetta in vm.cassettas track by cassetta.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="italgaslabApp.campione.operatoreAnalisi" for="field_operatoreAnalisi">Operatore Analisi</label>
+            <select class="form-control" id="field_operatoreAnalisi" name="operatoreAnalisi" ng-model="vm.campione.operatoreAnalisi" ng-options="operatore as operatore.user.login for operatore in vm.operatores track by operatore.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

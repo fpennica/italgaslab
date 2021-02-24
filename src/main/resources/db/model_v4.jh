@@ -1,0 +1,200 @@
+entity CodiceIstat {
+  codiceIstat Integer,
+  comune String,
+  provincia String,
+  regione String
+}
+
+entity Laboratorio {
+  nome String,
+  istituto String required,
+  responsabile String required,
+  indirizzo String,
+  logo ImageBlob
+}
+
+entity Consegna {
+  dataConsegna LocalDate required,
+  trasportatore String,
+  numCassette Integer,
+  numProtocolloAccettazione String,
+  protocolloAccettazione AnyBlob
+}
+
+relationship ManyToOne {
+  Consegna{Laboratorio(istituto)} to Laboratorio 
+}
+
+enum StatoContenitore {
+  INTEGRO_CONTENUTO_INTEGRO, INTEGRO_CONTENUTO_DANNEGGIATO, DANNEGGIATO_CONTENUTO_INTEGRO, DANNEGGIATO_CONTENUTO_DANNEGGIATO
+}
+
+enum StatoAttualeCassetta {
+  IN_LAVORAZIONE,
+  RIFIUTATA,
+  TRATTAMENTO_INQUINAMENTO,
+  LAVORAZIONE_TERMINATA,
+  RESTITUITA
+}
+
+entity Cassetta {
+  codiceCassetta String,
+  odl String,
+  rifGeografo Integer,
+  prioritario Boolean,
+  indirizzoScavo String,
+  denomCantiere String,
+  codiceRDC String,
+  dataScavo LocalDate,
+  coordGpsN String,
+  coordGpsE String,
+  coordX Double,
+  coordY Double,
+  centroOperativo String,
+  impresaAppaltatrice String,
+  incaricatoAppaltatore String,
+  tecnicoItgResp String,
+  numCampioni Integer,
+  presenzaCampione10 Boolean,
+  presenzaCampione11 Boolean,
+  presenzaCampione12 Boolean,
+  presenzaCampione13 Boolean,
+  presenzaCampione14 Boolean,
+  presenzaCampione15 Boolean,
+  presenzaCampione16 Boolean,
+  presenzaCampione17 Boolean,
+  statoContenitore StatoContenitore,
+  statoAttualeCassetta StatoAttualeCassetta,
+  contenutoInquinato Boolean,
+  conglomeratoBituminoso Boolean,
+  fotoContenitore ImageBlob,
+  fotoContenuto ImageBlob,
+  msSismicitaLocale String,
+  msValAccelerazione String,
+  note String maxlength(65534),
+  certificatoPdf AnyBlob,
+  numProtocolloCertificato String
+}
+
+relationship ManyToOne {
+  Cassetta{CodiceIstat(comune)} to CodiceIstat 
+}
+
+relationship ManyToOne {
+  Cassetta{Consegna(dataConsegna)} to Consegna 
+}
+
+entity Operatore {
+}
+
+relationship OneToOne {
+  Operatore{user(login)} to User
+}
+
+relationship ManyToOne {
+  Operatore{Laboratorio} to Laboratorio 
+}
+
+enum TipoCampione {
+  A, A1, B, C, CB
+}
+
+enum ProceduraDetMassaVol {
+  SECCA, SUPERFICIE_SATURA_ASCIUGATA, PROVINO_PARAFFINATO, GEOMETRICA
+}
+
+entity Campione {
+  codiceCampione String,
+  siglaCampione Integer,
+  tipoCampione TipoCampione required,
+  descrizioneCampione String maxlength(65534),
+  fotoSacchetto ImageBlob,
+  fotoCampione ImageBlob,
+  dataAnalisi LocalDate,
+  ripartizioneQuartatura Boolean,
+  essiccamento Boolean,
+  setacciaturaSecco Boolean,
+  lavaggioSetacciatura Boolean,
+  essiccamentoNumTeglia String,
+  essiccamentoPesoTeglia BigDecimal,
+  essiccamentoPesoCampioneLordoIniziale BigDecimal,
+  essiccamentoPesoCampioneLordo24h BigDecimal,
+  essiccamentoPesoCampioneLordo48h BigDecimal,
+  sabbia Boolean,
+  ghiaia Boolean,
+  materialeRisultaVagliato Boolean,
+  detriti Boolean,
+  materialeFine Boolean,
+  materialeOrganico Boolean,
+  elementiMagg125mm Boolean,
+  detritiConglomerato Boolean,
+  argilla Boolean,
+  argillaMatAlterabile Boolean,
+  granuliCementati Boolean,
+  elementiArrotondati Boolean,
+  elementiSpigolosi Boolean,
+  sfabbricidi Boolean,
+  tipoBConforme Boolean,
+  cbSpessoreTappetino BigDecimal,
+  cbMassaFiller BigDecimal,
+  cbMassaMaterialeEstratto BigDecimal,
+  cbMassaInterti BigDecimal,
+  cbMassaMiscela BigDecimal,
+  cbMassaBitume BigDecimal,
+  cbPercBitumeRispInterti BigDecimal,
+  cbPercBitumeRispMiscela BigDecimal,
+  cbProcDetMassaVol ProceduraDetMassaVol,
+  cbProv1MassaSecca BigDecimal,
+  cbProv1LegantePerc BigDecimal,
+  cbProv1MassaVolLegante BigDecimal,
+  cbProv1MassaInertiPerc BigDecimal,
+  cbProv1MassaVolInerti BigDecimal,
+  cbProv1MassaVolParaffina BigDecimal,
+  cbProv1MassaVolMax BigDecimal,
+  cbProv1MassaVolBulk BigDecimal,
+  cbProv1PercVuoti BigDecimal,
+  cbProv2MassaSecca BigDecimal,
+  cbProv2LegantePerc BigDecimal,
+  cbProv2MassaVolLegante BigDecimal,
+  cbProv2MassaInertiPerc BigDecimal,
+  cbProv2MassaVolInerti BigDecimal,
+  cbProv2MassaVolParaffina BigDecimal,
+  cbProv2MassaVolMax BigDecimal,
+  cbProv2MassaVolBulk BigDecimal,
+  cbProv2PercVuoti BigDecimal,
+  cbProv3MassaSecca BigDecimal,
+  cbProv3LegantePerc BigDecimal,
+  cbProv3MassaVolLegante BigDecimal,
+  cbProv3MassaInertiPerc BigDecimal,
+  cbProv3MassaVolInerti BigDecimal,
+  cbProv3MassaVolParaffina BigDecimal,
+  cbProv3MassaVolMax BigDecimal,
+  cbProv3MassaVolBulk BigDecimal,
+  cbProv3PercVuoti BigDecimal,
+  cbPercMediaVuoti BigDecimal,
+  curva ImageBlob,
+  classificazioneGeotecnica String maxlength(65534),
+  note String maxlength(65534),
+  lavorazioneConclusa Boolean
+}
+
+relationship ManyToOne {
+  Campione{Cassetta(codiceCassetta)} to Cassetta 
+}
+
+relationship ManyToOne {
+  Campione{OperatoreAnalisi(login)} to Operatore 
+}
+
+entity Pesata {
+  numPesata Integer,
+  mmVaglio Integer,
+  massaTrattenuto BigDecimal
+}
+
+relationship ManyToOne {
+  Pesata{Campione(codiceCampione)} to Campione 
+}
+
+service all with serviceClass
+paginate CodiceIstat, Consegna, Cassetta, Campione, Pesata with pager

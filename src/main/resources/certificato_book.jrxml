@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-02-17T14:19:59 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificato_book" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<parameter name="CASSETTA" class="it.cnr.igag.italgas.domain.Cassetta" isForPrompting="false"/>
+	<parameter name="ISTITUTO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ISTITUTO_DESC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CASSETTA_FOTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_CLASS_GEOTEC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_CLASS_GEOTEC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_CLASS_GEOTEC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_PASSANTE_100" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A_CONFORME" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_CONFORME" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="CAMPIONE_C_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<detail>
+		<part uuid="7f8e153c-ce1f-4ea8-8cdd-959d80367070">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="CASSETTA">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ISTITUTO_DESC">
+					<subreportParameterExpression><![CDATA[$P{ISTITUTO_DESC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CASSETTA_FOTO">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA_FOTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_book_accettazione.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="e859f78f-57b2-4a57-bf9d-519cfa204efe">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="CASSETTA">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_campione_A.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="c0bcd9c9-4745-42ea-b23e-03d95a0b49be">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="CAMPIONE_A_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_CLASS_GEOTEC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_CLASS_GEOTEC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_campione_A_end.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="ee5648e0-3800-4390-8821-41c85459d9f8">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="CAMPIONE_A1">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CASSETTA">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_campione_A1.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="d14a537b-7020-4dfa-b6bb-8b62805527bf">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="CAMPIONE_A1_PIECHART">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_PIECHART}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_CLASS_GEOTEC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_CLASS_GEOTEC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_campione_A1_end.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="04b316f9-244c-48a9-8b40-e4a36662105a">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="CAMPIONE_B">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_CURVA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_CURVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_GRANULOMETRIA">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_GRANULOMETRIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_CLASS_GEOTEC">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_CLASS_GEOTEC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_PASSANTE_100">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_PASSANTE_100}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CASSETTA">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_campione_B.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="65744ef1-9299-40eb-b328-d4ecdd3ad104">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CASSETTA">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_C">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_C}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_C_FOTO_SACCHETTO">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_C_FOTO_SACCHETTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_C_FOTO_CAMPIONE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_C_FOTO_CAMPIONE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_C_NOTE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_C_NOTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_C_OPERATORE">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_C_OPERATORE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_campione_C.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="e2c8512a-9d0d-4e67-902b-124106713ffc">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$P{REPORT_CONNECTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CASSETTA">
+					<subreportParameterExpression><![CDATA[$P{CASSETTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A_CONFORME">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A_CONFORME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_A1_CONFORME">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_A1_CONFORME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAMPIONE_B_PASSANTE_100">
+					<subreportParameterExpression><![CDATA[$P{CAMPIONE_B_PASSANTE_100}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["certificato_annotazioni.jasper"]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+	</detail>
+</jasperReport>

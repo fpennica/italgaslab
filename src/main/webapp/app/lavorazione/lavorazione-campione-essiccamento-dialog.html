@@ -1,0 +1,112 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel">Pesatura campione {{vm.campione.codiceCampione}}</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.essiccamentoNumTeglia" for="field_essiccamentoNumTeglia">Essiccamento Num Teglia</label>
+                    <input type="text" class="form-control" name="essiccamentoNumTeglia" id="field_essiccamentoNumTeglia"
+                            ng-model="vm.campione.essiccamentoNumTeglia"
+                             />
+                </div> -->
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoTeglia" for="field_essiccamentoPesoTeglia">Essiccamento Peso Teglia</label>
+                    <input type="number" class="form-control" name="essiccamentoPesoTeglia" id="field_essiccamentoPesoTeglia"
+                            ng-model="vm.campione.essiccamentoPesoTeglia"
+                             />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" for="field_essiccamentoPesoTegliaSelect">Teglie registrate</label>
+                    <select class="form-control" name="essiccamentoPesoTeglia" ng-model="teglia"
+                        ng-options="teglia.peso as teglia.id + ': ' + teglia.peso + ' g' for teglia in vm.teglie" id="field_essiccamentoPesoTegliaSelect" ng-change="vm.onPesoTegliaChange(teglia)"
+                        uib-tooltip="Inserisci il peso della teglia selezionando una teglia registrata">
+                        <option value=""></option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoCampioneLordoIniziale" for="field_essiccamentoPesoCampioneLordoIniziale">Essiccamento Peso Campione Lordo Iniziale</label>
+                    <input type="number" class="form-control" name="essiccamentoPesoCampioneLordoIniziale" id="field_essiccamentoPesoCampioneLordoIniziale"
+                            ng-model="vm.campione.essiccamentoPesoCampioneLordoIniziale"
+                             />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Peso Campione Netto Iniziale [g]</label>
+                    <p class="form-control-static">{{vm.campione.essiccamentoPesoCampioneLordoIniziale - vm.campione.essiccamentoPesoTeglia | number:2}}</p>
+                    <!-- <input disabled type="number" class="form-control" id="field_essiccamentoPesoCampioneNettoIniziale"
+                            value="{{vm.campione.essiccamentoPesoCampioneLordoIniziale - vm.campione.essiccamentoPesoTeglia}}"
+                             /> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo24H" for="field_essiccamentoPesoCampioneLordo24H">Essiccamento Peso Campione Lordo 24 H</label>
+                    <input type="number" class="form-control" name="essiccamentoPesoCampioneLordo24H" id="field_essiccamentoPesoCampioneLordo24H"
+                            ng-model="vm.campione.essiccamentoPesoCampioneLordo24H"
+                             />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo48H" for="field_essiccamentoPesoCampioneLordo48H">Essiccamento Peso Campione Lordo 48 H</label>
+                    <input type="number" class="form-control" name="essiccamentoPesoCampioneLordo48H" id="field_essiccamentoPesoCampioneLordo48H"
+                            ng-model="vm.campione.essiccamentoPesoCampioneLordo48H"
+                             />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+
+                <div class="form-group">
+                    <label class="control-label">Peso Campione Netto 24h [g]</label>
+                    <p class="form-control-static">{{vm.campione.essiccamentoPesoCampioneLordo24H - vm.campione.essiccamentoPesoTeglia  | number:2}}</p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Peso Campione Netto 48h [g]</label>
+                    <p class="form-control-static">{{vm.campione.essiccamentoPesoCampioneLordo48H - vm.campione.essiccamentoPesoTeglia  | number:2}}</p>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+
+                <div class="form-group">
+                    <label class="control-label">&Delta; 24h [g]</label>
+                    <p class="form-control-static">{{vm.campione.essiccamentoPesoCampioneLordo24H - vm.campione.essiccamentoPesoCampioneLordoIniziale  | absoluteValue | number:2}}</p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">&Delta; 48h [g]</label>
+                    <p class="form-control-static">{{vm.campione.essiccamentoPesoCampioneLordo48H - vm.campione.essiccamentoPesoCampioneLordo24H  | absoluteValue | number:2}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

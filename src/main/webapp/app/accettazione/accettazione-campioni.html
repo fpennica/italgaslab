@@ -1,0 +1,106 @@
+<div>
+    <p class="lead">Inserisci i dati dei campioni relativi alla cassetta <a ui-sref="cassetta-detail({id:vm.cassetta.id})">{{vm.cassetta.codiceCassetta}}</a> precedentemente selezionata.</p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> In lista sono visualizzati i campioni già inseriti per la cassetta selezionata.</p>
+	<p><span class="glyphicon glyphicon-info-sign"></span> Ulteriori dati possono essere inseriti successivamente tramite le procedure di lavorazione.</p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> E' possibile passare direttamente alla lavorazione dei campioni inseriti:</p>
+    <div class="text-center">
+        <a class="btn btn-success" ui-sref="lavorazione.campione({idCassetta:vm.cassetta.id})" >
+            Lavorazione
+        </a>
+    </div>
+
+	<hr>
+
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="accettazione.campione.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="italgaslabApp.campione.home.createLabel">
+                        Create new Campione
+                    </span>
+                </button>
+            </div>
+            <!--
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'italgaslabApp.campione.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            -->
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <!-- <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="codiceCampione"><span translate="italgaslabApp.campione.codiceCampione">CodiceCampione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="siglaCampione"><span translate="italgaslabApp.campione.siglaCampione">Sigla Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tipoCampione"><span translate="italgaslabApp.campione.tipoCampione">TipoCampione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="descrizioneCampione"><span translate="italgaslabApp.campione.descrizioneCampione">DescrizioneCampione</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <!-- <th jh-sort-by="fotoSacchetto"><span translate="italgaslabApp.campione.fotoSacchetto">FotoSacchetto</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="campione in vm.campiones track by campione.id">
+                    <!-- <td><a ui-sref="campione-detail({id:campione.id})">{{campione.id}}</a></td> -->
+                    <td><a ui-sref="campione-detail({id:campione.id})">{{campione.codiceCampione}}</a></td>
+                    <td>{{campione.siglaCampione}}</td>
+                    <td translate="{{'italgaslabApp.TipoCampione.' + campione.tipoCampione}}">{{campione.tipoCampione}}</td>
+                    <!-- <td>{{campione.descrizioneCampione}}</td> -->
+                    <!-- <td>
+                        <img data-ng-src="{{'data:' + campione.fotoSacchettoContentType + ';base64,' + campione.fotoSacchetto}}" style="max-height: 30px;" ng-if="campione.fotoSacchetto"/> {{campione.fotoSacchettoContentType}} {{byteSize(campione.fotoSacchetto)}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="campione-detail({id:campione.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <!-- <span class="hidden-xs hidden-sm" translate="entity.action.view"></span> -->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="accettazione.campione.edit({id:campione.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <!-- <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span> -->
+                            </button>
+                            <button type="submit"
+                                    ui-sref="accettazione.campione.delete({id:campione.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <!-- <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span> -->
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+
+    <hr>
+
+    <a class="btn btn-info" ui-sref="accettazione.cassetta({idConsegna:vm.consegna.id})">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </a>
+</div>

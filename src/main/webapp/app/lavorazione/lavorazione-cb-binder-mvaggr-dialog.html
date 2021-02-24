@@ -1,0 +1,279 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel">Binder - Massa Volumica dei granuli dell'aggregato</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <p>Taratura picnometri</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>M<sub>0</sub> (g)</th>
+                    <th>M<sub>Pic+w</sub> (g)</th>
+                    <th>M<sub>w</sub> (g)</th>
+                    <th>T<sub>1</sub> (°C)</th>
+                    <th>&rho;<sub>w</sub> (kg/m<sup>3</sup>)</th>
+                    <th>V<sub>pic</sub> (m<sup>3</sup>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" rowspan="2">Provino1</th>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM0pic1p1" id="field_cbbMvaM0pic1p1"
+                                ng-model="vm.campione.cbbMvaM0pic1p1"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpwpic1p1" id="field_cbbMvaMpwpic1p1"
+                                ng-model="vm.campione.cbbMvaMpwpic1p1"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpwpic1p1 - vm.campione.cbbMvaM0pic1p1 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT1pic1p1" id="field_cbbMvaT1pic1p1"
+                                ng-model="vm.campione.cbbMvaT1pic1p1"
+                                 />
+                    </div></td>
+                    <td>{{ rw1 = -0.00532 * vm.campione.cbbMvaT1pic1p1 * vm.campione.cbbMvaT1pic1p1 + 0.00759 * vm.campione.cbbMvaT1pic1p1 + 1000.25205; rw1 | number: 2 }}</td>
+                    <td>{{ vpic1 = ((vm.campione.cbbMvaMpwpic1p1 - vm.campione.cbbMvaM0pic1p1) / 1000) / rw1; vpic1 | number: 6 }}</td>
+                </tr>
+                <tr>
+
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM0pic2p1" id="field_cbbMvaM0pic2p1"
+                                ng-model="vm.campione.cbbMvaM0pic2p1"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpwpic2p1" id="field_cbbMvaMpwpic2p1"
+                                ng-model="vm.campione.cbbMvaMpwpic2p1"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpwpic2p1 - vm.campione.cbbMvaM0pic2p1 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT1pic2p1" id="field_cbbMvaT1pic2p1"
+                                ng-model="vm.campione.cbbMvaT1pic2p1"
+                                 />
+                    </div></td>
+                    <td>{{ rw2 = -0.00532 * vm.campione.cbbMvaT1pic2p1 * vm.campione.cbbMvaT1pic2p1 + 0.00759 * vm.campione.cbbMvaT1pic2p1 + 1000.25205; rw2 | number: 2 }}</td>
+                    <td>{{ vpic2 = ((vm.campione.cbbMvaMpwpic2p1 - vm.campione.cbbMvaM0pic2p1) / 1000) / rw2; vpic2 | number: 6 }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>M<sub>0</sub> (g)</th>
+                    <th>M<sub>Pic+Agg</sub> (g)</th>
+                    <th>M<sub>1</sub> (g)</th>
+                    <th>M<sub>2</sub> (g)</th>
+                    <th>V<sub>pic</sub> (cm<sup>3</sup>)</th>
+                    <th>T<sub>2</sub> (°C)</th>
+                    <th>&rho;<sub>w</sub> (g/cm<sup>3</sup>)</th>
+                    <th>&rho;<sub>agg</sub> (g/cm<sup>3</sup>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" rowspan="2">Provino1</th>
+                    <td>{{vm.campione.cbbMvaM0pic1p1}}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpapic1p1" id="field_cbbMvaMpapic1p1"
+                                ng-model="vm.campione.cbbMvaMpapic1p1"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpapic1p1 - vm.campione.cbbMvaM0pic1p1 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM2pic1p1" id="field_cbbMvaM2pic1p1"
+                                ng-model="vm.campione.cbbMvaM2pic1p1"
+                                 />
+                    </div></td>
+                    <td>{{ vpic1 * 1000000 | number: 2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT2pic1p1" id="field_cbbMvaT2pic1p1"
+                                ng-model="vm.campione.cbbMvaT2pic1p1"
+                                 />
+                    </div></td>
+                    <td>{{ rw3 = (-0.00532 * vm.campione.cbbMvaT2pic1p1 * vm.campione.cbbMvaT2pic1p1 + 0.00759 * vm.campione.cbbMvaT2pic1p1 + 1000.25205)/1000; rw3 | number: 3 }}</td>
+                    <td>{{ raggr1 = (vm.campione.cbbMvaMpapic1p1 - vm.campione.cbbMvaM0pic1p1) / ((vpic1 * 1000000) - (vm.campione.cbbMvaM2pic1p1 - (vm.campione.cbbMvaMpapic1p1 - vm.campione.cbbMvaM0pic1p1) - vm.campione.cbbMvaM0pic1p1) / rw3) ; raggr1 | number: 3 }}</td>
+                </tr>
+                <tr>
+
+                    <td>{{vm.campione.cbbMvaM0pic2p1}}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpapic2p1" id="field_cbbMvaMpapic2p1"
+                                ng-model="vm.campione.cbbMvaMpapic2p1"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpapic2p1 - vm.campione.cbbMvaM0pic2p1 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM2pic2p1" id="field_cbbMvaM2pic2p1"
+                                ng-model="vm.campione.cbbMvaM2pic2p1"
+                                 />
+                    </div></td>
+                    <td>{{ vpic2 * 1000000 | number: 2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT2pic2p1" id="field_cbbMvaT2pic2p1"
+                                ng-model="vm.campione.cbbMvaT2pic2p1"
+                                 />
+                    </div></td>
+                    <td>{{ rw4 = (-0.00532 * vm.campione.cbbMvaT2pic2p1 * vm.campione.cbbMvaT2pic2p1 + 0.00759 * vm.campione.cbbMvaT2pic2p1 + 1000.25205)/1000; rw4 | number: 3 }}</td>
+                    <td>{{ raggr2 = (vm.campione.cbbMvaMpapic2p1 - vm.campione.cbbMvaM0pic2p1) / ((vpic2 * 1000000) - (vm.campione.cbbMvaM2pic2p1 - (vm.campione.cbbMvaMpapic2p1 - vm.campione.cbbMvaM0pic2p1) - vm.campione.cbbMvaM0pic2p1) / rw4) ; raggr2 | number: 3 }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Taratura picnometri</p>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>M<sub>0</sub> (g)</th>
+                    <th>M<sub>Pic+w</sub> (g)</th>
+                    <th>M<sub>w</sub> (g)</th>
+                    <th>T<sub>1</sub> (°C)</th>
+                    <th>&rho;<sub>w</sub> (kg/m<sup>3</sup>)</th>
+                    <th>V<sub>pic</sub> (m<sup>3</sup>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" rowspan="2">Provino2</th>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM0pic1p2" id="field_cbbMvaM0pic1p2"
+                                ng-model="vm.campione.cbbMvaM0pic1p2"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpwpic1p2" id="field_cbbMvaMpwpic1p2"
+                                ng-model="vm.campione.cbbMvaMpwpic1p2"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpwpic1p2 - vm.campione.cbbMvaM0pic1p2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT1pic1p2" id="field_cbbMvaT1pic1p2"
+                                ng-model="vm.campione.cbbMvaT1pic1p2"
+                                 />
+                    </div></td>
+                    <td>{{ rw1p2 = -0.00532 * vm.campione.cbbMvaT1pic1p2 * vm.campione.cbbMvaT1pic1p2 + 0.00759 * vm.campione.cbbMvaT1pic1p2 + 1000.25205; rw1p2 | number: 2 }}</td>
+                    <td>{{ vpic1p2 = ((vm.campione.cbbMvaMpwpic1p2 - vm.campione.cbbMvaM0pic1p2) / 1000) / rw1p2; vpic1p2 | number: 6 }}</td>
+                </tr>
+                <tr>
+
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM0pic2p2" id="field_cbbMvaM0pic2p2"
+                                ng-model="vm.campione.cbbMvaM0pic2p2"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpwpic2p2" id="field_cbbMvaMpwpic2p2"
+                                ng-model="vm.campione.cbbMvaMpwpic2p2"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpwpic2p2 - vm.campione.cbbMvaM0pic2p2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT1pic2p2" id="field_cbbMvaT1pic2p2"
+                                ng-model="vm.campione.cbbMvaT1pic2p2"
+                                 />
+                    </div></td>
+                    <td>{{ rw2p2 = -0.00532 * vm.campione.cbbMvaT1pic2p2 * vm.campione.cbbMvaT1pic2p2 + 0.00759 * vm.campione.cbbMvaT1pic2p2 + 1000.25205; rw2p2 | number: 2 }}</td>
+                    <td>{{ vpic2p2 = ((vm.campione.cbbMvaMpwpic2p2 - vm.campione.cbbMvaM0pic2p2) / 1000) / rw2p2; vpic2p2 | number: 6 }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>M<sub>0</sub> (g)</th>
+                    <th>M<sub>Pic+Agg</sub> (g)</th>
+                    <th>M<sub>1</sub> (g)</th>
+                    <th>M<sub>2</sub> (g)</th>
+                    <th>V<sub>pic</sub> (cm<sup>3</sup>)</th>
+                    <th>T<sub>2</sub> (°C)</th>
+                    <th>&rho;<sub>w</sub> (g/cm<sup>3</sup>)</th>
+                    <th>&rho;<sub>agg</sub> (g/cm<sup>3</sup>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" rowspan="2">Provino2</th>
+                    <td>{{vm.campione.cbbMvaM0pic1p2}}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpapic1p2" id="field_cbbMvaMpapic1p2"
+                                ng-model="vm.campione.cbbMvaMpapic1p2"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpapic1p2 - vm.campione.cbbMvaM0pic1p2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM2pic1p2" id="field_cbbMvaM2pic1p2"
+                                ng-model="vm.campione.cbbMvaM2pic1p2"
+                                 />
+                    </div></td>
+                    <td>{{ vpic1p2 * 1000000 | number: 2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT2pic1p2" id="field_cbbMvaT2pic1p2"
+                                ng-model="vm.campione.cbbMvaT2pic1p2"
+                                 />
+                    </div></td>
+                    <td>{{ rw3p2 = (-0.00532 * vm.campione.cbbMvaT2pic1p2 * vm.campione.cbbMvaT2pic1p2 + 0.00759 * vm.campione.cbbMvaT2pic1p2 + 1000.25205)/1000; rw3p2 | number: 3 }}</td>
+                    <td>{{ raggr1p2 = (vm.campione.cbbMvaMpapic1p2 - vm.campione.cbbMvaM0pic1p2) / ((vpic1p2 * 1000000) - (vm.campione.cbbMvaM2pic1p2 - (vm.campione.cbbMvaMpapic1p2 - vm.campione.cbbMvaM0pic1p2) - vm.campione.cbbMvaM0pic1p2) / rw3p2) ; raggr1p2 | number: 3 }}</td>
+                </tr>
+                <tr>
+
+                    <td>{{vm.campione.cbbMvaM0pic2p2}}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaMpapic2p2" id="field_cbbMvaMpapic2p2"
+                                ng-model="vm.campione.cbbMvaMpapic2p2"
+                                 />
+                    </div></td>
+                    <td>{{ vm.campione.cbbMvaMpapic2p2 - vm.campione.cbbMvaM0pic2p2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaM2pic2p2" id="field_cbbMvaM2pic2p2"
+                                ng-model="vm.campione.cbbMvaM2pic2p2"
+                                 />
+                    </div></td>
+                    <td>{{ vpic2p2 * 1000000 | number: 2 }}</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbMvaT2pic2p2" id="field_cbbMvaT2pic2p2"
+                                ng-model="vm.campione.cbbMvaT2pic2p2"
+                                 />
+                    </div></td>
+                    <td>{{ rw4p2 = (-0.00532 * vm.campione.cbbMvaT2pic2p2 * vm.campione.cbbMvaT2pic2p2 + 0.00759 * vm.campione.cbbMvaT2pic2p2 + 1000.25205)/1000; rw4p2 | number: 3 }}</td>
+                    <td>{{ raggr2p2 = (vm.campione.cbbMvaMpapic2p2 - vm.campione.cbbMvaM0pic2p2) / ((vpic2p2 * 1000000) - (vm.campione.cbbMvaM2pic2p2 - (vm.campione.cbbMvaMpapic2p2 - vm.campione.cbbMvaM0pic2p2) - vm.campione.cbbMvaM0pic2p2) / rw4p2) ; raggr2p2 | number: 3 }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <p>Media &rho;<sub>agg</sub> P1: {{ raggr2 ? medraggr = (raggr1+raggr2)/2 : medraggr = raggr1; medraggr | number: 3}}</p>
+            <p>Media &rho;<sub>agg</sub> P2: {{ raggr2p2 ? medraggrp2 = (raggr1p2+raggr2p2)/2 : medraggrp2 = raggr1p2; medraggrp2 | number: 3}}</p>
+            <p>Media &rho;<sub>agg</sub>: {{ medraggrp2 ? medraggrp1p2 = (medraggr + medraggrp2) / 2 : medraggrp1p2 = medraggr;  medraggrp1p2 | number: 3}}</p>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,119 @@
+<div>
+    <h2 translate="italgaslabApp.pesata.home.title">Pesatas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="pesata.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="italgaslabApp.pesata.home.createLabel">
+                        Create new Pesata
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'italgaslabApp.pesata.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numPesata"><span translate="italgaslabApp.pesata.numPesata">Num Pesata</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pesoNetto"><span translate="italgaslabApp.pesata.pesoNetto">Peso Netto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt125Mm"><span translate="italgaslabApp.pesata.tratt125Mm">Tratt 125 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt63Mm"><span translate="italgaslabApp.pesata.tratt63Mm">Tratt 63 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt31V5Mm"><span translate="italgaslabApp.pesata.tratt31V5Mm">Tratt 31 V 5 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt16Mm"><span translate="italgaslabApp.pesata.tratt16Mm">Tratt 16 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt8Mm"><span translate="italgaslabApp.pesata.tratt8Mm">Tratt 8 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt6V3Mm"><span translate="italgaslabApp.pesata.tratt6V3Mm">Tratt 6 V 3 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt4Mm"><span translate="italgaslabApp.pesata.tratt4Mm">Tratt 4 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt2Mm"><span translate="italgaslabApp.pesata.tratt2Mm">Tratt 2 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt1Mm"><span translate="italgaslabApp.pesata.tratt1Mm">Tratt 1 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt0V5Mm"><span translate="italgaslabApp.pesata.tratt0V5Mm">Tratt 0 V 5 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt0V25Mm"><span translate="italgaslabApp.pesata.tratt0V25Mm">Tratt 0 V 25 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt0V125Mm"><span translate="italgaslabApp.pesata.tratt0V125Mm">Tratt 0 V 125 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tratt0V075Mm"><span translate="italgaslabApp.pesata.tratt0V075Mm">Tratt 0 V 075 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trattB100Mm"><span translate="italgaslabApp.pesata.trattB100Mm">Tratt B 100 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trattB6V3Mm"><span translate="italgaslabApp.pesata.trattB6V3Mm">Tratt B 6 V 3 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trattB2Mm"><span translate="italgaslabApp.pesata.trattB2Mm">Tratt B 2 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trattB0V5Mm"><span translate="italgaslabApp.pesata.trattB0V5Mm">Tratt B 0 V 5 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fondo"><span translate="italgaslabApp.pesata.fondo">Fondo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="campione.codiceCampione"><span translate="italgaslabApp.pesata.campione">Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pesata in vm.pesatas track by pesata.id">
+                    <td><a ui-sref="pesata-detail({id:pesata.id})">{{pesata.id}}</a></td>
+                    <td>{{pesata.numPesata}}</td>
+                    <td>{{pesata.pesoNetto}}</td>
+                    <td>{{pesata.tratt125Mm}}</td>
+                    <td>{{pesata.tratt63Mm}}</td>
+                    <td>{{pesata.tratt31V5Mm}}</td>
+                    <td>{{pesata.tratt16Mm}}</td>
+                    <td>{{pesata.tratt8Mm}}</td>
+                    <td>{{pesata.tratt6V3Mm}}</td>
+                    <td>{{pesata.tratt4Mm}}</td>
+                    <td>{{pesata.tratt2Mm}}</td>
+                    <td>{{pesata.tratt1Mm}}</td>
+                    <td>{{pesata.tratt0V5Mm}}</td>
+                    <td>{{pesata.tratt0V25Mm}}</td>
+                    <td>{{pesata.tratt0V125Mm}}</td>
+                    <td>{{pesata.tratt0V075Mm}}</td>
+                    <td>{{pesata.trattB100Mm}}</td>
+                    <td>{{pesata.trattB6V3Mm}}</td>
+                    <td>{{pesata.trattB2Mm}}</td>
+                    <td>{{pesata.trattB0V5Mm}}</td>
+                    <td>{{pesata.fondo}}</td>
+                    <td>
+                        <a ui-sref="campione-detail({id:pesata.campione.id})">{{pesata.campione.codiceCampione}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="pesata-detail({id:pesata.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pesata.edit({id:pesata.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pesata.delete({id:pesata.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

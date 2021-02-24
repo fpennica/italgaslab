@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span translate="italgaslabApp.laboratorio.detail.title">Laboratorio</span> {{vm.laboratorio.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="italgaslabApp.laboratorio.nome">Nome</span></dt>
+        <dd>
+            <span>{{vm.laboratorio.nome}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.laboratorio.istituto">Istituto</span></dt>
+        <dd>
+            <span>{{vm.laboratorio.istituto}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.laboratorio.responsabile">Responsabile</span></dt>
+        <dd>
+            <span>{{vm.laboratorio.responsabile}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.laboratorio.indirizzo">Indirizzo</span></dt>
+        <dd>
+            <span>{{vm.laboratorio.indirizzo}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.laboratorio.logo">Logo</span></dt>
+        <dd>
+            <div ng-if="vm.laboratorio.logo">
+                <a ng-click="vm.openFile(vm.laboratorio.logoContentType, vm.laboratorio.logo)">
+                    <img data-ng-src="{{'data:' + vm.laboratorio.logoContentType + ';base64,' + vm.laboratorio.logo}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.laboratorio.logoContentType}}, {{vm.byteSize(vm.laboratorio.logo)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

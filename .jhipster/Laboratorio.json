@@ -1,0 +1,42 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "istituto",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "responsabile",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "indirizzo",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "changelogDate": "20160701090018",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "laboratorio"
+}

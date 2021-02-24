@@ -1,0 +1,242 @@
+<div>
+    <h2 translate="italgaslabApp.campione.home.title">Campiones</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="campione.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="italgaslabApp.campione.home.createLabel">
+                        Create new Campione
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'italgaslabApp.campione.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="codiceCampione"><span translate="italgaslabApp.campione.codiceCampione">Codice Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="siglaCampione"><span translate="italgaslabApp.campione.siglaCampione">Sigla Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tipoCampione"><span translate="italgaslabApp.campione.tipoCampione">Tipo Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descrizioneCampione"><span translate="italgaslabApp.campione.descrizioneCampione">Descrizione Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fotoSacchetto"><span translate="italgaslabApp.campione.fotoSacchetto">Foto Sacchetto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fotoCampione"><span translate="italgaslabApp.campione.fotoCampione">Foto Campione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dataAnalisi"><span translate="italgaslabApp.campione.dataAnalisi">Data Analisi</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ripartizioneQuartatura"><span translate="italgaslabApp.campione.ripartizioneQuartatura">Ripartizione Quartatura</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="essiccamento"><span translate="italgaslabApp.campione.essiccamento">Essiccamento</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="setacciaturaSecco"><span translate="italgaslabApp.campione.setacciaturaSecco">Setacciatura Secco</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lavaggioSetacciatura"><span translate="italgaslabApp.campione.lavaggioSetacciatura">Lavaggio Setacciatura</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="essiccamentoNumTeglia"><span translate="italgaslabApp.campione.essiccamentoNumTeglia">Essiccamento Num Teglia</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="essiccamentoPesoTeglia"><span translate="italgaslabApp.campione.essiccamentoPesoTeglia">Essiccamento Peso Teglia</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="essiccamentoPesoCampioneLordoIniziale"><span translate="italgaslabApp.campione.essiccamentoPesoCampioneLordoIniziale">Essiccamento Peso Campione Lordo Iniziale</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="essiccamentoPesoCampioneLordo24H"><span translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo24H">Essiccamento Peso Campione Lordo 24 H</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="essiccamentoPesoCampioneLordo48H"><span translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo48H">Essiccamento Peso Campione Lordo 48 H</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sabbia"><span translate="italgaslabApp.campione.sabbia">Sabbia</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ghiaia"><span translate="italgaslabApp.campione.ghiaia">Ghiaia</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="materialeRisultaVagliato"><span translate="italgaslabApp.campione.materialeRisultaVagliato">Materiale Risulta Vagliato</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="detriti"><span translate="italgaslabApp.campione.detriti">Detriti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="materialeFine"><span translate="italgaslabApp.campione.materialeFine">Materiale Fine</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="materialeOrganico"><span translate="italgaslabApp.campione.materialeOrganico">Materiale Organico</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="elementiMagg125Mm"><span translate="italgaslabApp.campione.elementiMagg125Mm">Elementi Magg 125 Mm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="detritiConglomerato"><span translate="italgaslabApp.campione.detritiConglomerato">Detriti Conglomerato</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="argilla"><span translate="italgaslabApp.campione.argilla">Argilla</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="argillaMatAlterabile"><span translate="italgaslabApp.campione.argillaMatAlterabile">Argilla Mat Alterabile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="granuliCementati"><span translate="italgaslabApp.campione.granuliCementati">Granuli Cementati</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="elementiArrotondati"><span translate="italgaslabApp.campione.elementiArrotondati">Elementi Arrotondati</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="elementiSpigolosi"><span translate="italgaslabApp.campione.elementiSpigolosi">Elementi Spigolosi</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sfabbricidi"><span translate="italgaslabApp.campione.sfabbricidi">Sfabbricidi</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tipoBConforme"><span translate="italgaslabApp.campione.tipoBConforme">Tipo B Conforme</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbSpessoreTappetino"><span translate="italgaslabApp.campione.cbSpessoreTappetino">Cb Spessore Tappetino</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbMassaFiller"><span translate="italgaslabApp.campione.cbMassaFiller">Cb Massa Filler</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbMassaMaterialeEstratto"><span translate="italgaslabApp.campione.cbMassaMaterialeEstratto">Cb Massa Materiale Estratto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbMassaInterti"><span translate="italgaslabApp.campione.cbMassaInterti">Cb Massa Interti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbMassaMiscela"><span translate="italgaslabApp.campione.cbMassaMiscela">Cb Massa Miscela</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbMassaBitume"><span translate="italgaslabApp.campione.cbMassaBitume">Cb Massa Bitume</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbPercBitumeRispInterti"><span translate="italgaslabApp.campione.cbPercBitumeRispInterti">Cb Perc Bitume Risp Interti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbPercBitumeRispMiscela"><span translate="italgaslabApp.campione.cbPercBitumeRispMiscela">Cb Perc Bitume Risp Miscela</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProcDetMassaVol"><span translate="italgaslabApp.campione.cbProcDetMassaVol">Cb Proc Det Massa Vol</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaSecca"><span translate="italgaslabApp.campione.cbProv1MassaSecca">Cb Prov 1 Massa Secca</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1LegantePerc"><span translate="italgaslabApp.campione.cbProv1LegantePerc">Cb Prov 1 Legante Perc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaVolLegante"><span translate="italgaslabApp.campione.cbProv1MassaVolLegante">Cb Prov 1 Massa Vol Legante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaInertiPerc"><span translate="italgaslabApp.campione.cbProv1MassaInertiPerc">Cb Prov 1 Massa Inerti Perc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaVolInerti"><span translate="italgaslabApp.campione.cbProv1MassaVolInerti">Cb Prov 1 Massa Vol Inerti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaVolParaffina"><span translate="italgaslabApp.campione.cbProv1MassaVolParaffina">Cb Prov 1 Massa Vol Paraffina</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaVolMax"><span translate="italgaslabApp.campione.cbProv1MassaVolMax">Cb Prov 1 Massa Vol Max</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1MassaVolBulk"><span translate="italgaslabApp.campione.cbProv1MassaVolBulk">Cb Prov 1 Massa Vol Bulk</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv1PercVuoti"><span translate="italgaslabApp.campione.cbProv1PercVuoti">Cb Prov 1 Perc Vuoti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaSecca"><span translate="italgaslabApp.campione.cbProv2MassaSecca">Cb Prov 2 Massa Secca</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2LegantePerc"><span translate="italgaslabApp.campione.cbProv2LegantePerc">Cb Prov 2 Legante Perc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaVolLegante"><span translate="italgaslabApp.campione.cbProv2MassaVolLegante">Cb Prov 2 Massa Vol Legante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaInertiPerc"><span translate="italgaslabApp.campione.cbProv2MassaInertiPerc">Cb Prov 2 Massa Inerti Perc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaVolInerti"><span translate="italgaslabApp.campione.cbProv2MassaVolInerti">Cb Prov 2 Massa Vol Inerti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaVolParaffina"><span translate="italgaslabApp.campione.cbProv2MassaVolParaffina">Cb Prov 2 Massa Vol Paraffina</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaVolMax"><span translate="italgaslabApp.campione.cbProv2MassaVolMax">Cb Prov 2 Massa Vol Max</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2MassaVolBulk"><span translate="italgaslabApp.campione.cbProv2MassaVolBulk">Cb Prov 2 Massa Vol Bulk</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv2PercVuoti"><span translate="italgaslabApp.campione.cbProv2PercVuoti">Cb Prov 2 Perc Vuoti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaSecca"><span translate="italgaslabApp.campione.cbProv3MassaSecca">Cb Prov 3 Massa Secca</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3LegantePerc"><span translate="italgaslabApp.campione.cbProv3LegantePerc">Cb Prov 3 Legante Perc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaVolLegante"><span translate="italgaslabApp.campione.cbProv3MassaVolLegante">Cb Prov 3 Massa Vol Legante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaInertiPerc"><span translate="italgaslabApp.campione.cbProv3MassaInertiPerc">Cb Prov 3 Massa Inerti Perc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaVolInerti"><span translate="italgaslabApp.campione.cbProv3MassaVolInerti">Cb Prov 3 Massa Vol Inerti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaVolParaffina"><span translate="italgaslabApp.campione.cbProv3MassaVolParaffina">Cb Prov 3 Massa Vol Paraffina</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaVolMax"><span translate="italgaslabApp.campione.cbProv3MassaVolMax">Cb Prov 3 Massa Vol Max</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3MassaVolBulk"><span translate="italgaslabApp.campione.cbProv3MassaVolBulk">Cb Prov 3 Massa Vol Bulk</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbProv3PercVuoti"><span translate="italgaslabApp.campione.cbProv3PercVuoti">Cb Prov 3 Perc Vuoti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cbPercMediaVuoti"><span translate="italgaslabApp.campione.cbPercMediaVuoti">Cb Perc Media Vuoti</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="curva"><span translate="italgaslabApp.campione.curva">Curva</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="classificazioneGeotecnica"><span translate="italgaslabApp.campione.classificazioneGeotecnica">Classificazione Geotecnica</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="note"><span translate="italgaslabApp.campione.note">Note</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lavorazioneConclusa"><span translate="italgaslabApp.campione.lavorazioneConclusa">Lavorazione Conclusa</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cassetta.codiceCassetta"><span translate="italgaslabApp.campione.cassetta">Cassetta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operatoreAnalisi.login"><span translate="italgaslabApp.campione.operatoreAnalisi">Operatore Analisi</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="campione in vm.campiones track by campione.id">
+                    <td><a ui-sref="campione-detail({id:campione.id})">{{campione.id}}</a></td>
+                    <td>{{campione.codiceCampione}}</td>
+                    <td>{{campione.siglaCampione}}</td>
+                    <td translate="{{'italgaslabApp.TipoCampione.' + campione.tipoCampione}}">{{campione.tipoCampione}}</td>
+                    <td>{{campione.descrizioneCampione}}</td>
+                    <td>
+                        <a ng-if="campione.fotoSacchetto" ng-click="vm.openFile(campione.fotoSacchettoContentType, campione.fotoSacchetto)">
+                            <img data-ng-src="{{'data:' + campione.fotoSacchettoContentType + ';base64,' + campione.fotoSacchetto}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="campione.fotoSacchetto">{{campione.fotoSacchettoContentType}}, {{vm.byteSize(campione.fotoSacchetto)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="campione.fotoCampione" ng-click="vm.openFile(campione.fotoCampioneContentType, campione.fotoCampione)">
+                            <img data-ng-src="{{'data:' + campione.fotoCampioneContentType + ';base64,' + campione.fotoCampione}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="campione.fotoCampione">{{campione.fotoCampioneContentType}}, {{vm.byteSize(campione.fotoCampione)}}</span>
+                    </td>
+                        <td>{{campione.dataAnalisi | date:'mediumDate'}}</td>
+                    <td>{{campione.ripartizioneQuartatura}}</td>
+                    <td>{{campione.essiccamento}}</td>
+                    <td>{{campione.setacciaturaSecco}}</td>
+                    <td>{{campione.lavaggioSetacciatura}}</td>
+                    <td>{{campione.essiccamentoNumTeglia}}</td>
+                    <td>{{campione.essiccamentoPesoTeglia}}</td>
+                    <td>{{campione.essiccamentoPesoCampioneLordoIniziale}}</td>
+                    <td>{{campione.essiccamentoPesoCampioneLordo24H}}</td>
+                    <td>{{campione.essiccamentoPesoCampioneLordo48H}}</td>
+                    <td>{{campione.sabbia}}</td>
+                    <td>{{campione.ghiaia}}</td>
+                    <td>{{campione.materialeRisultaVagliato}}</td>
+                    <td>{{campione.detriti}}</td>
+                    <td>{{campione.materialeFine}}</td>
+                    <td>{{campione.materialeOrganico}}</td>
+                    <td>{{campione.elementiMagg125Mm}}</td>
+                    <td>{{campione.detritiConglomerato}}</td>
+                    <td>{{campione.argilla}}</td>
+                    <td>{{campione.argillaMatAlterabile}}</td>
+                    <td>{{campione.granuliCementati}}</td>
+                    <td>{{campione.elementiArrotondati}}</td>
+                    <td>{{campione.elementiSpigolosi}}</td>
+                    <td>{{campione.sfabbricidi}}</td>
+                    <td>{{campione.tipoBConforme}}</td>
+                    <td>{{campione.cbSpessoreTappetino}}</td>
+                    <td>{{campione.cbMassaFiller}}</td>
+                    <td>{{campione.cbMassaMaterialeEstratto}}</td>
+                    <td>{{campione.cbMassaInterti}}</td>
+                    <td>{{campione.cbMassaMiscela}}</td>
+                    <td>{{campione.cbMassaBitume}}</td>
+                    <td>{{campione.cbPercBitumeRispInterti}}</td>
+                    <td>{{campione.cbPercBitumeRispMiscela}}</td>
+                    <td translate="{{'italgaslabApp.ProceduraDetMassaVol.' + campione.cbProcDetMassaVol}}">{{campione.cbProcDetMassaVol}}</td>
+                    <td>{{campione.cbProv1MassaSecca}}</td>
+                    <td>{{campione.cbProv1LegantePerc}}</td>
+                    <td>{{campione.cbProv1MassaVolLegante}}</td>
+                    <td>{{campione.cbProv1MassaInertiPerc}}</td>
+                    <td>{{campione.cbProv1MassaVolInerti}}</td>
+                    <td>{{campione.cbProv1MassaVolParaffina}}</td>
+                    <td>{{campione.cbProv1MassaVolMax}}</td>
+                    <td>{{campione.cbProv1MassaVolBulk}}</td>
+                    <td>{{campione.cbProv1PercVuoti}}</td>
+                    <td>{{campione.cbProv2MassaSecca}}</td>
+                    <td>{{campione.cbProv2LegantePerc}}</td>
+                    <td>{{campione.cbProv2MassaVolLegante}}</td>
+                    <td>{{campione.cbProv2MassaInertiPerc}}</td>
+                    <td>{{campione.cbProv2MassaVolInerti}}</td>
+                    <td>{{campione.cbProv2MassaVolParaffina}}</td>
+                    <td>{{campione.cbProv2MassaVolMax}}</td>
+                    <td>{{campione.cbProv2MassaVolBulk}}</td>
+                    <td>{{campione.cbProv2PercVuoti}}</td>
+                    <td>{{campione.cbProv3MassaSecca}}</td>
+                    <td>{{campione.cbProv3LegantePerc}}</td>
+                    <td>{{campione.cbProv3MassaVolLegante}}</td>
+                    <td>{{campione.cbProv3MassaInertiPerc}}</td>
+                    <td>{{campione.cbProv3MassaVolInerti}}</td>
+                    <td>{{campione.cbProv3MassaVolParaffina}}</td>
+                    <td>{{campione.cbProv3MassaVolMax}}</td>
+                    <td>{{campione.cbProv3MassaVolBulk}}</td>
+                    <td>{{campione.cbProv3PercVuoti}}</td>
+                    <td>{{campione.cbPercMediaVuoti}}</td>
+                    <td>
+                        <a ng-if="campione.curva" ng-click="vm.openFile(campione.curvaContentType, campione.curva)">
+                            <img data-ng-src="{{'data:' + campione.curvaContentType + ';base64,' + campione.curva}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="campione.curva">{{campione.curvaContentType}}, {{vm.byteSize(campione.curva)}}</span>
+                    </td>
+                    <td>{{campione.classificazioneGeotecnica}}</td>
+                    <td>{{campione.note}}</td>
+                    <td>{{campione.lavorazioneConclusa}}</td>
+                    <td>
+                        <a ui-sref="cassetta-detail({id:campione.cassetta.id})">{{campione.cassetta.codiceCassetta}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="operatore-detail({id:campione.operatoreAnalisi.id})">{{campione.operatoreAnalisi.user.login}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="campione-detail({id:campione.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="campione.edit({id:campione.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="campione.delete({id:campione.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

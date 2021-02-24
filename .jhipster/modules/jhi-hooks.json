@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Elasticsearch Reindexer generator",
+        "npmPackageName": "generator-jhipster-elasticsearch-reindexer",
+        "description": "Generate a service for reindexing all database rows for each of your entities",
+        "hookFor": "entity",
+        "hookType": "post",
+        "generatorCallback": "jhipster-elasticsearch-reindexer:app"
+    },
+    {
+        "name": "Entity Audit generator",
+        "npmPackageName": "generator-jhipster-entity-audit",
+        "description": "Add support for entity audit and audit log page",
+        "hookFor": "entity",
+        "hookType": "post",
+        "generatorCallback": "jhipster-entity-audit:entity"
+    },
+    {
+        "name": "Basic Auth generator",
+        "npmPackageName": "generator-jhipster-basic-auth",
+        "description": "Adds stateless basic authentication support",
+        "hookFor": "entity",
+        "hookType": "post",
+        "generatorCallback": "jhipster-basic-auth:entity"
+    }
+]

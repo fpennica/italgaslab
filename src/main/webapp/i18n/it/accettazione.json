@@ -1,0 +1,10 @@
+{
+    "accettazione": {
+        "title": "Accettazione",
+        "subtitle": "Accettazione cassette",
+        "logged": {
+            "message": "Loggato come \"{{username}}\"."
+        },
+        "select": "Seleziona"
+    }
+}

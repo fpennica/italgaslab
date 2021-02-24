@@ -1,0 +1,65 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySetacciaturaLabel">Setacciatura campione {{vm.campione.codiceCampione}}</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div>
+            <button type="submit" class="btn btn-primary" ng-click="vm.addRow()">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span class="hidden-xs hidden-sm">Aggiungi pesata</span>
+            </button>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary" ng-click="vm.subtractSetacci()"
+                    uib-tooltip="Sottrae ad ogni pesata (se il valore è > di 0) il peso del setaccio corrispondente registrato nell'apposita sezione (menu Attività - Registrazione setacci).">
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <span class="hidden-xs hidden-sm">Sottrai peso setacci</span>
+                </button>
+                &nbsp;
+                <button type="submit" class="btn btn-primary" ng-click="vm.subtractCoperchio()"
+                    uib-tooltip="Sottrae ad ogni pesata (se il valore è > di 0) il peso del coperchio selezionato a destra.">
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <span class="hidden-xs hidden-sm">Sottrai peso coperchio</span>
+                </button>
+                <select ng-model="vm.coperchioSel"
+                    ng-options="coperchio.peso as coperchio.id + ': ' + coperchio.peso + ' g' for coperchio in vm.coperchi" ng-change="vm.onPesoCoperchioChange(coperchio)">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <div ng-if="vm.campione.tipoCampione=='B'">
+            <p><em>Per il campione <strong>B</strong>, vanno inseriti obbligatoriamente solo i valori di Peso Netto e Fondo e il trattenuto a 100 mm.
+            Se non sono state fatte ulteriori setacciature, lasciare gli altri valori a 0 ed inserire manualmente la classificazione geotecnica tramite la scheda "Dati Campione".</em></p>
+        </div>
+        <br/>
+
+        <div class="row">
+
+            <div ui-grid="vm.gridOptions" class="pesataGrid" ui-grid-resize-columns ui-grid-edit ui-grid-cellnav ui-grid-pinning ui-grid-row-edit ui-grid-selection ui-grid-validate></div>
+        </div>
+        <div class="text-right col-md-2 col-md-offset-10" uib-tooltip="La verifica è superata (simbolo verde) se la differenza tra il peso iniziale del campione e la somma delle diverse pesate dei trattenuti è minore dell'1%">
+            <span ng-if="(vm.verificaSetacciaturaPesoNetto - vm.verificaSetacciaturaSum) <= (vm.verificaSetacciaturaPesoNetto / 100)" class="glyphicon glyphicon-ok text-success"></span>
+            <span ng-if="(vm.verificaSetacciaturaPesoNetto - vm.verificaSetacciaturaSum) > (vm.verificaSetacciaturaPesoNetto / 100)" class="glyphicon glyphicon-remove text-danger"></span>
+            Verifica: {{vm.verificaSetacciaturaPesoNetto - vm.verificaSetacciaturaSum | number:2}}
+        </div>
+        <div class="text-center">
+            <button type="submit" ng-disabled="!vm.isDirty" class="btn btn-success" ng-click="vm.onSaveGrid()">
+                <span>Salva tutto</span>
+            </button>
+
+            <button type="submit"  ng-disabled="vm.selectedRowsCount == 0" class="btn btn-danger" ng-click="vm.confirmDeleteRows()">
+                <span>Elimina selezionate</span>
+            </button>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" ng-disabled="vm.isDirty" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Chiudi</span>
+        </button>
+    </div>
+</form>

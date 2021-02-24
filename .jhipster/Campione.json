@@ -1,0 +1,405 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "cassetta",
+      "otherEntityName": "cassetta",
+      "otherEntityField": "codiceCassetta"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "operatoreAnalisi",
+      "otherEntityName": "operatore",
+      "otherEntityField": "login"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "codiceCampione",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "siglaCampione",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "tipoCampione",
+      "fieldType": "TipoCampione",
+      "fieldValues": "A,A1,B,C,CB",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "descrizioneCampione",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": 65534
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "fotoSacchetto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "fotoCampione",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "dataAnalisi",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "ripartizioneQuartatura",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "essiccamento",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 10,
+      "fieldName": "setacciaturaSecco",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 11,
+      "fieldName": "lavaggioSetacciatura",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 12,
+      "fieldName": "essiccamentoNumTeglia",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 13,
+      "fieldName": "essiccamentoPesoTeglia",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 14,
+      "fieldName": "essiccamentoPesoCampioneLordoIniziale",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 15,
+      "fieldName": "essiccamentoPesoCampioneLordo24H",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 16,
+      "fieldName": "essiccamentoPesoCampioneLordo48H",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 17,
+      "fieldName": "sabbia",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 18,
+      "fieldName": "ghiaia",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 19,
+      "fieldName": "materialeRisultaVagliato",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 20,
+      "fieldName": "detriti",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 21,
+      "fieldName": "materialeFine",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 22,
+      "fieldName": "materialeOrganico",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 23,
+      "fieldName": "elementiMagg125Mm",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 24,
+      "fieldName": "detritiConglomerato",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 25,
+      "fieldName": "argilla",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 26,
+      "fieldName": "argillaMatAlterabile",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 27,
+      "fieldName": "granuliCementati",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 28,
+      "fieldName": "elementiArrotondati",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 29,
+      "fieldName": "elementiSpigolosi",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 30,
+      "fieldName": "sfabbricidi",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 31,
+      "fieldName": "tipoBConforme",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldId": 32,
+      "fieldName": "cbSpessoreTappetino",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 33,
+      "fieldName": "cbMassaFiller",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 34,
+      "fieldName": "cbMassaMaterialeEstratto",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 35,
+      "fieldName": "cbMassaInterti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 36,
+      "fieldName": "cbMassaMiscela",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 37,
+      "fieldName": "cbMassaBitume",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 38,
+      "fieldName": "cbPercBitumeRispInterti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 39,
+      "fieldName": "cbPercBitumeRispMiscela",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 40,
+      "fieldName": "cbProcDetMassaVol",
+      "fieldType": "ProceduraDetMassaVol",
+      "fieldValues": "SECCA,SUPERFICIE_SATURA_ASCIUGATA,PROVINO_PARAFFINATO,GEOMETRICA"
+    },
+    {
+      "fieldId": 41,
+      "fieldName": "cbProv1MassaSecca",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 42,
+      "fieldName": "cbProv1LegantePerc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 43,
+      "fieldName": "cbProv1MassaVolLegante",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 44,
+      "fieldName": "cbProv1MassaInertiPerc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 45,
+      "fieldName": "cbProv1MassaVolInerti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 46,
+      "fieldName": "cbProv1MassaVolParaffina",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 47,
+      "fieldName": "cbProv1MassaVolMax",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 48,
+      "fieldName": "cbProv1MassaVolBulk",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 49,
+      "fieldName": "cbProv1PercVuoti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 50,
+      "fieldName": "cbProv2MassaSecca",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 51,
+      "fieldName": "cbProv2LegantePerc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 52,
+      "fieldName": "cbProv2MassaVolLegante",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 53,
+      "fieldName": "cbProv2MassaInertiPerc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 54,
+      "fieldName": "cbProv2MassaVolInerti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 55,
+      "fieldName": "cbProv2MassaVolParaffina",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 56,
+      "fieldName": "cbProv2MassaVolMax",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 57,
+      "fieldName": "cbProv2MassaVolBulk",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 58,
+      "fieldName": "cbProv2PercVuoti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 59,
+      "fieldName": "cbProv3MassaSecca",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 60,
+      "fieldName": "cbProv3LegantePerc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 61,
+      "fieldName": "cbProv3MassaVolLegante",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 62,
+      "fieldName": "cbProv3MassaInertiPerc",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 63,
+      "fieldName": "cbProv3MassaVolInerti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 64,
+      "fieldName": "cbProv3MassaVolParaffina",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 65,
+      "fieldName": "cbProv3MassaVolMax",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 66,
+      "fieldName": "cbProv3MassaVolBulk",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 67,
+      "fieldName": "cbProv3PercVuoti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 68,
+      "fieldName": "cbPercMediaVuoti",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldId": 69,
+      "fieldName": "curva",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldId": 70,
+      "fieldName": "classificazioneGeotecnica",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": 65534
+    },
+    {
+      "fieldId": 71,
+      "fieldName": "note",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": 65534
+    },
+    {
+      "fieldId": 72,
+      "fieldName": "lavorazioneConclusa",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20160701090022",
+  "dto": "no",
+  "pagination": "pager",
+  "service": "serviceClass",
+  "entityTableName": "campione"
+}

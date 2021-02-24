@@ -1,0 +1,169 @@
+entity CodiceIstat {
+  codiceIstat Integer,
+  comune String,
+  provincia String,
+  regione String
+}
+
+entity CantiereScavo {
+  nome String required,
+  indirizzo String,
+  coordXwgs84 Double,
+  coordYwgs84 Double
+}
+
+relationship ManyToOne {
+  CantiereScavo{CodiceIstat(codiceIstat)} to CodiceIstat 
+}
+
+enum StatoContenitore {
+  INTEGRO, DANNEGGIATO_CONTENUTO_INTEGRO, DANNEGGIATO_CONTENUTO_NON_INTEGRO
+}
+
+entity Laboratorio {
+  nome String,
+  istituto String required,
+  responsabile String required,
+  indirizzo String,
+  logo ImageBlob
+}
+
+entity Cassetta {
+  codiceCassetta String,
+  trasportatore String,
+  dataScavo LocalDate,
+  dataAccettazione ZonedDateTime required,
+  numCampioni Integer,
+  statoContenitore StatoContenitore,
+  contenutoInquinato Boolean,
+  conglomeratoBituminoso Boolean,
+  fotoContenitore ImageBlob,
+  fotoContenuto ImageBlob,
+  note String maxlength(65534)
+}
+
+relationship ManyToOne {
+  Cassetta{CantiereScavo(nome)} to CantiereScavo 
+}
+
+relationship ManyToOne {
+  Cassetta{Laboratorio(nome)} to Laboratorio 
+}
+
+entity Operatore {
+}
+
+relationship OneToOne {
+  Operatore{user(login)} to User
+}
+
+relationship ManyToOne {
+  Operatore{Laboratorio} to Laboratorio 
+}
+
+enum TipoCampione {
+  A, A1, B, C
+}
+
+enum ProceduraDetMassaVol {
+  SECCA, SUPERFICIE_SATURA_ASCIUGATA, PROVINO_PARAFFINATO, GEOMETRICA
+}
+
+entity Campione {
+  codiceItalgas String required,
+  codiceCampione String,
+  tipoCampione TipoCampione required,
+  profonditaPrelievo Integer,
+  descrizioneCampione String maxlength(65534),
+  fotoSacchetto ImageBlob,
+  dataOraInizioAnalisi ZonedDateTime,
+  pesoIniziale BigDecimal,
+  ripartizioneQuartatura Boolean,
+  essiccamento Boolean,
+  setacciaturaSecco Boolean,
+  lavaggioSetacciatura Boolean,
+  sabbiaPozzolana Boolean,
+  materialeFine Boolean,
+  detriti Boolean,
+  materialeOrganico Boolean,
+  elementiMagg10Cm Boolean,
+  materialeRisultaVagliato Boolean,
+  detritiConglomerato Boolean,
+  argilla Boolean,
+  granuliLegati Boolean,
+  sfabbricidi Boolean,
+  tipoBConforme Boolean,
+  tipoCSpessoreTappetino BigDecimal,
+  tipoCMassaFiller BigDecimal,
+  tipoCMassaMaterialeEstratto BigDecimal,
+  tipoCMassaInterti BigDecimal,
+  tipoCMassaMiscela BigDecimal,
+  tipoCMassaBitume BigDecimal,
+  tipoCPercBitumeRispInterti BigDecimal,
+  tipoCPercBitumeRispMiscela BigDecimal,
+  tipoCProcDetMassaVol ProceduraDetMassaVol,
+  tipoCProv1MassaSecca BigDecimal,
+  tipoCProv1LegantePerc BigDecimal,
+  tipoCProv1MassaVolLegante BigDecimal,
+  tipoCProv1MassaInertiPerc BigDecimal,
+  tipoCProv1MassaVolInerti BigDecimal,
+  tipoCProv1MassaVolParaffina BigDecimal,
+  tipoCProv1MassaVolMax BigDecimal,
+  tipoCProv1MassaVolBulk BigDecimal,
+  tipoCProv1PercVuoti BigDecimal,
+  tipoCProv2MassaSecca BigDecimal,
+  tipoCProv2LegantePerc BigDecimal,
+  tipoCProv2MassaVolLegante BigDecimal,
+  tipoCProv2MassaInertiPerc BigDecimal,
+  tipoCProv2MassaVolInerti BigDecimal,
+  tipoCProv2MassaVolParaffina BigDecimal,
+  tipoCProv2MassaVolMax BigDecimal,
+  tipoCProv2MassaVolBulk BigDecimal,
+  tipoCProv2PercVuoti BigDecimal,
+  tipoCProv3MassaSecca BigDecimal,
+  tipoCProv3LegantePerc BigDecimal,
+  tipoCProv3MassaVolLegante BigDecimal,
+  tipoCProv3MassaInertiPerc BigDecimal,
+  tipoCProv3MassaVolInerti BigDecimal,
+  tipoCProv3MassaVolParaffina BigDecimal,
+  tipoCProv3MassaVolMax BigDecimal,
+  tipoCProv3MassaVolBulk BigDecimal,
+  tipoCProv3PercVuoti BigDecimal,
+  tipoCPercMediaVuoti BigDecimal,
+  curva ImageBlob,
+  lavorazioneConclusa Boolean,
+  note String maxlength(65534),
+  certificatoPdf AnyBlob
+}
+
+relationship ManyToOne {
+  Campione{Cassetta(codiceCassetta)} to Cassetta 
+}
+
+relationship ManyToOne {
+  Campione{OperatoreAnalisi(login)} to Operatore 
+}
+
+entity MisuraEssiccamento {
+  numOre Integer,
+  peso BigDecimal
+}
+
+relationship ManyToOne {
+  MisuraEssiccamento{Campione(codiceCampione)} to Campione 
+}
+
+entity MisuraVagliatura {
+  mmVaglio Integer,
+  massa BigDecimal,
+  trattenuto BigDecimal,
+  passanteCum BigDecimal,
+  TrattenutoCum BigDecimal
+}
+
+relationship ManyToOne {
+  MisuraVagliatura{Campione(codiceCampione)} to Campione 
+}
+
+service all with serviceClass
+paginate CodiceIstat, CantiereScavo, Cassetta, Campione, MisuraEssiccamento, MisuraVagliatura with pager

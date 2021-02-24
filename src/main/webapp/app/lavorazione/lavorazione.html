@@ -1,0 +1,33 @@
+<div ng-cloak class="row">
+	<div>
+
+	    <div id="procedura">
+
+	        <div class="page-header text-center">
+	            <h2>Lavorazione</h2>
+	            <div id="status-buttons" class="text-center">
+					<a ng-class="{active: vm.$state.is('lavorazione')}" ui-sref="lavorazione"><span>1</span>Inizio procedura</a>
+				    <a ng-class="{active: vm.$state.is('lavorazione.consegna')}" ui-sref="lavorazione.consegna"><span>2</span>Selezione consegna</a>
+					<a ng-class="{active: vm.$state.is('lavorazione.cassetta')}" href=""><span>3</span>Selezione cassetta</a>
+                    <a ng-class="{active: vm.$state.is('lavorazione.campione')}" href=""><span>4</span>Lavorazione campioni</a>
+				</div>
+	        </div>
+	    </div>
+
+	</div>
+</div>
+
+<div ui-view="content">
+	<p class="lead">Procedura di inserimento dei dati relativi alla lavorazione dei campioni.</p>
+	<p><span class="glyphicon glyphicon-info-sign"></span> I dati relativi alle cassette e alle consegne devono essere inseriti
+        tramite la procedura di accettazione prima di procedere all'inserimento dei dati di lavorazione.
+    </p>
+
+	<hr>
+
+	<div class="text-center">
+		<a ui-sref="lavorazione.consegna" class="btn btn-info">
+	    	Seleziona consegna <span class="glyphicon glyphicon-arrow-right"></span>
+	    </a>
+    </div>
+</div>

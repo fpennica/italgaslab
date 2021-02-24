@@ -1,0 +1,36 @@
+<div ng-cloak class="row">
+	<div>
+
+	    <div id="procedura">
+
+	        <div class="page-header text-center">
+	            <h2>Accettazione</h2>
+	            <div id="status-buttons" class="text-center">
+					<a ng-class="{active: vm.$state.is('accettazione')}" ui-sref="accettazione"><span>1</span>Inizio procedura</a>
+				    <a ng-class="{active: vm.$state.is('accettazione.consegna')}" ui-sref="accettazione.consegna"><span>2</span>Inserimento consegna</a>
+					<a ng-class="{active: vm.$state.is('accettazione.cassetta')}" href=""><span>3</span>Inserimento cassette</a>
+                    <a ng-class="{active: vm.$state.is('accettazione.campione')}" href=""><span>4</span>Inserimento campioni</a>
+				</div>
+	        </div>
+	    </div>
+
+	</div>
+</div>
+
+<div ng-cloak ui-view="content">
+	<p class="lead">Questa procedura consiste nell'inserire i dati relativi alle cassette consegnate al laboratorio e i dati di base dei campioni contenuti nelle cassette.</p>
+	<p><span class="glyphicon glyphicon-info-sign"></span> Assicurati di avere i dati relativi a:</p>
+	<ul>
+		<li>consegna (data, trasportatore, numero complessivo di cassette)</li>
+		<li>cassette (OdL/OdS, rif. geografo, provenienza, presenza e tipologie di campioni)</li>
+	</ul>
+	<p><span class="glyphicon glyphicon-info-sign"></span> I dati dei campioni inseriti in questa fase sono solo quelli di base. Tutti gli altri dati vanno inseriti tramite la procedura di lavorazione (menu "Attività").</p>
+
+	<hr>
+
+	<div class="text-center">
+		<a ui-sref="accettazione.consegna" class="btn btn-info">
+	    	Seleziona o inserisci Consegna <span class="glyphicon glyphicon-arrow-right"></span>
+	    </a>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{
+    "italgaslabApp": {
+        "StatoAttualeCassetta" : {
+            "null": "",
+            "IN_LAVORAZIONE": "IN_LAVORAZIONE",
+            "RIFIUTATA": "RIFIUTATA",
+            "TRATTAMENTO_INQUINAMENTO": "TRATTAMENTO_INQUINAMENTO",
+            "LAVORAZIONE_TERMINATA": "LAVORAZIONE_TERMINATA",
+            "RESTITUITA": "RESTITUITA"
+        }
+    }
+}

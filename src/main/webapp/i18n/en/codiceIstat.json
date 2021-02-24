@@ -1,0 +1,25 @@
+{
+    "italgaslabApp": {
+        "codiceIstat" : {
+            "home": {
+                "title": "Codice Istat",
+                "createLabel": "Create a new Codice Istat",
+                "createOrEditLabel": "Create or edit a Codice Istat",
+                "search": "Search for Codice Istat"
+            },
+            "created": "A new Codice Istat is created with identifier {{ param }}",
+            "updated": "A Codice Istat is updated with identifier {{ param }}",
+            "deleted": "A Codice Istat is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Codice Istat {{ id }}?"
+            },
+            "detail": {
+                "title": "Codice Istat"
+            },
+            "codiceIstat": "Codice Istat",
+            "comune": "Comune",
+            "provincia": "Provincia",
+            "regione": "Regione"
+        }
+    }
+}

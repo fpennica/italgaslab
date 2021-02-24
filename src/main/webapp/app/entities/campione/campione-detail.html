@@ -1,0 +1,328 @@
+
+<div>
+    <h2><span translate="italgaslabApp.campione.detail.title">Campione</span> {{vm.campione.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="italgaslabApp.campione.codiceCampione">Codice Campione</span></dt>
+        <dd>
+            <span>{{vm.campione.codiceCampione}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.siglaCampione">Sigla Campione</span></dt>
+        <dd>
+            <span>{{vm.campione.siglaCampione}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.tipoCampione">Tipo Campione</span></dt>
+        <dd>
+            <span translate="{{'italgaslabApp.TipoCampione.' + vm.campione.tipoCampione}}">{{vm.campione.tipoCampione}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.descrizioneCampione">Descrizione Campione</span></dt>
+        <dd>
+            <span>{{vm.campione.descrizioneCampione}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.fotoSacchetto">Foto Sacchetto</span></dt>
+        <dd>
+            <div ng-if="vm.campione.fotoSacchettoContentType">
+                <!-- <a ng-click="vm.openFile(vm.campione.fotoSacchettoContentType, vm.campione.fotoSacchetto)">
+                    <img data-ng-src="{{'data:' + vm.campione.fotoSacchettoContentType + ';base64,' + vm.campione.fotoSacchetto}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.campione.fotoSacchettoContentType}}, {{vm.byteSize(vm.campione.fotoSacchetto)}} -->
+                <img no-cache-src="api/campiones/{{vm.campione.id}}/fotosacchetto" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            </div>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.fotoCampione">Foto Campione</span></dt>
+        <dd>
+            <div ng-if="vm.campione.fotoCampioneContentType">
+                <!-- <a ng-click="vm.openFile(vm.campione.fotoCampioneContentType, vm.campione.fotoCampione)">
+                    <img data-ng-src="{{'data:' + vm.campione.fotoCampioneContentType + ';base64,' + vm.campione.fotoCampione}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.campione.fotoCampioneContentType}}, {{vm.byteSize(vm.campione.fotoCampione)}}  -->
+                <img no-cache-src="api/campiones/{{vm.campione.id}}/fotocampione" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            </div>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.dataAnalisi">Data Analisi</span></dt>
+        <dd>
+            <span>{{vm.campione.dataAnalisi | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.ripartizioneQuartatura">Ripartizione Quartatura</span></dt>
+        <dd>
+            <span>{{vm.campione.ripartizioneQuartatura}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.essiccamento">Essiccamento</span></dt>
+        <dd>
+            <span>{{vm.campione.essiccamento}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.setacciaturaSecco">Setacciatura Secco</span></dt>
+        <dd>
+            <span>{{vm.campione.setacciaturaSecco}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.lavaggioSetacciatura">Lavaggio Setacciatura</span></dt>
+        <dd>
+            <span>{{vm.campione.lavaggioSetacciatura}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.essiccamentoNumTeglia">Essiccamento Num Teglia</span></dt>
+        <dd>
+            <span>{{vm.campione.essiccamentoNumTeglia}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.essiccamentoPesoTeglia">Essiccamento Peso Teglia</span></dt>
+        <dd>
+            <span>{{vm.campione.essiccamentoPesoTeglia}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.essiccamentoPesoCampioneLordoIniziale">Essiccamento Peso Campione Lordo Iniziale</span></dt>
+        <dd>
+            <span>{{vm.campione.essiccamentoPesoCampioneLordoIniziale}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo24H">Essiccamento Peso Campione Lordo 24 H</span></dt>
+        <dd>
+            <span>{{vm.campione.essiccamentoPesoCampioneLordo24H}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.essiccamentoPesoCampioneLordo48H">Essiccamento Peso Campione Lordo 48 H</span></dt>
+        <dd>
+            <span>{{vm.campione.essiccamentoPesoCampioneLordo48H}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.sabbia">Sabbia</span></dt>
+        <dd>
+            <span>{{vm.campione.sabbia}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.ghiaia">Ghiaia</span></dt>
+        <dd>
+            <span>{{vm.campione.ghiaia}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.materialeRisultaVagliato">Materiale Risulta Vagliato</span></dt>
+        <dd>
+            <span>{{vm.campione.materialeRisultaVagliato}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.detriti">Detriti</span></dt>
+        <dd>
+            <span>{{vm.campione.detriti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.materialeFine">Materiale Fine</span></dt>
+        <dd>
+            <span>{{vm.campione.materialeFine}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.materialeOrganico">Materiale Organico</span></dt>
+        <dd>
+            <span>{{vm.campione.materialeOrganico}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.elementiMagg125Mm">Elementi Magg 125 Mm</span></dt>
+        <dd>
+            <span>{{vm.campione.elementiMagg125Mm}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.detritiConglomerato">Detriti Conglomerato</span></dt>
+        <dd>
+            <span>{{vm.campione.detritiConglomerato}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.argilla">Argilla</span></dt>
+        <dd>
+            <span>{{vm.campione.argilla}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.argillaMatAlterabile">Argilla Mat Alterabile</span></dt>
+        <dd>
+            <span>{{vm.campione.argillaMatAlterabile}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.granuliCementati">Granuli Cementati</span></dt>
+        <dd>
+            <span>{{vm.campione.granuliCementati}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.elementiArrotondati">Elementi Arrotondati</span></dt>
+        <dd>
+            <span>{{vm.campione.elementiArrotondati}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.elementiSpigolosi">Elementi Spigolosi</span></dt>
+        <dd>
+            <span>{{vm.campione.elementiSpigolosi}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.sfabbricidi">Sfabbricidi</span></dt>
+        <dd>
+            <span>{{vm.campione.sfabbricidi}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.tipoBConforme">Tipo B Conforme</span></dt>
+        <dd>
+            <span>{{vm.campione.tipoBConforme}}</span>
+        </dd>
+        <!-- <dt><span translate="italgaslabApp.campione.cbSpessoreTappetino">Cb Spessore Tappetino</span></dt>
+        <dd>
+            <span>{{vm.campione.cbSpessoreTappetino}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbMassaFiller">Cb Massa Filler</span></dt>
+        <dd>
+            <span>{{vm.campione.cbMassaFiller}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbMassaMaterialeEstratto">Cb Massa Materiale Estratto</span></dt>
+        <dd>
+            <span>{{vm.campione.cbMassaMaterialeEstratto}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbMassaInterti">Cb Massa Interti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbMassaInterti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbMassaMiscela">Cb Massa Miscela</span></dt>
+        <dd>
+            <span>{{vm.campione.cbMassaMiscela}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbMassaBitume">Cb Massa Bitume</span></dt>
+        <dd>
+            <span>{{vm.campione.cbMassaBitume}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbPercBitumeRispInterti">Cb Perc Bitume Risp Interti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbPercBitumeRispInterti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbPercBitumeRispMiscela">Cb Perc Bitume Risp Miscela</span></dt>
+        <dd>
+            <span>{{vm.campione.cbPercBitumeRispMiscela}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProcDetMassaVol">Cb Proc Det Massa Vol</span></dt>
+        <dd>
+            <span translate="{{'italgaslabApp.ProceduraDetMassaVol.' + vm.campione.cbProcDetMassaVol}}">{{vm.campione.cbProcDetMassaVol}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaSecca">Cb Prov 1 Massa Secca</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaSecca}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1LegantePerc">Cb Prov 1 Legante Perc</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1LegantePerc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaVolLegante">Cb Prov 1 Massa Vol Legante</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaVolLegante}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaInertiPerc">Cb Prov 1 Massa Inerti Perc</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaInertiPerc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaVolInerti">Cb Prov 1 Massa Vol Inerti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaVolInerti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaVolParaffina">Cb Prov 1 Massa Vol Paraffina</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaVolParaffina}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaVolMax">Cb Prov 1 Massa Vol Max</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaVolMax}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1MassaVolBulk">Cb Prov 1 Massa Vol Bulk</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1MassaVolBulk}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv1PercVuoti">Cb Prov 1 Perc Vuoti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv1PercVuoti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaSecca">Cb Prov 2 Massa Secca</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaSecca}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2LegantePerc">Cb Prov 2 Legante Perc</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2LegantePerc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaVolLegante">Cb Prov 2 Massa Vol Legante</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaVolLegante}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaInertiPerc">Cb Prov 2 Massa Inerti Perc</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaInertiPerc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaVolInerti">Cb Prov 2 Massa Vol Inerti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaVolInerti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaVolParaffina">Cb Prov 2 Massa Vol Paraffina</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaVolParaffina}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaVolMax">Cb Prov 2 Massa Vol Max</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaVolMax}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2MassaVolBulk">Cb Prov 2 Massa Vol Bulk</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2MassaVolBulk}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv2PercVuoti">Cb Prov 2 Perc Vuoti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv2PercVuoti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaSecca">Cb Prov 3 Massa Secca</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaSecca}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3LegantePerc">Cb Prov 3 Legante Perc</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3LegantePerc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaVolLegante">Cb Prov 3 Massa Vol Legante</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaVolLegante}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaInertiPerc">Cb Prov 3 Massa Inerti Perc</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaInertiPerc}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaVolInerti">Cb Prov 3 Massa Vol Inerti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaVolInerti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaVolParaffina">Cb Prov 3 Massa Vol Paraffina</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaVolParaffina}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaVolMax">Cb Prov 3 Massa Vol Max</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaVolMax}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3MassaVolBulk">Cb Prov 3 Massa Vol Bulk</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3MassaVolBulk}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbProv3PercVuoti">Cb Prov 3 Perc Vuoti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbProv3PercVuoti}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cbPercMediaVuoti">Cb Perc Media Vuoti</span></dt>
+        <dd>
+            <span>{{vm.campione.cbPercMediaVuoti}}</span>
+        </dd> -->
+        <dt><span translate="italgaslabApp.campione.curva">Curva</span></dt>
+        <dd>
+            <div ng-if="vm.campione.curvaContentType">
+                <!-- <a ng-click="vm.openFile(vm.campione.curvaContentType, vm.campione.curva)">
+                    <img data-ng-src="{{'data:' + vm.campione.curvaContentType + ';base64,' + vm.campione.curva}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.campione.curvaContentType}}, {{vm.byteSize(vm.campione.curva)}} -->
+                <img no-cache-src="api/campiones/{{vm.campione.id}}/curva" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            </div>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.classificazioneGeotecnica">Classificazione Geotecnica</span></dt>
+        <dd>
+            <span>{{vm.campione.classificazioneGeotecnica}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.note">Note</span></dt>
+        <dd>
+            <span>{{vm.campione.note}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.lavorazioneConclusa">Lavorazione Conclusa</span></dt>
+        <dd>
+            <span>{{vm.campione.lavorazioneConclusa}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.cassetta">Cassetta</span></dt>
+        <dd>
+            <a ui-sref="cassetta-detail({id:vm.campione.cassetta.id})">{{vm.campione.cassetta.codiceCassetta}}</a>
+        </dd>
+        <dt><span translate="italgaslabApp.campione.operatoreAnalisi">Operatore Analisi</span></dt>
+        <dd>
+            <a ui-sref="operatore-detail({id:vm.campione.operatoreAnalisi.id})">{{vm.campione.operatoreAnalisi.user.login}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

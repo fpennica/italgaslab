@@ -1,0 +1,62 @@
+{
+    "italgaslabApp": {
+        "cassetta" : {
+            "home": {
+                "title": "Cassetta",
+                "createLabel": "Create a new Cassetta",
+                "createOrEditLabel": "Create or edit a Cassetta",
+                "search": "Search for Cassetta"
+            },
+            "created": "A new Cassetta is created with identifier {{ param }}",
+            "updated": "A Cassetta is updated with identifier {{ param }}",
+            "deleted": "A Cassetta is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cassetta {{ id }}?"
+            },
+            "detail": {
+                "title": "Cassetta"
+            },
+            "codiceCassetta": "Codice Cassetta",
+            "odl": "Odl",
+            "rifGeografo": "Rif Geografo",
+            "prioritario": "Prioritario",
+            "indirizzoScavo": "Indirizzo Scavo",
+            "denomCantiere": "Denom Cantiere",
+            "codiceRdc": "Codice Rdc",
+            "dataScavo": "Data Scavo",
+            "coordGpsN": "Coord Gps N",
+            "coordGpsE": "Coord Gps E",
+            "coordX": "Coord X",
+            "coordY": "Coord Y",
+            "centroOperativo": "Centro Operativo",
+            "impresaAppaltatrice": "Impresa Appaltatrice",
+            "incaricatoAppaltatore": "Incaricato Appaltatore",
+            "tecnicoItgResp": "Tecnico Itg Resp",
+            "numCampioni": "Num Campioni",
+            "presenzaCampione10": "Presenza Campione 10",
+            "presenzaCampione11": "Presenza Campione 11",
+            "presenzaCampione12": "Presenza Campione 12",
+            "presenzaCampione13": "Presenza Campione 13",
+            "presenzaCampione14": "Presenza Campione 14",
+            "presenzaCampione15": "Presenza Campione 15",
+            "presenzaCampione16": "Presenza Campione 16",
+            "presenzaCampione17": "Presenza Campione 17",
+            "statoContenitore": "Stato Contenitore",
+            "statoAttualeCassetta": "Stato Attuale Cassetta",
+            "contenutoInquinato": "Contenuto Inquinato",
+            "conglomeratoBituminoso": "Conglomerato Bituminoso",
+            "presenzaCbu": "CB Strato di Usura",
+            "presenzaCbb1s": "CB Binder (1 strato)",
+            "presenzaCbb2s": "CB Binder (2 strati)",
+            "fotoContenitore": "Foto Contenitore",
+            "fotoContenuto": "Foto Contenuto",
+            "msSismicitaLocale": "Ms Sismicita Locale",
+            "msValAccelerazione": "Ms Val Accelerazione",
+            "note": "Note",
+            "certificatoPdf": "Certificato Pdf",
+            "numProtocolloCertificato": "Num Protocollo Certificato",
+            "codiceIstat": "Codice Istat",
+            "consegna": "Consegna"
+        }
+    }
+}

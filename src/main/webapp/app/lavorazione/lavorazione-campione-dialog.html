@@ -1,0 +1,393 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel" translate="italgaslabApp.campione.home.createOrEditLabel">Create or edit a Campione</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <fieldset>
+            <legend class="text-success"><strong>Dati di base</strong></legend>
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="form-group" ng-show="vm.campione.id">
+                        <label for="id" translate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id"
+                                ng-model="vm.campione.id" readonly />
+                        <p translate="entity.validation.autogen" class="help-block">
+                            Generato automaticamente.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label translate="italgaslabApp.campione.cassetta" for="field_cassetta">Cassetta</label>
+                        <select disabled class="form-control" id="field_cassetta" name="cassetta" ng-model="vm.campione.cassetta">
+                            <option selected>{{vm.campione.cassetta.codiceCassetta}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="italgaslabApp.campione.codiceCampione" for="field_codiceCampione">Codice Campione</label>
+                        <input disabled type="text" class="form-control" name="codiceCampione" id="field_codiceCampione"
+                                ng-model="vm.campione.codiceCampione"
+                                 />
+                        <p translate="entity.validation.autogen" class="help-block">
+                            Generato automaticamente.
+                        </p>
+                    </div>
+                    <div class="form-group" ng-if="vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+                        <label class="control-label" translate="italgaslabApp.campione.siglaCampione" for="field_siglaCampione">Sigla Campione</label>
+                        <input type="number" class="form-control" name="siglaCampione" id="field_siglaCampione"
+                                ng-model="vm.campione.siglaCampione"
+                                uib-tooltip=" Protocollo 1: A(12,13) - A1(14,15) - B(10,11) - C(16-17) / Protocollo 2: A(11) - A1(12) - B(10) - C(13)"
+                                 />
+                         <p class="help-block">
+                             Tipologia del campione in forma numerica (da 10 a 17).
+                         </p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" translate="italgaslabApp.campione.tipoCampione" for="field_tipoCampione">Tipo Campione</label>
+                        <select class="form-control" name="tipoCampione" ng-model="vm.campione.tipoCampione" id="field_tipoCampione" required>
+                            <option value="A" translate="italgaslabApp.TipoCampione.A">A</option>
+                            <option value="A1" translate="italgaslabApp.TipoCampione.A1">A1</option>
+                            <option value="B" translate="italgaslabApp.TipoCampione.B">B</option>
+                            <option value="C" translate="italgaslabApp.TipoCampione.C">C</option>
+                            <option value="CB_A" translate="italgaslabApp.TipoCampione.CB_A">CB_A</option>
+                            <option value="CB_B" translate="italgaslabApp.TipoCampione.CB_B">CB_B</option>
+                        </select>
+                        <div ng-show="editForm.tipoCampione.$invalid">
+                            <p class="help-block"
+                                ng-show="editForm.tipoCampione.$error.required" translate="entity.validation.required">
+                                This field is required.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+
+                    <div class="form-group" ngf-drop ngf-change="vm.setFotoSacchetto($file, vm.campione)" ngf-pattern="'image/*'">
+                        <label class="control-label" translate="italgaslabApp.campione.fotoSacchetto" for="field_fotoSacchetto"
+                            ng-if="vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">Foto Sacchetto</label>
+                        <label class="control-label" for="field_fotoSacchetto"
+                            ng-if="vm.campione.tipoCampione == 'CB_A' || vm.campione.tipoCampione == 'CB_B'">Foto Campione 1</label>
+                        <div ng-if="vm.campione.fotoSacchettoContentType && !vm.campione.fotoSacchetto" class="help-block clearfix">
+                            <span class="pull-left">
+                                <img no-cache-src="api/campiones/{{vm.campione.id}}/fotosacchetto" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                            </span>
+                            <button ng-click="vm.campione.fotoSacchetto=null;vm.campione.fotoSacchettoContentType=null;"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span>Elimina</span>
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <img data-ng-src="{{'data:' + vm.campione.fotoSacchettoContentType + ';base64,' + vm.campione.fotoSacchetto}}" style="max-height: 100px;" ng-if="vm.campione.fotoSacchetto"/>
+                            <div ng-if="vm.campione.fotoSacchetto" class="help-block clearfix">
+                                <span class="pull-left">{{vm.campione.fotoSacchettoContentType}}, {{vm.byteSize(vm.campione.fotoSacchetto)}}</span>
+                                <button ng-click="vm.campione.fotoSacchetto=null;vm.campione.fotoSacchettoContentType=null;"
+                                        class="btn btn-default btn-xs pull-right">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                            <button type="file" ngf-select class="btn btn-default btn-block"
+                                    ngf-change="vm.setFotoSacchetto($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                                Add image
+                            </button>
+                        </div>
+                        <input type="hidden" class="form-control" name="fotoSacchetto" id="field_fotoSacchetto"
+                                ng-model="vm.campione.fotoSacchetto"
+                                 />
+                        <input type="hidden" class="form-control" name="fotoSacchettoContentType" id="field_fotoSacchettoContentType"
+                                ng-model="vm.campione.fotoSacchettoContentType" />
+                    </div>
+
+                    <div class="form-group" ngf-drop ngf-change="vm.setFotoCampione($file, vm.campione)" ngf-pattern="'image/*'">
+                        <label class="control-label" translate="italgaslabApp.campione.fotoCampione" for="field_fotoCampione"
+                            ng-if="vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">Foto Campione</label>
+                        <label class="control-label" for="field_fotoCampione"
+                            ng-if="vm.campione.tipoCampione == 'CB_A' || vm.campione.tipoCampione == 'CB_B'">Foto Campione 2</label>
+                        <div ng-if="vm.campione.fotoCampioneContentType && !vm.campione.fotoCampione" class="help-block clearfix">
+                            <span class="pull-left">
+                                <img no-cache-src="api/campiones/{{vm.campione.id}}/fotocampione" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                            </span>
+                            <button ng-click="vm.campione.fotoCampione=null;vm.campione.fotoCampioneContentType=null;"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span>Elimina</span>
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <img data-ng-src="{{'data:' + vm.campione.fotoCampioneContentType + ';base64,' + vm.campione.fotoCampione}}" style="max-height: 100px;" ng-if="vm.campione.fotoCampione"/>
+                            <div ng-if="vm.campione.fotoCampione" class="help-block clearfix">
+                                <span class="pull-left">{{vm.campione.fotoCampioneContentType}}, {{vm.byteSize(vm.campione.fotoCampione)}}</span>
+                                <button ng-click="vm.campione.fotoCampione=null;vm.campione.fotoCampioneContentType=null;"
+                                        class="btn btn-default btn-xs pull-right">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                            <button type="file" ngf-select class="btn btn-default btn-block"
+                                    ngf-change="vm.setFotoCampione($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                                Add image
+                            </button>
+                        </div>
+                        <input type="hidden" class="form-control" name="fotoCampione" id="field_fotoCampione"
+                                ng-model="vm.campione.fotoCampione"
+                                 />
+                        <input type="hidden" class="form-control" name="fotoCampioneContentType" id="field_fotoCampioneContentType"
+                                ng-model="vm.campione.fotoCampioneContentType" />
+                    </div>
+
+                    <div class="form-group" ngf-drop ngf-change="vm.setFotoEtichetta($file, vm.campione)" ngf-pattern="'image/*'">
+                        <label class="control-label" for="field_fotoEtichetta">Foto Etichetta</label>
+                        <div ng-if="vm.campione.fotoEtichettaContentType && !vm.campione.fotoEtichetta" class="help-block clearfix">
+                            <span class="pull-left">
+                                <img no-cache-src="api/campiones/{{vm.campione.id}}/fotoetichetta" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                            </span>
+                            <button ng-click="vm.campione.fotoEtichetta=null;vm.campione.fotoEtichettaContentType=null;"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span>Elimina</span>
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <img data-ng-src="{{'data:' + vm.campione.fotoEtichettaContentType + ';base64,' + vm.campione.fotoEtichetta}}" style="max-height: 100px;" ng-if="vm.campione.fotoEtichetta"/>
+                            <div ng-if="vm.campione.fotoEtichetta" class="help-block clearfix">
+                                <span class="pull-left">{{vm.campione.fotoEtichettaContentType}}, {{vm.byteSize(vm.campione.fotoEtichetta)}}</span>
+                                <button ng-click="vm.campione.fotoEtichetta=null;vm.campione.fotoEtichettaContentType=null;"
+                                        class="btn btn-default btn-xs pull-right">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                            <button type="file" ngf-select class="btn btn-default btn-block"
+                                    ngf-change="vm.setFotoEtichetta($file, vm.campione)" accept="image/*" translate="entity.action.addimage">
+                                Add image
+                            </button>
+                        </div>
+                        <input type="hidden" class="form-control" name="fotoEtichetta" id="field_fotoEtichetta"
+                                ng-model="vm.campione.fotoEtichetta"
+                                 />
+                        <input type="hidden" class="form-control" name="fotoEtichettaContentType" id="field_fotoEtichettaContentType"
+                                ng-model="vm.campione.fotoEtichettaContentType" />
+                    </div>
+
+
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset ng-if="vm.campione.id">
+            <legend class="text-success"><strong>Dati lavorazione</strong></legend>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" name="lavorazioneConclusa" id="field_lavorazioneConclusa"
+                                ng-model="vm.campione.lavorazioneConclusa"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.lavorazioneConclusa" for="field_lavorazioneConclusa">Lavorazione Conclusa</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label class="control-label" translate="italgaslabApp.campione.dataAnalisi" for="field_dataAnalisi">Data Analisi</label>
+                        <div class="input-group">
+                            <input id="field_dataAnalisi" type="text" class="form-control" name="dataAnalisi" uib-datepicker-popup="{{dateformat}}" ng-model="vm.campione.dataAnalisi" is-open="vm.datePickerOpenStatus.dataAnalisi"
+                            />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dataAnalisi')"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione != 'C' && vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+                        <input type="checkbox" class="form-control" name="ripartizioneQuartatura" id="field_ripartizioneQuartatura"
+                                ng-model="vm.campione.ripartizioneQuartatura"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.ripartizioneQuartatura" for="field_ripartizioneQuartatura">Ripartizione Quartatura</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione != 'C' && vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+                        <input type="checkbox" class="form-control" name="essiccamento" id="field_essiccamento"
+                                ng-model="vm.campione.essiccamento"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.essiccamento" for="field_essiccamento">Essiccamento</label>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label translate="italgaslabApp.campione.operatoreAnalisi" for="field_operatoreAnalisi">Operatore Analisi</label>
+                        <select class="form-control" id="field_operatoreAnalisi" name="operatoreAnalisi" ng-model="vm.campione.operatoreAnalisi" ng-options="operatore as operatore.user.login for operatore in vm.operatores track by operatore.id"
+                            uib-tooltip="In caso l'operatore non sia registrato o si vogliano inserire più operatori, lasciare vuoto questo campo ed inserire il/i nomi alla fine delle note dopo tre simboli '#', ad. es. 'Note campione ###P. Pallino, M. Rossi'" >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione != 'C' && vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+                        <input type="checkbox" class="form-control" name="setacciaturaSecco" id="field_setacciaturaSecco"
+                                ng-model="vm.campione.setacciaturaSecco"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.setacciaturaSecco" for="field_setacciaturaSecco">Setacciatura Secco</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione != 'C' && vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+                        <input type="checkbox" class="form-control" name="lavaggioSetacciatura" id="field_lavaggioSetacciatura"
+                                ng-model="vm.campione.lavaggioSetacciatura"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.lavaggioSetacciatura" for="field_lavaggioSetacciatura">Lavaggio Setacciatura</label>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset ng-if="vm.campione.id && vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+            <legend class="text-success"><strong>Caratteristiche macroscopiche</strong></legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'B' || vm.campione.tipoCampione == 'C'">
+                        <input type="checkbox" class="form-control" name="ghiaia" id="field_ghiaia"
+                                ng-model="vm.campione.ghiaia"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.ghiaia" for="field_ghiaia">Ghiaia</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'B'">
+                        <input type="checkbox" class="form-control" name="materialeRisultaVagliato" id="field_materialeRisultaVagliato"
+                                ng-model="vm.campione.materialeRisultaVagliato"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.materialeRisultaVagliato" for="field_materialeRisultaVagliato">Materiale Risulta Vagliato</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'B' || vm.campione.tipoCampione == 'C'">
+                        <input type="checkbox" class="form-control" name="detriti" id="field_detriti"
+                                ng-model="vm.campione.detriti"
+                                 />
+                         <label class="control-label" translate="italgaslabApp.campione.detriti" for="field_detriti">Detriti</label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" name="sabbia" id="field_sabbia"
+                                ng-model="vm.campione.sabbia"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.sabbia" for="field_sabbia">Sabbia</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'A' || vm.campione.tipoCampione == 'A1' || vm.campione.tipoCampione == 'B'">
+                        <input type="checkbox" class="form-control" name="materialeFine" id="field_materialeFine"
+                                ng-model="vm.campione.materialeFine"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.materialeFine" for="field_materialeFine">Materiale Fine</label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" name="materialeOrganico" id="field_materialeOrganico"
+                                ng-model="vm.campione.materialeOrganico"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.materialeOrganico" for="field_materialeOrganico">Materiale Organico</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'A' || vm.campione.tipoCampione == 'A1'">
+                        <input type="checkbox" class="form-control" name="elementiMagg125Mm" id="field_elementiMagg125Mm"
+                                ng-model="vm.campione.elementiMagg125Mm"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.elementiMagg125Mm" for="field_elementiMagg125Mm">Elementi Magg 125 Mm</label>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" name="detritiConglomerato" id="field_detritiConglomerato"
+                                ng-model="vm.campione.detritiConglomerato"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.detritiConglomerato" for="field_detritiConglomerato">Detriti Conglomerato</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'A' || vm.campione.tipoCampione == 'A1'">
+                        <input type="checkbox" class="form-control" name="argilla" id="field_argilla"
+                                ng-model="vm.campione.argilla"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.argilla" for="field_argilla">Argilla</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'B' || vm.campione.tipoCampione == 'C'">
+                        <input type="checkbox" class="form-control" name="argillaMatAlterabile" id="field_argillaMatAlterabile"
+                                ng-model="vm.campione.argillaMatAlterabile"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.argillaMatAlterabile" for="field_argillaMatAlterabile">Argilla Mat Alterabile</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'C'">
+                        <input type="checkbox" class="form-control" name="granuliCementati" id="field_granuliCementati"
+                                ng-model="vm.campione.granuliCementati"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.granuliCementati" for="field_granuliCementati">Granuli Cementati</label>
+                    </div>
+                    <div class="form-group form-inline" ng-if="vm.campione.tipoCampione == 'A' || vm.campione.tipoCampione == 'A1' || vm.campione.tipoCampione == 'B'">
+                        <input type="checkbox" class="form-control" name="elementiArrotondati" id="field_elementiArrotondati"
+                                ng-model="vm.campione.elementiArrotondati"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.elementiArrotondati" for="field_elementiArrotondati">Elementi Arrotondati</label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" name="elementiSpigolosi" id="field_elementiSpigolosi"
+                                ng-model="vm.campione.elementiSpigolosi"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.elementiSpigolosi" for="field_elementiSpigolosi">Elementi Spigolosi</label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" name="sfabbricidi" id="field_sfabbricidi"
+                                ng-model="vm.campione.sfabbricidi"
+                                 />
+                        <label class="control-label" translate="italgaslabApp.campione.sfabbricidi" for="field_sfabbricidi">Sfabbricidi</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group" ng-if="vm.campione.id && vm.campione.tipoCampione != 'CB_A' && vm.campione.tipoCampione != 'CB_B'">
+            <label class="control-label" translate="italgaslabApp.campione.descrizioneCampione" for="field_descrizioneCampione">Classificazione Geotecnica</label>
+            <textarea rows="2" class="form-control" name="descrizioneCampione" id="field_descrizioneCampione"
+                    ng-model="vm.campione.descrizioneCampione"
+                    ng-maxlength="65534" ></textarea>
+            <div ng-show="editForm.descrizioneCampione.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.descrizioneCampione.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                    This field cannot be longer than 65534 characters.
+                </p>
+            </div>
+            <p class="help-block">
+                Inserire la <strong>classificazione geotecnica</strong> solo per il campione di tipo <strong>C</strong> e
+                per il campione di tipo <strong>B</strong> nel caso in cui sia stata fatta soltanto la setacciatura
+                a 100 mm.
+            </p>
+        </div>
+
+        <div class="form-group" ng-if="vm.campione.id">
+            <label class="control-label" translate="italgaslabApp.campione.note" for="field_note">Descrizione Campione e Note</label>
+            <textarea rows="4" class="form-control" name="note" id="field_note"
+                    ng-model="vm.campione.note"
+                    ng-maxlength="65534"></textarea>
+            <div ng-show="editForm.note.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.note.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="65534">
+                    This field cannot be longer than 65534 characters.
+                </p>
+            </div>
+            <p class="help-block">
+                In caso l'operatore non sia registrato o si vogliano inserire più operatori, inserire il/i nomi alla fine delle note dopo tre simboli '#',
+                ad. es. 'Note campione ###P. Pallino, M. Rossi'
+            </p>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

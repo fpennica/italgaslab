@@ -1,0 +1,152 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPesataLabel" translate="italgaslabApp.pesata.home.createOrEditLabel">Create or edit a Pesata</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.pesata.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.pesata.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.numPesata" for="field_numPesata">Num Pesata</label>
+            <input type="number" class="form-control" name="numPesata" id="field_numPesata"
+                    ng-model="vm.pesata.numPesata"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.pesoNetto" for="field_pesoNetto">Peso Netto</label>
+            <input type="number" class="form-control" name="pesoNetto" id="field_pesoNetto"
+                    ng-model="vm.pesata.pesoNetto"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt125Mm" for="field_tratt125Mm">Tratt 125 Mm</label>
+            <input type="number" class="form-control" name="tratt125Mm" id="field_tratt125Mm"
+                    ng-model="vm.pesata.tratt125Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt63Mm" for="field_tratt63Mm">Tratt 63 Mm</label>
+            <input type="number" class="form-control" name="tratt63Mm" id="field_tratt63Mm"
+                    ng-model="vm.pesata.tratt63Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt31V5Mm" for="field_tratt31V5Mm">Tratt 31 V 5 Mm</label>
+            <input type="number" class="form-control" name="tratt31V5Mm" id="field_tratt31V5Mm"
+                    ng-model="vm.pesata.tratt31V5Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt16Mm" for="field_tratt16Mm">Tratt 16 Mm</label>
+            <input type="number" class="form-control" name="tratt16Mm" id="field_tratt16Mm"
+                    ng-model="vm.pesata.tratt16Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt8Mm" for="field_tratt8Mm">Tratt 8 Mm</label>
+            <input type="number" class="form-control" name="tratt8Mm" id="field_tratt8Mm"
+                    ng-model="vm.pesata.tratt8Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt6V3Mm" for="field_tratt6V3Mm">Tratt 6 V 3 Mm</label>
+            <input type="number" class="form-control" name="tratt6V3Mm" id="field_tratt6V3Mm"
+                    ng-model="vm.pesata.tratt6V3Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt4Mm" for="field_tratt4Mm">Tratt 4 Mm</label>
+            <input type="number" class="form-control" name="tratt4Mm" id="field_tratt4Mm"
+                    ng-model="vm.pesata.tratt4Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt2Mm" for="field_tratt2Mm">Tratt 2 Mm</label>
+            <input type="number" class="form-control" name="tratt2Mm" id="field_tratt2Mm"
+                    ng-model="vm.pesata.tratt2Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt1Mm" for="field_tratt1Mm">Tratt 1 Mm</label>
+            <input type="number" class="form-control" name="tratt1Mm" id="field_tratt1Mm"
+                    ng-model="vm.pesata.tratt1Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt0V5Mm" for="field_tratt0V5Mm">Tratt 0 V 5 Mm</label>
+            <input type="number" class="form-control" name="tratt0V5Mm" id="field_tratt0V5Mm"
+                    ng-model="vm.pesata.tratt0V5Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt0V25Mm" for="field_tratt0V25Mm">Tratt 0 V 25 Mm</label>
+            <input type="number" class="form-control" name="tratt0V25Mm" id="field_tratt0V25Mm"
+                    ng-model="vm.pesata.tratt0V25Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt0V125Mm" for="field_tratt0V125Mm">Tratt 0 V 125 Mm</label>
+            <input type="number" class="form-control" name="tratt0V125Mm" id="field_tratt0V125Mm"
+                    ng-model="vm.pesata.tratt0V125Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.tratt0V075Mm" for="field_tratt0V075Mm">Tratt 0 V 075 Mm</label>
+            <input type="number" class="form-control" name="tratt0V075Mm" id="field_tratt0V075Mm"
+                    ng-model="vm.pesata.tratt0V075Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.trattB100Mm" for="field_trattB100Mm">Tratt B 100 Mm</label>
+            <input type="number" class="form-control" name="trattB100Mm" id="field_trattB100Mm"
+                    ng-model="vm.pesata.trattB100Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.trattB6V3Mm" for="field_trattB6V3Mm">Tratt B 6 V 3 Mm</label>
+            <input type="number" class="form-control" name="trattB6V3Mm" id="field_trattB6V3Mm"
+                    ng-model="vm.pesata.trattB6V3Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.trattB2Mm" for="field_trattB2Mm">Tratt B 2 Mm</label>
+            <input type="number" class="form-control" name="trattB2Mm" id="field_trattB2Mm"
+                    ng-model="vm.pesata.trattB2Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.trattB0V5Mm" for="field_trattB0V5Mm">Tratt B 0 V 5 Mm</label>
+            <input type="number" class="form-control" name="trattB0V5Mm" id="field_trattB0V5Mm"
+                    ng-model="vm.pesata.trattB0V5Mm"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.pesata.fondo" for="field_fondo">Fondo</label>
+            <input type="number" class="form-control" name="fondo" id="field_fondo"
+                    ng-model="vm.pesata.fondo"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="italgaslabApp.pesata.campione" for="field_campione">Campione</label>
+            <select class="form-control" id="field_campione" name="campione" ng-model="vm.pesata.campione" ng-options="campione as campione.codiceCampione for campione in vm.campiones track by campione.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

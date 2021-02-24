@@ -1,0 +1,742 @@
+<div>
+    <p class="lead">Inserisci o modifica i dati della lavorazione dei campioni.</p>
+    <p ng-if="vm.campiones.length > 0"><span class="glyphicon glyphicon-info-sign"></span> Sono presenti nel database <strong>{{vm.campiones.length}}</strong> campioni relativi alla cassetta <a ui-sref="cassetta-detail({id:vm.cassetta.id})">{{vm.cassetta.codiceCassetta}}</a>.</p>
+    <p class="text-danger" ng-if="vm.campiones.length == 0"><span class="glyphicon glyphicon-remove-sign"></span> Non sono stati ancora inseriti i campioni nel database!</p>
+    <p ng-if="vm.campiones.length != 0"><span class="glyphicon glyphicon-info-sign"></span> Campioni lavorati:</p>
+    <div class="row" ng-if="vm.campiones.length != 0">
+        <div class="col-md-8 col-md-offset-2">
+            <uib-progressbar class="progress-custom progress-striped" type="{{vm.progressBarType}}" max="vm.campiones.length" value="vm.numCampioniLavorati">
+                <span style="color:white; white-space:nowrap;">{{vm.numCampioniLavorati}} / {{vm.campiones.length}}</span>
+            </uib-progressbar>
+        </div>
+    </div>
+    <p>
+        <span class="glyphicon glyphicon-info-sign"></span> Stato della cassetta <strong>{{vm.cassetta.codiceCassetta}}</strong>:
+        <select class="form-inline" name="statoAttualeCassetta" ng-model="vm.cassetta.statoAttualeCassetta" id="field_statoAttualeCassetta">
+            <option value="IN_LAVORAZIONE" translate="italgaslabApp.StatoAttualeCassetta.IN_LAVORAZIONE">IN_LAVORAZIONE</option>
+            <option value="RIFIUTATA" translate="italgaslabApp.StatoAttualeCassetta.RIFIUTATA">RIFIUTATA</option>
+            <option value="TRATTAMENTO_INQUINAMENTO" translate="italgaslabApp.StatoAttualeCassetta.TRATTAMENTO_INQUINAMENTO">TRATTAMENTO_INQUINAMENTO</option>
+            <option value="LAVORAZIONE_TERMINATA" translate="italgaslabApp.StatoAttualeCassetta.LAVORAZIONE_TERMINATA">LAVORAZIONE_TERMINATA</option>
+            <option value="RESTITUITA" translate="italgaslabApp.StatoAttualeCassetta.RESTITUITA">RESTITUITA</option>
+        </select>
+        <button ng-click="vm.updateStatoCassetta()"
+                ng-disabled="!vm.cassetta.statoAttualeCassetta"
+                class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>
+            <span class="hidden-xs hidden-sm">Salva stato</span>
+        </button>
+    </p>
+
+    <p><span class="glyphicon glyphicon-info-sign"></span> Dopo aver inserito i dati di tutti i campioni relativi alla cassetta corrente, cliccare sul pulsante seguente per generare
+        il/i rapporti di prova e file Excel di esportazione:</p>
+    <div class="text-center">
+        <a class="btn btn-success" target="_blank" href="api/cassettas/{{vm.cassetta.id}}/export" >
+            Rapporto ed esportazione
+        </a>
+    </div>
+
+    <hr>
+
+    <!--<jhi-alert></jhi-alert>-->
+
+
+
+    <div>
+        <p class="lead">Seleziona il campione in lavorazione:</p>
+        <div>
+            <select id="field_campione" name="campione"
+                ng-model="vm.campioneSelected"
+                ng-options="campione as (campione.tipoCampione + ' (' + campione.codiceCampione + ')') for campione in vm.campiones track by campione.tipoCampione"
+                ng-change="vm.onCampioneSelectedChange()">
+                <option value=""></option>
+            </select>
+            <button class="btn btn-primary" ui-sref="lavorazione.campione.new" >
+                <span class="glyphicon glyphicon-plus"></span>
+                <span class="hidden-xs"  translate="italgaslabApp.campione.home.createLabel">
+                    Create new Campione
+                </span>
+            </button>
+            <button ui-sref="lavorazione.campione.delete({id:vm.campioneSelected.id})"
+                    class="btn btn-danger"
+                    ng-if="vm.campioneSelected !== null">
+                <span class="glyphicon glyphicon-remove-circle"></span>
+                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+            </button>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Primo blocco campioni A, A1, B, C -->
+    <div class="blocco col-md-12" ng-if="vm.campioneSelected && !(vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+        <table class="table">
+            <caption>Dati campione <small>{{vm.campioneSelected.codiceCampione}}</small>
+                <button ui-sref="lavorazione.campione.edit({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                    class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                </button>
+            </caption>
+            <tbody>
+                <tr ng-if="vm.campioneSelected.lavorazioneConclusa" class="success">
+                    <th class="col-md-2" scope="row">Lavorazione</th>
+                    <td><span ng-if="vm.campioneSelected.lavorazioneConclusa">Conclusa</span></td>
+                </tr>
+                <tr ng-if="!vm.campioneSelected.lavorazioneConclusa" class="danger">
+                    <th class="col-md-2" scope="row">Lavorazione</th>
+                    <td><span ng-if="!vm.campioneSelected.lavorazioneConclusa">Non conclusa</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row">Sigla Campione</th>
+                    <td><span>{{vm.campioneSelected.siglaCampione}}</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row">Operatore</th>
+                    <td><span>{{vm.campioneSelected.operatoreAnalisi.user.firstName + ' ' + vm.campioneSelected.operatoreAnalisi.user.lastName}}</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row">Data analisi</th>
+                    <td><span>{{vm.campioneSelected.dataAnalisi | date}}</span></td>
+                </tr>
+                <tr ng-if="vm.campioneSelected.tipoCampione == 'C'">
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.descrizioneCampione">Classificazione Geotecnica Campione C</span></th>
+                    <td><span>{{vm.campioneSelected.descrizioneCampione}}</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.fotoSacchetto">Foto Sacchetto</span></th>
+                    <td><div ng-if="vm.campioneSelected.fotoSacchettoContentType">
+                        <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/fotosacchetto" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.fotoCampione">Foto Campione</span></th>
+                    <td><div ng-if="vm.campioneSelected.fotoCampioneContentType">
+                        <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/fotocampione" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.ripartizioneQuartatura">Ripartizione Quartatura</span></th>
+                    <td><span ng-if="vm.campioneSelected.ripartizioneQuartatura" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.essiccamento">Essiccamento</span></th>
+                    <td><span ng-if="vm.campioneSelected.essiccamento" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.setacciaturaSecco">Setacciatura Secco</span></th>
+                    <td><span ng-if="vm.campioneSelected.setacciaturaSecco" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.lavaggioSetacciatura">Lavaggio Setacciatura</span></th>
+                    <td><span ng-if="vm.campioneSelected.lavaggioSetacciatura" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.sabbia">Sabbia</span></th>
+                    <td><span ng-if="vm.campioneSelected.sabbia" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.ghiaia">Ghiaia</span></th>
+                    <td><span ng-if="vm.campioneSelected.ghiaia" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.materialeRisultaVagliato">Materiale Risulta Vagliato</span></th>
+                    <td><span ng-if="vm.campioneSelected.materialeRisultaVagliato" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.detriti">Detriti</span></th>
+                    <td><span ng-if="vm.campioneSelected.detriti" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.materialeFine">Materiale Fine</span></th>
+                    <td><span ng-if="vm.campioneSelected.materialeFine" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.materialeOrganico">Materiale Organico</span></th>
+                    <td><span ng-if="vm.campioneSelected.materialeOrganico" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.elementiMagg125Mm">Elementi Magg 125 Mm</span></th>
+                    <td><span ng-if="vm.campioneSelected.elementiMagg125Mm" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.detritiConglomerato">Detriti Conglomerato</span></th>
+                    <td><span ng-if="vm.campioneSelected.detritiConglomerato" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.argilla">Argilla</span></th>
+                    <td><span ng-if="vm.campioneSelected.argilla" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.argillaMatAlterabile">Argilla Mat Alterabile</span></th>
+                    <td><span ng-if="vm.campioneSelected.argillaMatAlterabile" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.granuliCementati">Granuli Cementati</span></th>
+                    <td><span ng-if="vm.campioneSelected.granuliCementati" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.elementiArrotondati">Elementi Arrotondati</span></th>
+                    <td><span ng-if="vm.campioneSelected.elementiArrotondati" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.elementiSpigolosi">Elementi Spigolosi</span></th>
+                    <td><span ng-if="vm.campioneSelected.elementiSpigolosi" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.sfabbricidi">Sfabbricidi</span></th>
+                    <td><span ng-if="vm.campioneSelected.sfabbricidi" class="glyphicon glyphicon-ok text-success"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.note">Descrizione Campione e Note</span></th>
+                    <td><span>{{vm.campioneSelected.note}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Primo blocco campioni CB_A, CB_B -->
+    <div class="blocco col-md-12" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+        <table class="table">
+            <caption>Dati campione <small>{{vm.campioneSelected.codiceCampione}}</small>
+                <button ui-sref="lavorazione.campione.edit({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                    class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                </button>
+            </caption>
+            <tbody>
+                <tr ng-if="vm.campioneSelected.lavorazioneConclusa" class="success">
+                    <th class="col-md-2" scope="row">Lavorazione</th>
+                    <td><span ng-if="vm.campioneSelected.lavorazioneConclusa">Conclusa</span></td>
+                </tr>
+                <tr ng-if="!vm.campioneSelected.lavorazioneConclusa" class="danger">
+                    <th class="col-md-2" scope="row">Lavorazione</th>
+                    <td><span ng-if="!vm.campioneSelected.lavorazioneConclusa">Non conclusa</span></td>
+                </tr>
+                <!-- <tr>
+                    <th class="col-md-2" scope="row">Sigla Campione</th>
+                    <td><span>{{vm.campioneSelected.siglaCampione}}</span></td>
+                </tr> -->
+                <tr>
+                    <th class="col-md-2" scope="row">Operatore</th>
+                    <td><span>{{vm.campioneSelected.operatoreAnalisi.user.firstName + ' ' + vm.campioneSelected.operatoreAnalisi.user.lastName}}</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row">Data analisi</th>
+                    <td><span>{{vm.campioneSelected.dataAnalisi | date}}</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Foto 1</span></th>
+                    <td><div ng-if="vm.campioneSelected.fotoSacchettoContentType">
+                        <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/fotosacchetto" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Foto 2</span></th>
+                    <td><div ng-if="vm.campioneSelected.fotoCampioneContentType">
+                        <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/fotocampione" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Foto etichetta</span></th>
+                    <td><div ng-if="vm.campioneSelected.fotoEtichettaContentType">
+                        <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/fotoetichetta" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+                    </div></td>
+                </tr>
+
+                <tr>
+                    <th class="col-md-2" scope="row"><span translate="italgaslabApp.campione.note">Descrizione Campione e Note</span></th>
+                    <td><span>{{vm.campioneSelected.note}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+
+    <div class="blocco col-md-12" ng-if="vm.campioneSelected.tipoCampione == 'A' || vm.campioneSelected.tipoCampione == 'A1' || vm.campioneSelected.tipoCampione == 'B'">
+        <table class="table">
+            <caption>Pesatura
+                <button ui-sref="lavorazione.campione.essiccamento({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                </button>
+            </caption>
+            <tbody>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Peso netto iniziale</span></th>
+                    <td><span>{{vm.campioneSelected.essiccamentoPesoCampioneLordoIniziale - vm.campioneSelected.essiccamentoPesoTeglia | number:2}} g</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Peso netto dopo 24 h</span></th>
+                    <td><span>{{vm.campioneSelected.essiccamentoPesoCampioneLordo24H - vm.campioneSelected.essiccamentoPesoTeglia  | number:2}} g</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Peso netto dopo 48 h</span></th>
+                    <td><span>{{vm.campioneSelected.essiccamentoPesoCampioneLordo48H - vm.campioneSelected.essiccamentoPesoTeglia  | number:2}} g</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div class="blocco col-md-12" ng-if="vm.campioneSelected.tipoCampione == 'A' || vm.campioneSelected.tipoCampione == 'A1' || vm.campioneSelected.tipoCampione == 'B'">
+        <table class="table">
+            <caption>Setacciatura
+                <button ui-sref="lavorazione.campione.setacciatura({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                </button>
+            </caption>
+            <tbody>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Pesate inserite</span></th>
+                    <td><span>{{vm.campioneSelectedPesatas.length}}</span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Classificazione geotecnica</span></th>
+                    <td><span>{{vm.campioneSelectedClassGeotec.classificazioneGeotecnica || vm.campioneSelected.descrizioneCampione}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div> <!--ng-if="vm.campioneSelected.tipoCampione == 'B' || vm.campioneSelected.tipoCampione == 'C'">-->
+            <p><em>La classificazione geotecnica viene generata automaticamente per i campioni A e A1, e per il campione B nel caso in cui sia stata fatta
+                setacciatura completa.
+            </em></p>
+            <p><em>La classificazione geotecnica va inserita manualmente, tramite la scheda in alto "Dati campione", per il campione B (nel caso in cui sia stata fatta
+                solo la setacciatura a 100 mm) e per il campione C.
+            </em></p>
+        </div>
+
+        <div class="text-center" ng-if="vm.campioneSelectedClassGeotec && !(vm.campioneSelected.tipoCampione == 'B')">
+            <nvd3 options="vm.options" data="vm.data"></nvd3>
+        </div>
+
+        <jhi-alert-error></jhi-alert-error>
+        <div class="text-center" ng-if="vm.campioneSelected.tipoCampione == 'A' || vm.campioneSelected.tipoCampione == 'A1'">
+            <div>
+                <p class="text-warning">Nota: dopo aver inserito o modificato i dati della setacciatura, cliccare sul pulsante sottostante per generare o aggiornare l'immagine della curva granulometrica.</p>
+                <button ng-click="vm.loadPesataByCampioneWithChart()"
+                        ng-disabled="vm.campioneSelectedPesatas.length == 0"
+                        class="btn btn-primary">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                    <span class="hidden-xs hidden-sm">Genera Curva Granulometrica</span>
+                </button>
+            </div>
+            <br/>
+            <!-- <div ng-if="vm.campioneSelected.curvaContentType"> -->
+                <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/curva" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            <!-- </div> -->
+            <br/>
+            <button ng-click="vm.onDeleteCurva()" ng-if="vm.campioneSelected.curvaContentType"
+                    class="btn btn-default btn-xs text-center">
+                <span>Elimina</span>
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Spessori campioni CB_A, CB_B -->
+    <div class="row">
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Usura - <small>Spessore</small>
+                    <button ui-sref="lavorazione.campione.usura_spessore({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="col-md-3" scope="row">Media spessori:</th>
+                        <td><span>{{ medp1 = (vm.campioneSelected.cbuSpessEst1p1 + vm.campioneSelected.cbuSpessMedp1 + vm.campioneSelected.cbuSpessEst2p1) / 3;
+                                     medp2 = ((vm.campioneSelected.cbuSpessEst1p2 + vm.campioneSelected.cbuSpessMedp2 + vm.campioneSelected.cbuSpessEst2p2) / 3);
+                                     medp2 ? med = ((vm.campioneSelected.cbuSpessEst1p1 + vm.campioneSelected.cbuSpessMedp1 + vm.campioneSelected.cbuSpessEst2p1) / 3  +
+                                        (vm.campioneSelected.cbuSpessEst1p2 + vm.campioneSelected.cbuSpessMedp2 + vm.campioneSelected.cbuSpessEst2p2) / 3) / 2 : med = medp1; med | number:2 }} mm</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Binder - <small>Spessore</small>
+                    <button ui-sref="lavorazione.campione.binder_spessore({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="col-md-3" scope="row">Media spessori:</th>
+                        <td><span>{{ medbp1 = (vm.campioneSelected.cbbSpessEst1p1 + vm.campioneSelected.cbbSpessMedp1 + vm.campioneSelected.cbbSpessEst2p1) / 3;
+                                     medbp2 = ((vm.campioneSelected.cbbSpessEst1p2 + vm.campioneSelected.cbbSpessMedp2 + vm.campioneSelected.cbbSpessEst2p2) / 3);
+                                     medbp2 ? medb = ((vm.campioneSelected.cbbSpessEst1p1 + vm.campioneSelected.cbbSpessMedp1 + vm.campioneSelected.cbbSpessEst2p1) / 3  +
+                                        (vm.campioneSelected.cbbSpessEst1p2 + vm.campioneSelected.cbbSpessMedp2 + vm.campioneSelected.cbbSpessEst2p2) / 3) / 2 : medb = medbp1; medb | number:2 }} mm</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="row">
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Usura - <small>Massa Volumica Apparente - Superficie Satura Secca (SSD)</small>
+                    <button ui-sref="lavorazione.campione.usura_mva({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="col-md-3" scope="row">Media &rho;<sub>bssd</sub></th>
+                        <td><span>
+                            {{  usurabssd1 = ( vm.campioneSelected.cbuSsdM1p1 / (vm.campioneSelected.cbuSsdM3p1 - vm.campioneSelected.cbuSsdM2p1) ) * ((-0.00532 * vm.campioneSelected.cbuSsdTp1 * vm.campioneSelected.cbuSsdTp1 + 0.00759 * vm.campioneSelected.cbuSsdTp1 + 1000.25205) / 1000);
+                                usurabssd2 = ( vm.campioneSelected.cbuSsdM1p2 / (vm.campioneSelected.cbuSsdM3p2 - vm.campioneSelected.cbuSsdM2p2) ) * ((-0.00532 * vm.campioneSelected.cbuSsdTp2 * vm.campioneSelected.cbuSsdTp2 + 0.00759 * vm.campioneSelected.cbuSsdTp2 + 1000.25205) / 1000);
+                                usurabssd2 ? vm.usuramedbssd = (usurabssd1+usurabssd2)/2 : vm.usuramedbssd = usurabssd1; vm.usuramedbssd | number: 3 }} g/cm<sup>3</sup>
+                        </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Binder - <small>Massa Volumica Apparente - Superficie Satura Secca (SSD)</small>
+                    <button ui-sref="lavorazione.campione.binder_mva({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="col-md-3" scope="row">Media &rho;<sub>bssd</sub></th>
+                        <td><span>
+                            {{  binderbssd1 = ( vm.campioneSelected.cbbSsdM1p1 / (vm.campioneSelected.cbbSsdM3p1 - vm.campioneSelected.cbbSsdM2p1) ) * ((-0.00532 * vm.campioneSelected.cbbSsdTp1 * vm.campioneSelected.cbbSsdTp1 + 0.00759 * vm.campioneSelected.cbbSsdTp1 + 1000.25205) / 1000);
+                                binderbssd2 = ( vm.campioneSelected.cbbSsdM1p2 / (vm.campioneSelected.cbbSsdM3p2 - vm.campioneSelected.cbbSsdM2p2) ) * ((-0.00532 * vm.campioneSelected.cbbSsdTp2 * vm.campioneSelected.cbbSsdTp2 + 0.00759 * vm.campioneSelected.cbbSsdTp2 + 1000.25205) / 1000);
+                                binderbssd2 ? vm.bindermedbssd = (binderbssd1+binderbssd2)/2 : vm.bindermedbssd = binderbssd1; vm.bindermedbssd | number: 3 }} g/cm<sup>3</sup>
+                        </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="row">
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Usura - <small>Percentuale di legante</small>
+                    <button ui-sref="lavorazione.campione.usura_legante({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="col-md-3" scope="row">%B<sub>miscela</sub></th>
+                        <td><span>
+                            {{ vm.usuramedpercbmisc = (vm.campioneSelected.cbuLegMmp1 - vm.campioneSelected.cbuLegMap1) / vm.campioneSelected.cbuLegMmp1 * 100; vm.usuramedpercbmisc | number:2}}
+                        </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Binder - <small>Percentuale di legante</small>
+                    <button ui-sref="lavorazione.campione.binder_legante({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="col-md-3" scope="row">%B<sub>miscela</sub></th>
+                        <td><span>
+                            {{  binderpercbmisc1 = (vm.campioneSelected.cbbLegMmp1 - vm.campioneSelected.cbbLegMap1) / vm.campioneSelected.cbbLegMmp1 * 100;
+                                binderpercbmisc2 = (vm.campioneSelected.cbbLegMmp2 - vm.campioneSelected.cbbLegMap2) / vm.campioneSelected.cbbLegMmp2 * 100;
+                                binderpercbmisc2 ? vm.bindermedpercbmisc = (binderpercbmisc1+binderpercbmisc2) / 2 : vm.bindermedpercbmisc = binderpercbmisc1; vm.bindermedpercbmisc | number:3
+                            }}
+                        </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="row">
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Usura - <small>Massa Volumica dei granuli dell'aggregato</small>
+                    <button ui-sref="lavorazione.campione.usura_mvaggr({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <th class="col-md-3" scope="row">Media &rho;<sub>agg</sub></th>
+                    <td><span>
+                        {{  rw1 = -0.00532 * vm.campioneSelected.cbuMvaT1pic1 * vm.campioneSelected.cbuMvaT1pic1 + 0.00759 * vm.campioneSelected.cbuMvaT1pic1 + 1000.25205;
+                            vpic1 = ((vm.campioneSelected.cbuMvaMpwpic1 - vm.campioneSelected.cbuMvaM0pic1) / 1000) / rw1;
+                            rw2 = -0.00532 * vm.campioneSelected.cbuMvaT1pic2 * vm.campioneSelected.cbuMvaT1pic2 + 0.00759 * vm.campioneSelected.cbuMvaT1pic2 + 1000.25205;
+                            vpic2 = ((vm.campioneSelected.cbuMvaMpwpic2 - vm.campioneSelected.cbuMvaM0pic2) / 1000) / rw2;
+                            rw3 = (-0.00532 * vm.campioneSelected.cbuMvaT2pic1 * vm.campioneSelected.cbuMvaT2pic1 + 0.00759 * vm.campioneSelected.cbuMvaT2pic1 + 1000.25205)/1000;
+                            raggr1 = (vm.campioneSelected.cbuMvaMpapic1 - vm.campioneSelected.cbuMvaM0pic1) / ((vpic1 * 1000000) - (vm.campioneSelected.cbuMvaM2pic1 - (vm.campioneSelected.cbuMvaMpapic1 - vm.campioneSelected.cbuMvaM0pic1) - vm.campioneSelected.cbuMvaM0pic1) / rw3);
+                            rw4 = (-0.00532 * vm.campioneSelected.cbuMvaT2pic2 * vm.campioneSelected.cbuMvaT2pic2 + 0.00759 * vm.campioneSelected.cbuMvaT2pic2 + 1000.25205)/1000;
+                            raggr2 = (vm.campioneSelected.cbuMvaMpapic2 - vm.campioneSelected.cbuMvaM0pic2) / ((vpic2 * 1000000) - (vm.campioneSelected.cbuMvaM2pic2 - (vm.campioneSelected.cbuMvaMpapic2 - vm.campioneSelected.cbuMvaM0pic2) - vm.campioneSelected.cbuMvaM0pic2) / rw4);
+                            raggr2 ? vm.medraggr = (raggr1+raggr2)/2 : vm.medraggr = raggr1; vm.medraggr | number: 3
+                        }} g/cm<sup>3</sup>
+                    </span></td>
+                </tbody>
+            </table>
+        </div>
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Binder - <small>Massa Volumica dei granuli dell'aggregato</small>
+                    <button ui-sref="lavorazione.campione.binder_mvaggr({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <th class="col-md-3" scope="row">Media &rho;<sub>agg</sub></th>
+                    <td><span>
+                        {{  rw1p1 = -0.00532 * vm.campioneSelected.cbbMvaT1pic1p1 * vm.campioneSelected.cbbMvaT1pic1p1 + 0.00759 * vm.campioneSelected.cbbMvaT1pic1p1 + 1000.25205;
+                            vpic1p1 = ((vm.campioneSelected.cbbMvaMpwpic1p1 - vm.campioneSelected.cbbMvaM0pic1p1) / 1000) / rw1p1;
+                            rw2p1 = -0.00532 * vm.campioneSelected.cbbMvaT1pic2p1 * vm.campioneSelected.cbbMvaT1pic2p1 + 0.00759 * vm.campioneSelected.cbbMvaT1pic2p1 + 1000.25205;
+                            vpic2p1 = ((vm.campioneSelected.cbbMvaMpwpic2p1 - vm.campioneSelected.cbbMvaM0pic2p1) / 1000) / rw2p1;
+                            rw3p1 = (-0.00532 * vm.campioneSelected.cbbMvaT2pic1p1 * vm.campioneSelected.cbbMvaT2pic1p1 + 0.00759 * vm.campioneSelected.cbbMvaT2pic1p1 + 1000.25205)/1000;
+                            raggr1p1 = (vm.campioneSelected.cbbMvaMpapic1p1 - vm.campioneSelected.cbbMvaM0pic1p1) / ((vpic1p1 * 1000000) - (vm.campioneSelected.cbbMvaM2pic1p1 - (vm.campioneSelected.cbbMvaMpapic1p1 - vm.campioneSelected.cbbMvaM0pic1p1) - vm.campioneSelected.cbbMvaM0pic1p1) / rw3p1) ;
+                            rw4p1 = (-0.00532 * vm.campioneSelected.cbbMvaT2pic2p1 * vm.campioneSelected.cbbMvaT2pic2p1 + 0.00759 * vm.campioneSelected.cbbMvaT2pic2p1 + 1000.25205)/1000;
+                            raggr2p1 = (vm.campioneSelected.cbbMvaMpapic2p1 - vm.campioneSelected.cbbMvaM0pic2p1) / ((vpic2p1 * 1000000) - (vm.campioneSelected.cbbMvaM2pic2p1 - (vm.campioneSelected.cbbMvaMpapic2p1 - vm.campioneSelected.cbbMvaM0pic2p1) - vm.campioneSelected.cbbMvaM0pic2p1) / rw4p1) ;
+
+                            rw1p2 = -0.00532 * vm.campioneSelected.cbbMvaT1pic1p2 * vm.campioneSelected.cbbMvaT1pic1p2 + 0.00759 * vm.campioneSelected.cbbMvaT1pic1p2 + 1000.25205;
+                            vpic1p2 = ((vm.campioneSelected.cbbMvaMpwpic1p2 - vm.campioneSelected.cbbMvaM0pic1p2) / 1000) / rw1p2;
+                            rw2p2 = -0.00532 * vm.campioneSelected.cbbMvaT1pic2p2 * vm.campioneSelected.cbbMvaT1pic2p2 + 0.00759 * vm.campioneSelected.cbbMvaT1pic2p2 + 1000.25205;
+                            vpic2p2 = ((vm.campioneSelected.cbbMvaMpwpic2p2 - vm.campioneSelected.cbbMvaM0pic2p2) / 1000) / rw2p2;
+                            rw3p2 = (-0.00532 * vm.campioneSelected.cbbMvaT2pic1p2 * vm.campioneSelected.cbbMvaT2pic1p2 + 0.00759 * vm.campioneSelected.cbbMvaT2pic1p2 + 1000.25205)/1000;
+                            raggr1p2 = (vm.campioneSelected.cbbMvaMpapic1p2 - vm.campioneSelected.cbbMvaM0pic1p2) / ((vpic1p2 * 1000000) - (vm.campioneSelected.cbbMvaM2pic1p2 - (vm.campioneSelected.cbbMvaMpapic1p2 - vm.campioneSelected.cbbMvaM0pic1p2) - vm.campioneSelected.cbbMvaM0pic1p2) / rw3p2) ;
+                            rw4p2 = (-0.00532 * vm.campioneSelected.cbbMvaT2pic2p2 * vm.campioneSelected.cbbMvaT2pic2p2 + 0.00759 * vm.campioneSelected.cbbMvaT2pic2p2 + 1000.25205)/1000;
+                            raggr2p2 = (vm.campioneSelected.cbbMvaMpapic2p2 - vm.campioneSelected.cbbMvaM0pic2p2) / ((vpic2p2 * 1000000) - (vm.campioneSelected.cbbMvaM2pic2p2 - (vm.campioneSelected.cbbMvaMpapic2p2 - vm.campioneSelected.cbbMvaM0pic2p2) - vm.campioneSelected.cbbMvaM0pic2p2) / rw4p2) ;
+
+                            raggr2p1 ? medraggrp1 = (raggr1p1+raggr2p1)/2 : medraggrp1 = raggr1p1;
+                            raggr2p2 ? medraggrp2 = (raggr1p2+raggr2p2)/2 : medraggrp2 = raggr1p2;
+                            medraggrp2 ? vm.bindermedraggr = (medraggrp1 + medraggrp2) / 2 : vm.bindermedraggr = medraggrp1; vm.bindermedraggr | number: 3
+                        }} g/cm<sup>3</sup>
+                    </span></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="row">
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Usura - <small>Percentuale dei vuoti</small>
+
+                </caption>
+                <tbody>
+                    <th class="col-md-3" scope="row">V (%)</th>
+                    <td><span>
+                        {{  vm.usuramedbssd ? vm.usurapercvuoti = 100 - vm.usuramedbssd * (vm.usuramedpercbmisc / 1.02 + (100 - vm.usuramedpercbmisc) / vm.medraggr) : vm.usurapercvuoti = null; vm.usurapercvuoti | number: 2
+                        }}
+                    </span></td>
+                </tbody>
+            </table>
+        </div>
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Binder - <small>Percentuale dei vuoti</small>
+
+                </caption>
+                <tbody>
+                    <th class="col-md-3" scope="row">V (%)</th>
+                    <td><span>
+                        {{  vm.bindermedbssd ? vm.binderpercvuoti = 100 - vm.bindermedbssd * (vm.bindermedpercbmisc / 1.02 + (100 - vm.bindermedpercbmisc) / vm.bindermedraggr) : vm.binderpercvuoti = null; vm.binderpercvuoti | number: 2
+                        }}
+                    </span></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="row">
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Usura - <small>Lavaggio allo 0.063 mm</small>
+                    <button ui-sref="lavorazione.campione.usura_lavaggio({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <th class="col-md-3" scope="row">Peso passante 0,063 mm (g)</th>
+                    <td><span>
+                        {{  vm.campioneSelected.cbuPPostLav ? usuralavpass = vm.campioneSelected.cbuLegMap1 - vm.campioneSelected.cbuPPostLav : usuralavpass = null; usuralavpass | number:2
+                        }}
+                    </span></td>
+                </tbody>
+            </table>
+        </div>
+        <div class="blocco col-sm-6" ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">
+            <table class="table">
+                <caption>Binder - <small>Lavaggio allo 0.063 mm</small>
+                    <button ui-sref="lavorazione.campione.binder_lavaggio({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected})"
+                        class="btn btn-primary pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                    </button>
+                </caption>
+                <tbody>
+                    <th class="col-md-3" scope="row">Peso passante 0,063 mm (g)</th>
+                    <td><span>
+                        {{  vm.campioneSelected.cbbPPostLav ? binderlavpass = (vm.campioneSelected.cbbLegMap1 + vm.campioneSelected.cbbLegMap2) - vm.campioneSelected.cbbPPostLav : binderlavpass = null; binderlavpass | number:2
+                        }}
+                    </span></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="blocco col-sm-12" ng-if="vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B'">
+        <table class="table">
+            <caption>Usura - Setacciatura
+                <button ui-sref="lavorazione.campione.setacciatura_cb_usura({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected, binder:false})"
+                        class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                </button>
+            </caption>
+            <tbody>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Pesate inserite</span></th>
+                    <td><span>{{vm.campioneSelectedCbUsuraPesatas.length}}</span></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <jhi-alert-error></jhi-alert-error>
+        <div class="text-center">
+            <div>
+                <p class="text-warning">Nota: dopo aver inserito o modificato i dati della setacciatura, cliccare sul pulsante sottostante per generare o aggiornare l'immagine della curva granulometrica.</p>
+                <button ng-click="vm.loadPesataByCampioneWithChartUsura()"
+                        ng-disabled="vm.campioneSelectedCbUsuraPesatas.length == 0"
+                        class="btn btn-primary">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                    <span class="hidden-xs hidden-sm">Genera Curva Granulometrica</span>
+                </button>
+            </div>
+            <br/>
+            <!-- <div ng-if="vm.campioneSelected.curvaContentType"> -->
+                <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/curva" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            <!-- </div> -->
+            <br/>
+            <button ng-click="vm.onDeleteCurva()" ng-if="vm.campioneSelected.curvaContentType"
+                    class="btn btn-default btn-xs text-center">
+                <span>Elimina</span>
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+
+        <div class="text-center" ng-if="vm.cbUsuraPercGranData">
+            <nvd3 options="vm.options" data="vm.cbUsuraPercGranData"></nvd3>
+        </div>
+
+    </div>
+
+    <p ng-if="vm.campioneSelected && (vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B')">&nbsp;</p>
+
+    <div class="blocco col-md-12" ng-if="vm.campioneSelected.tipoCampione == 'CB_A' || vm.campioneSelected.tipoCampione == 'CB_B'">
+        <table class="table">
+            <caption>Binder - Setacciatura
+                <button ui-sref="lavorazione.campione.setacciatura_cb_binder({id:vm.campioneSelected.id, campioneSelected:vm.campioneSelected, binder:true})"
+                        class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                </button>
+            </caption>
+            <tbody>
+                <tr>
+                    <th class="col-md-2" scope="row"><span>Pesate inserite</span></th>
+                    <td><span>{{vm.campioneSelectedCbBinderPesatas.length}}</span></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <jhi-alert-error></jhi-alert-error>
+        <div class="text-center">
+            <div>
+                <p class="text-warning">Nota: dopo aver inserito o modificato i dati della setacciatura, cliccare sul pulsante sottostante per generare o aggiornare l'immagine della curva granulometrica.</p>
+                <button ng-click="vm.loadPesataByCampioneWithChartBinder()"
+                        ng-disabled="vm.campioneSelectedCbBinderPesatas.length == 0"
+                        class="btn btn-primary">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                    <span class="hidden-xs hidden-sm">Genera Curva Granulometrica</span>
+                </button>
+            </div>
+            <br/>
+            <!-- <div ng-if="vm.campioneSelected.curvaContentType"> -->
+                <img no-cache-src="api/campiones/{{vm.campioneSelected.id}}/curvabinder" onerror="this.src='content/images/transparent.gif'" style="max-width: 100%;"/>
+            <!-- </div> -->
+            <br/>
+            <button ng-click="vm.onDeleteCurvaBinder()" ng-if="vm.campioneSelected.curvaBinderContentType"
+                    class="btn btn-default btn-xs text-center">
+                <span>Elimina</span>
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+
+        <div class="text-center" ng-if="vm.cbBinderPercGranData">
+            <nvd3 options="vm.options" data="vm.cbBinderPercGranData"></nvd3>
+        </div>
+
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+
+    <a class="btn btn-info" ui-sref="lavorazione.cassetta({idConsegna:vm.consegna.id})">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </a>
+</div>

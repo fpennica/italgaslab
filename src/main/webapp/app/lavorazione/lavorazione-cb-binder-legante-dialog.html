@@ -1,0 +1,77 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCampioneLabel">Binder - Percentuale di legante</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>m<sub>miscela</sub> (g)</th>
+                    <th>m<sub>aggregato</sub> (g)</th>
+                    <th>m<sub>bitume</sub> (g)</th>
+                    <th>%B<sub>miscela</sub></th>
+                    <th>%B<sub>aggregato</sub></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Provino 1</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbLegMmp1" id="field_cbbLegMmp1"
+                                ng-model="vm.campione.cbbLegMmp1"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbLegMap1" id="field_cbbLegMap1"
+                                ng-model="vm.campione.cbbLegMap1"
+                                 />
+                    </div></td>
+                    <td>{{ mb1 = vm.campione.cbbLegMmp1 - vm.campione.cbbLegMap1; mb1 | number:2}}</td>
+                    <td>{{ percbmisc1 = (vm.campione.cbbLegMmp1 - vm.campione.cbbLegMap1) / vm.campione.cbbLegMmp1 * 100; percbmisc1 | number:2}}</td>
+                    <td>{{ percbaggr1 = (vm.campione.cbbLegMmp1 - vm.campione.cbbLegMap1) / vm.campione.cbbLegMap1 * 100; percbaggr1 | number:2}}</td>
+                </tr>
+                <tr>
+                    <td>Provino 2</td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbLegMmp2" id="field_cbbLegMmp2"
+                                ng-model="vm.campione.cbbLegMmp2"
+                                 />
+                    </div></td>
+                    <td><div class="form-group">
+                        <input type="number" class="form-control" name="cbbLegMap2" id="field_cbbLegMap2"
+                                ng-model="vm.campione.cbbLegMap2"
+                                 />
+                    </div></td>
+                    <td>{{ mb2 = vm.campione.cbbLegMmp2 - vm.campione.cbbLegMap2; mb2 | number:2}}</td>
+                    <td>{{ percbmisc2 = (vm.campione.cbbLegMmp2 - vm.campione.cbbLegMap2) / vm.campione.cbbLegMmp2 * 100; percbmisc2 | number:2}}</td>
+                    <td>{{ percbaggr2 = (vm.campione.cbbLegMmp2 - vm.campione.cbbLegMap2) / vm.campione.cbbLegMap2 * 100; percbaggr2 | number:2}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Media</td>
+                    <td>{{ vm.campione.cbbLegMap1 + vm.campione.cbbLegMap2 | number:3 }}</td>
+                    <td>{{ mb2 ? medmb = (mb1+mb2) / 2 : medmb = mb1; medmb | number:3 }}</td>
+                    <td>{{ percbmisc2 ? medpercbmisc = (percbmisc1+percbmisc2) / 2 : medpercbmisc = percbmisc1; medpercbmisc | number:3}}</td>
+                    <td>{{ percbaggr2 ? medpercbaggr = (percbaggr1+percbaggr2) / 2 : medpercbaggr = percbaggr1; medpercbaggr | number:3}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

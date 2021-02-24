@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-11-04T12:28:39 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificato_campione_A1_end" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="50" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="1d49b96d-2add-43de-b5db-c91add2fd303">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="CAMPIONE_A1_PIECHART" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_CLASS_GEOTEC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_A1_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageFooter>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="481" y="0" width="14" height="12" uuid="629aeb1f-cdc2-4929-8988-b48d1def66e7"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + 6]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="428" splitType="Stretch">
+			<image hAlign="Center">
+				<reportElement x="102" y="8" width="290" height="160" uuid="a0d7c57f-04bd-4219-8fca-fcd71cb6ce30"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_A1_PIECHART}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="0" y="178" width="494" height="240" uuid="ef9f0582-63c0-4ecd-944a-e3b44fd990ce"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="214" width="490" height="202" uuid="3253ed30-f3b7-4970-8044-150783b24311"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="180" width="490" height="32" uuid="b63e1adf-289a-499d-a586-056beca554f3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="181" width="474" height="13" uuid="0d05972f-45a7-4165-ab31-a72337542a50"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Classificazione geotecnica (ASTM - USCS):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="216" width="474" height="13" uuid="8ef9c4d4-7761-4437-81d4-df4c750b2372"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="194" width="474" height="16" uuid="65ae72fb-c6d1-40b1-a71d-99f78735ea20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_A1_CLASS_GEOTEC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="232" width="478" height="178" uuid="52116dec-56a5-4830-bd7c-02d8eb3fc6dc"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_A1_NOTE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

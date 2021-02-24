@@ -1,0 +1,126 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myConsegnaLabel" translate="italgaslabApp.consegna.home.createOrEditLabel">Create or edit a Consegna</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.consegna.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.consegna.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.consegna.dataConsegna" for="field_dataConsegna">Data Consegna</label>
+                <div class="input-group">
+                    <input id="field_dataConsegna" type="text" class="form-control" name="dataConsegna" uib-datepicker-popup="{{dateformat}}" ng-model="vm.consegna.dataConsegna" is-open="vm.datePickerOpenStatus.dataConsegna"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dataConsegna')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dataConsegna.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dataConsegna.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.consegna.trasportatore" for="field_trasportatore">Trasportatore</label>
+            <input type="text" class="form-control" name="trasportatore" id="field_trasportatore"
+                    ng-model="vm.consegna.trasportatore"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.consegna.numCassette" for="field_numCassette">Num Cassette</label>
+            <input type="number" class="form-control" name="numCassette" id="field_numCassette"
+                    ng-model="vm.consegna.numCassette"
+                    required />
+            <div ng-show="editForm.numCassette.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numCassette.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="italgaslabApp.consegna.numProtocolloAccettazione" for="field_numProtocolloAccettazione">Num Protocollo Accettazione</label>
+            <input type="text" class="form-control" name="numProtocolloAccettazione" id="field_numProtocolloAccettazione"
+                    ng-model="vm.consegna.numProtocolloAccettazione"
+                     />
+            <p ng-show="!vm.consegna.numProtocolloAccettazione" class="help-block">
+                Può essere inserito successivamente.
+            </p>
+        </div>
+
+        <div class="form-group" ngf-drop ngf-change="vm.setProtocolloAccettazione($file, vm.consegna)">
+            <label class="control-label" translate="italgaslabApp.consegna.protocolloAccettazione" for="field_protocolloAccettazione">Protocollo Accettazione</label>
+
+            <div ng-if="vm.consegna.protocolloAccettazioneContentType && !vm.consegna.protocolloAccettazione" class="help-block clearfix">
+                <span class="pull-left">
+                    File presente:&nbsp;
+                    <a target="_blank" href="api/consegnas/{{vm.consegna.id}}/accettaz" translate="entity.action.open">open</a>
+                </span>
+                <button ng-click="vm.consegna.protocolloAccettazione=null;vm.consegna.protocolloAccettazioneContentType=null;"
+                        class="btn btn-default btn-xs pull-right">
+                    <span>Elimina</span>
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+
+            <div>
+                <div ng-if="vm.consegna.protocolloAccettazione" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.consegna.protocolloAccettazioneContentType, vm.consegna.protocolloAccettazione)" translate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{vm.consegna.protocolloAccettazioneContentType}}, {{vm.byteSize(vm.consegna.protocolloAccettazione)}}</span>
+                    <button ng-click="vm.consegna.protocolloAccettazione=null;vm.consegna.protocolloAccettazioneContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" accept=".pdf" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setProtocolloAccettazione($file, vm.consegna)" translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="protocolloAccettazione" id="field_protocolloAccettazione"
+                    ng-model="vm.consegna.protocolloAccettazione"
+                     />
+            <input type="hidden" class="form-control" name="protocolloAccettazioneContentType" id="field_protocolloAccettazioneContentType"
+                    ng-model="vm.consegna.protocolloAccettazioneContentType" />
+            <p ng-show="!vm.consegna.protocolloAccettazioneContentType" class="help-block">
+                Può essere inserito successivamente.
+            </p>
+        </div>
+
+        <!-- <div class="form-group">
+            <label translate="italgaslabApp.consegna.laboratorio" for="field_laboratorio">Laboratorio</label>
+            <select class="form-control" id="field_laboratorio" name="laboratorio" ng-model="vm.consegna.laboratorio" ng-options="laboratorio as laboratorio.istituto for laboratorio in vm.laboratorios track by laboratorio.id">
+                <option value=""></option>
+            </select>
+        </div> -->
+        <div class="form-group" has-authority="ROLE_ADMIN">
+            <label translate="italgaslabApp.consegna.laboratorio" for="field_laboratorio_admin">Laboratorio</label>
+            <select class="form-control" id="field_laboratorio_admin" name="laboratorio" ng-model="vm.laboratorio" ng-options="laboratorio as laboratorio.istituto for laboratorio in vm.laboratorios track by laboratorio.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group" has-not-authority="ROLE_ADMIN">
+            <label translate="italgaslabApp.consegna.laboratorio" for="field_laboratorio">Laboratorio</label>
+            <select disabled class="form-control" id="field_laboratorio" name="laboratorio" ng-model="vm.laboratorio" ng-options="laboratorio as laboratorio.istituto for laboratorio in vm.laboratorios track by laboratorio.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

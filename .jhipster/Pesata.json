@@ -1,0 +1,119 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipType": "many-to-one",
+            "relationshipName": "campione",
+            "otherEntityName": "campione",
+            "otherEntityField": "codiceCampione"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "numPesata",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "pesoNetto",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "tratt125Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "tratt63Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "tratt31V5Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "tratt16Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "tratt8Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "tratt6V3Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "tratt4Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "tratt2Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "tratt1Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "tratt0V5Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "tratt0V25Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "tratt0V125Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "tratt0V075Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "trattB100Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "trattB6V3Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "trattB2Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "trattB0V5Mm",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "fondo",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20160701090023",
+    "dto": "no",
+    "pagination": "pager",
+    "service": "serviceClass",
+    "entityTableName": "pesata",
+    "enableEntityAudit": true
+}

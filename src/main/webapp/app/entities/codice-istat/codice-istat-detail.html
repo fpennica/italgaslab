@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span translate="italgaslabApp.codiceIstat.detail.title">Codice Istat</span> {{vm.codiceIstat.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="italgaslabApp.codiceIstat.codiceIstat">Codice Istat</span></dt>
+        <dd>
+            <span>{{vm.codiceIstat.codiceIstat}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.codiceIstat.comune">Comune</span></dt>
+        <dd>
+            <span>{{vm.codiceIstat.comune}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.codiceIstat.provincia">Provincia</span></dt>
+        <dd>
+            <span>{{vm.codiceIstat.provincia}}</span>
+        </dd>
+        <dt><span translate="italgaslabApp.codiceIstat.regione">Regione</span></dt>
+        <dd>
+            <span>{{vm.codiceIstat.regione}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

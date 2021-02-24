@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-10T14:45:47 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="protocollo_accettazione_tabella" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="762" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="40" isSummaryWithPageHeaderAndFooter="true" uuid="dc9cd6a9-df0d-4469-a6fd-f4b8fd8065a4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="ListaCassette" uuid="7ecec39a-666a-4f31-a89e-d85aa0871a9c">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="rifGeografo" class="java.lang.String">
+			<fieldDescription><![CDATA[rifGeografo]]></fieldDescription>
+		</field>
+		<field name="codiceIstat.comune" class="java.lang.String">
+			<fieldDescription><![CDATA[codiceIstat.comune]]></fieldDescription>
+		</field>
+		<field name="codiceIstat.provincia" class="java.lang.String"/>
+		<field name="indirizzoScavo" class="java.lang.String">
+			<fieldDescription><![CDATA[indirizzoScavo]]></fieldDescription>
+		</field>
+		<field name="dataScavo" class="java.time.LocalDate">
+			<fieldDescription><![CDATA[dataScavo]]></fieldDescription>
+		</field>
+		<field name="odl" class="java.lang.String">
+			<fieldDescription><![CDATA[odl]]></fieldDescription>
+		</field>
+		<field name="presenzaCampione10" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[presenzaCampione10]]></fieldDescription>
+		</field>
+		<field name="presenzaCampione12" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[presenzaCampione12]]></fieldDescription>
+		</field>
+		<field name="presenzaCampione14" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[presenzaCampione14]]></fieldDescription>
+		</field>
+		<field name="presenzaCampione16" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[presenzaCampione16]]></fieldDescription>
+		</field>
+		<field name="conglomeratoBituminoso" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[conglomeratoBituminoso]]></fieldDescription>
+		</field>
+		<field name="prioritario" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[prioritario]]></fieldDescription>
+		</field>
+		<variable name="NUM_CASSETTA" class="java.lang.Integer" calculation="Count">
+			<variableExpression><![CDATA[Boolean.TRUE]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="LISTA_CASSETTE" class="java.util.List" isForPrompting="false"/>
+	<parameter name="ISTITUTO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Istituto di Geologia Ambientale e Geoingegneria"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ISTITUTO_COMUNE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Roma"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CONSEGNA_DATA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ISTITUTO_DESC" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<pageHeader>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="760" height="20" uuid="3d5b661b-59f6-4ba1-8890-fc48579e695c"/>
+				<textElement markup="html">
+					<font fontName="ItalgaslabDejaVuSerif" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>" + $P{ISTITUTO} + "</b> - " + $P{ISTITUTO_DESC}.replace("<br/>", "-")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="760" height="20" uuid="91401e6a-b9d8-4eaf-b185-25c9333de32a"/>
+				<textElement textAlignment="Center">
+					<font fontName="ItalgaslabDejaVuSans"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dettaglio contenitori ricevuti dal laboratorio in intestazione in data " + $P{CONSEGNA_DATA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="740" y="0" width="20" height="20" uuid="818a6209-2aef-4729-b642-9d0ef54cfa99"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + 1]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="70">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="760" height="70" uuid="efd18c9e-0d18-44c1-9bfc-efba905e18d9">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="ListaCassette" uuid="08f3a822-3895-46ff-9dab-27c4455992e2">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{LISTA_CASSETTE})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="29" uuid="82dea52c-2c46-4e0d-85f2-578364fcc8a2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna1"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="29" height="15" uuid="28db4a0b-a117-416e-babd-83d61760c18e"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+									<paragraph leftIndent="3" rightIndent="0" spacingBefore="0" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{NUM_CASSETTA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="85" uuid="a7daf80a-e3a4-495a-aa94-d485a4cc62b8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna2"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="85" height="25" uuid="e6d33985-bff0-4014-b3de-6fed11506332"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Rif. Geografo<br/>(ms-link)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="85" height="15" uuid="d525cc2a-846c-4445-a931-b98e91356aef"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+									<paragraph leftIndent="3" rightIndent="0" spacingBefore="0" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{rifGeografo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="108" uuid="b630c362-d3dc-4165-90c9-a96742fd580f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna3"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="108" height="25" uuid="9970e0d7-1a64-40c0-8c7f-55ab945d5ad9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Comune]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="108" height="15" uuid="bbbabbbd-a127-4f7e-88ea-f4f1f796bdaa"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+									<paragraph leftIndent="3" rightIndent="0" spacingBefore="0" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{codiceIstat.comune} != null ? $F{codiceIstat.comune} + " (" + $F{codiceIstat.provincia} + ")" : null]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="179" uuid="909f65df-ff33-4eed-915a-37c60fb02c18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna4"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="179" height="25" uuid="ca0379bf-c762-47f9-b3a9-73cea2b46e18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Località<br/>(Contrada o via dello scavo)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="179" height="15" uuid="c344254a-95cc-447d-8133-29be614ef36a"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+									<paragraph leftIndent="3" rightIndent="0" spacingBefore="0" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{indirizzoScavo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="78fcebc6-8b6e-4418-9a85-d7e29e46fd2d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna5"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="79" height="25" uuid="12c5eb93-e0d9-450f-ab23-8aa95688ccfd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Data prelievo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="79" height="15" uuid="e8de4a53-d9ed-4b4a-a613-aa0df78ec91b"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+									<paragraph leftIndent="3" rightIndent="0" spacingBefore="0" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dataScavo}.format( java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="bd37c128-9bf9-4d9f-8aae-8355f7c27b00">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna6"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="25" uuid="912e0413-61a2-4b8d-b3b1-bca76b9d04c9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[OdS (OdL)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="82" height="15" uuid="ee820f37-8621-46c6-9a5f-ac11d2ff5453"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="ItalgaslabDejaVuSans" size="8"/>
+									<paragraph leftIndent="3" rightIndent="0" spacingBefore="0" spacingAfter="0"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{odl}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="95ee467c-1271-4014-aabc-8700786132dc">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna7"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="33" height="25" uuid="7008ab5a-9e96-4ed0-968a-c68a8592d9b6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[B<br/>(10)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<image hAlign="Center">
+								<reportElement x="0" y="0" width="33" height="15" uuid="8f2f1d13-da92-4197-b8b6-47720e3ebc3e"/>
+								<imageExpression><![CDATA[$F{presenzaCampione10} ? "checkmark-128.png" : ""]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="a963aa32-5abd-4146-ad86-af3d46e797ab">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna8"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="33" height="25" uuid="29dca9fb-d880-4177-90af-d674948bc3ee"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[A<br/>(12)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<image hAlign="Center">
+								<reportElement x="0" y="0" width="33" height="15" uuid="2f6b9019-c592-4d79-bafa-960eedb5281f"/>
+								<imageExpression><![CDATA[$F{presenzaCampione12} ? "checkmark-128.png" : ""]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="ad00fa33-4ad5-47f8-8401-36b26d9fdd49">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna9"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="33" height="25" uuid="4d1876f2-6e83-4d3b-9c71-179c118cee63"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[A1<br/>(14)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<image hAlign="Center">
+								<reportElement x="0" y="0" width="33" height="15" uuid="29fb16a1-c9ae-43f4-8dd3-fd08319294a5"/>
+								<imageExpression><![CDATA[$F{presenzaCampione14} ? "checkmark-128.png" : ""]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="69bc8e7a-47b5-4ddb-a584-eab471a5130e">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna10"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="33" height="25" uuid="ca22bd6b-6583-446d-93e6-222bfc556ea6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[C<br/>(16)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<image hAlign="Center">
+								<reportElement x="0" y="0" width="33" height="15" uuid="75b6ea83-37b7-49d5-8346-883ad9ed15b0"/>
+								<imageExpression><![CDATA[$F{presenzaCampione16} ? "checkmark-128.png" : ""]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="b09ba13f-aba5-4746-bfd6-49ff1919e1e2">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna11"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="33" height="25" uuid="5d5074ec-336f-4dfb-8059-96ca34321de7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CB]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<image hAlign="Center">
+								<reportElement x="0" y="0" width="33" height="15" uuid="4a4ac7e2-aae8-4ab7-a17c-943c5284c315"/>
+								<imageExpression><![CDATA[$F{conglomeratoBituminoso} ? "checkmark-128.png" : ""]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="4c4c2362-48af-44e8-8cad-d72cefb5dad0">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonna12"/>
+						<jr:columnHeader style="Table_CH" height="25" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="33" height="25" uuid="1e9a63e0-71e9-4867-9e11-eaebec28433e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+									<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Pri.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<image hAlign="Center">
+								<reportElement x="0" y="0" width="33" height="15" uuid="b83b5fe2-6c27-44db-a50e-b52ebb16d24b"/>
+								<imageExpression><![CDATA[$F{prioritario} ? "checkmark-128.png" : ""]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

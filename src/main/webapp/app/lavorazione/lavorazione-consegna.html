@@ -1,0 +1,105 @@
+<div>
+    <p class="lead">Seleziona una consegna esistente dalla lista.</p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> Selezionare una consegna presente in lista per proseguire.</p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> E' possibile effettuare la ricerca delle consegne tramite la casella di ricerca.</p>
+    <p><span class="glyphicon glyphicon-info-sign"></span> Per inserire le consegne utilizzare la procedura di accettazione:</p>
+    <div class="text-center">
+        <a class="btn btn-success" ui-sref="accettazione.consegna" >
+            Inserimento Consegne
+        </a>
+    </div>
+    <hr>
+
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <!-- <button class="btn btn-primary" ui-sref="accettazione.consegna.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="italgaslabApp.consegna.home.createLabel">
+                        Create new Consegna
+                    </span>
+                </button> -->
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'italgaslabApp.consegna.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <!-- <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="dataConsegna"><span translate="italgaslabApp.consegna.dataConsegna">Data Consegna</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trasportatore"><span translate="italgaslabApp.consegna.trasportatore">Trasportatore</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numCassette"><span translate="italgaslabApp.consegna.numCassette">Num Cassette</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numProtocolloAccettazione"><span translate="italgaslabApp.consegna.numProtocolloAccettazione">Num Protocollo Accettazione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="protocolloAccettazione"><span translate="italgaslabApp.consegna.protocolloAccettazione">Protocollo Accettazione</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="laboratorio.istituto"><span translate="italgaslabApp.consegna.laboratorio">Laboratorio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="consegna in vm.consegnas track by consegna.id">
+                    <!-- <td><a ui-sref="consegna-detail({id:consegna.id})">{{consegna.id}}</a></td> -->
+                    <td><a ui-sref="consegna-detail({id:consegna.id})">{{consegna.dataConsegna | date:'mediumDate'}}</a></td>
+                    <td>{{consegna.trasportatore}}</td>
+                    <td>{{consegna.numCassette}}</td>
+                    <td>{{consegna.numProtocolloAccettazione}}</td>
+                    <!-- <td>
+                        <a ng-if="consegna.protocolloAccettazione" ng-click="vm.openFile(consegna.protocolloAccettazioneContentType, consegna.protocolloAccettazione)" translate="entity.action.open">open</a>
+                        <span ng-if="consegna.protocolloAccettazione">{{consegna.protocolloAccettazioneContentType}}, {{vm.byteSize(consegna.protocolloAccettazione)}}</span>
+                    </td> -->
+                    <td>
+                        <a ng-if="consegna.protocolloAccettazioneContentType" target="_blank" href="api/consegnas/{{consegna.id}}/accettaz" translate="entity.action.open">open</a>
+                        <!-- <div ng-if="!consegna.protocolloAccettazioneContentType">
+                            <span class="text-warning">Non inserito - </span>
+                            <a target="_blank" href="api/consegnas/{{consegna.id}}/modelloaccettaz">Scarica modello</a>
+                        </div> -->
+
+                    </td>
+                    <td>
+                        <a ui-sref="laboratorio-detail({id:consegna.laboratorio.id})">{{consegna.laboratorio.istituto}}</a>
+                    </td>
+
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="lavorazione.cassetta({idConsegna:consegna.id})"
+                                    class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span class="hidden-xs hidden-sm" translate="lavorazione.select"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+
+    <hr>
+
+    <a class="btn btn-info" ui-sref="lavorazione">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </a>
+</div>

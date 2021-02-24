@@ -1,0 +1,12 @@
+{
+    "lavorazione": {
+        "title": "Processing",
+        "subtitle": "Sample processing",
+        "logged": {
+            "message": "Loggato come \"{{username}}\"."
+        },
+        "select": "Select"
+    },
+    "sumTrattError": "La sommatoria dei trattenuti è 0, controllare i dati inseriti!",
+    "pesataListEmptyError": "Non sono stati inseriti i dati di setacciatura!"
+}

@@ -1,0 +1,215 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipType": "many-to-one",
+            "relationshipName": "codiceIstat",
+            "otherEntityName": "codiceIstat",
+            "otherEntityField": "comune"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipType": "many-to-one",
+            "relationshipName": "consegna",
+            "otherEntityName": "consegna",
+            "otherEntityField": "dataConsegna"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "codiceCassetta",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "odl",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "rifGeografo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "prioritario",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "indirizzoScavo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "denomCantiere",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "codiceRdc",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "dataScavo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "coordGpsN",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "coordGpsE",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "coordX",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "coordY",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "centroOperativo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "impresaAppaltatrice",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "incaricatoAppaltatore",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "tecnicoItgResp",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "numCampioni",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "presenzaCampione10",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "presenzaCampione11",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "presenzaCampione12",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "presenzaCampione13",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "presenzaCampione14",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 23,
+            "fieldName": "presenzaCampione15",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 24,
+            "fieldName": "presenzaCampione16",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 25,
+            "fieldName": "presenzaCampione17",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 26,
+            "fieldName": "statoContenitore",
+            "fieldType": "StatoContenitore",
+            "fieldValues": "INTEGRO_CONTENUTO_INTEGRO,INTEGRO_CONTENUTO_DANNEGGIATO,DANNEGGIATO_CONTENUTO_INTEGRO,DANNEGGIATO_CONTENUTO_DANNEGGIATO"
+        },
+        {
+            "fieldId": 27,
+            "fieldName": "statoAttualeCassetta",
+            "fieldType": "StatoAttualeCassetta",
+            "fieldValues": "IN_LAVORAZIONE,RIFIUTATA,TRATTAMENTO_INQUINAMENTO,LAVORAZIONE_TERMINATA,RESTITUITA"
+        },
+        {
+            "fieldId": 28,
+            "fieldName": "contenutoInquinato",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 29,
+            "fieldName": "conglomeratoBituminoso",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 30,
+            "fieldName": "fotoContenitore",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldId": 31,
+            "fieldName": "fotoContenuto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldId": 32,
+            "fieldName": "msSismicitaLocale",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 33,
+            "fieldName": "msValAccelerazione",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 34,
+            "fieldName": "note",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 65534
+        },
+        {
+            "fieldId": 35,
+            "fieldName": "certificatoPdf",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldId": 36,
+            "fieldName": "numProtocolloCertificato",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160701090020",
+    "dto": "no",
+    "pagination": "pager",
+    "service": "serviceClass",
+    "entityTableName": "cassetta",
+    "enableEntityAudit": true
+}

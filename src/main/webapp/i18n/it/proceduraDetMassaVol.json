@@ -1,0 +1,11 @@
+{
+    "italgaslabApp": {
+        "ProceduraDetMassaVol" : {
+            "null": "",
+            "SECCA": "SECCA",
+            "SUPERFICIE_SATURA_ASCIUGATA": "SUPERFICIE_SATURA_ASCIUGATA",
+            "PROVINO_PARAFFINATO": "PROVINO_PARAFFINATO",
+            "GEOMETRICA": "GEOMETRICA"
+        }
+    }
+}

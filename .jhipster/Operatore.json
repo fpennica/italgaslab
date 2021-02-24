@@ -1,0 +1,26 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "one-to-one",
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "operatore"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "laboratorio",
+      "otherEntityName": "laboratorio",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20160701090021",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "entityTableName": "operatore"
+}

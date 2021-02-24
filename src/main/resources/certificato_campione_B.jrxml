@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-02-17T13:03:49 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificato_CAMPIONE_B" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="50" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="da4e426c-5243-4b50-a7ba-cd317988cf5f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="ListaSetacci" uuid="a2160dc9-0f8d-4a33-8e60-e2c4bd9ef4e6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="setaccio" class="java.math.BigDecimal"/>
+		<field name="massa" class="java.math.BigDecimal"/>
+		<field name="trattenutoPerc" class="java.math.BigDecimal"/>
+		<field name="trattenutoCumPerc" class="java.math.BigDecimal"/>
+		<field name="passanteCumPerc" class="java.math.BigDecimal"/>
+		<variable name="massa1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+			<variableExpression><![CDATA[$F{massa}]]></variableExpression>
+		</variable>
+		<variable name="trattenutoPerc1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+			<variableExpression><![CDATA[$F{trattenutoPerc}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="CASSETTA" class="it.cnr.igag.italgas.domain.Cassetta" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B" class="it.cnr.igag.italgas.domain.Campione" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_FOTO_SACCHETTO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_FOTO_CAMPIONE" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_CURVA" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_GRANULOMETRIA" class="java.util.List" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_CLASS_GEOTEC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_NOTE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_PASSANTE_100" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="CAMPIONE_B_OPERATORE" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="726">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="494" height="184" uuid="1716b643-70bb-4489-a633-6b1cd678f934"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="18" width="490" height="164" uuid="7298dcf4-3c58-4e9a-a424-2b1c6f409fb6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="2" width="490" height="14" uuid="af4702a2-4408-478c-84fc-ec303d0cc2e3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="2" width="490" height="14" uuid="c53278ee-e64c-49bf-9a45-8816e374b97a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAVORAZIONE CAMPIONE B]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="24" width="58" height="16" uuid="e51b2eb0-0647-4999-84ea-923374527374"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Operatore:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="23" width="100" height="18" uuid="d3f3b8de-fb6c-447a-aa56-8322c45d2320"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data della prova:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="23" width="84" height="18" uuid="9755f585-27c6-4a91-84c4-54cdff6e3766"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CAMPIONE_B}.getDataAnalisi().toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="75" y="24" width="146" height="16" uuid="2ccaabc8-ad04-4711-8d1a-d9936ae57557"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B_OPERATORE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="41" width="170" height="18" uuid="fd788d48-9b23-4026-8a2a-6c53ce4fd0fc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Riferimento geografo (MSLINK):]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="41" width="90" height="18" uuid="3b8a427c-ccf1-4c9e-890a-28498dd64899"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getRifGeografo()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="59" width="58" height="18" uuid="27033f66-ac76-4115-9e1d-9e750c00c43b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comune:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="75" y="59" width="146" height="18" uuid="5d6b63ec-ada6-4d7e-b8db-dd6796ec3462"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CASSETTA}.getCodiceIstat().getComune()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="59" width="170" height="18" uuid="2c0cb763-dfd5-4496-9c6b-a3161d745f31"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codice ITG Campione:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="59" width="90" height="18" uuid="c85825ca-b0c9-4923-9057-89298167c873"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B}.getSiglaCampione()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="77" width="170" height="18" uuid="0abeeca0-8fce-4212-8731-86eb847e9e42"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipologia del campione:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="77" width="90" height="18" uuid="df2f5ef7-e173-4595-b52a-44f9b4e0a8c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B}.getTipoCampione()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="255" y="98" width="204" height="14" uuid="74d6658b-1d99-43a6-83d9-976affc7757d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Pesatura]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="98" width="14" height="14" uuid="b492024c-aa3d-4657-a541-a990b6d779fd"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isRipartizioneQuartatura() != null && $P{CAMPIONE_B}.isRipartizioneQuartatura() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="98" width="195" height="14" uuid="754b5325-a876-4ee3-90e5-feecc760f480"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Ripartizione o quartatura]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="117" width="14" height="14" uuid="f17fbac6-26b2-4423-a053-fb0e9faa489c"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isEssiccamento() != null && $P{CAMPIONE_B}.isEssiccamento() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="117" width="195" height="14" uuid="fa0f6d1e-6119-4d4b-90c5-38d782bad9b1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Essiccamento]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="136" width="14" height="14" uuid="506e2f81-91d8-4516-9315-87761beae6f7"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isSetacciaturaSecco() != null && $P{CAMPIONE_B}.isSetacciaturaSecco() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="136" width="195" height="14" uuid="07b919cb-f631-47fc-9e6b-3c8a9e8cb5cc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Setacciatura a secco]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="155" width="14" height="14" uuid="73d10977-13ce-4378-a195-a17785745768"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isLavaggioSetacciatura() != null && $P{CAMPIONE_B}.isLavaggioSetacciatura() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="155" width="195" height="14" uuid="87789533-a8ee-46c0-9cce-3f501b15e855"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Lavaggio e setacciatura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="115" width="90" height="18" uuid="fbe71a87-6d31-4139-971b-132202e64d8c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso iniziale:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="115" width="62" height="18" uuid="b8ec2b2e-2ecb-4219-a54a-356c253eaeaf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B}.getEssiccamentoPesoCampioneLordoIniziale().subtract($P{CAMPIONE_B}.getEssiccamentoPesoTeglia() != null ? $P{CAMPIONE_B}.getEssiccamentoPesoTeglia() : BigDecimal.ZERO)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="115" width="16" height="18" uuid="a89884e8-607b-4537-a19c-c97a5d3f9f39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[g]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="133" width="90" height="18" uuid="6af6ddbb-84e0-4a36-9717-3e1f6a114ac5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso dopo 24 h:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="133" width="62" height="18" uuid="0eab9e6a-f8dc-4130-beed-db49afddaf00"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B}.getEssiccamentoPesoCampioneLordo24H().subtract($P{CAMPIONE_B}.getEssiccamentoPesoTeglia() != null ? $P{CAMPIONE_B}.getEssiccamentoPesoTeglia() : BigDecimal.ZERO)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="133" width="16" height="18" uuid="6797b970-6bcb-45a7-8c81-71b417fb3432"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[g]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="134" width="16" height="18" uuid="152806a8-1bdf-48a9-bee2-cf4bb36a4f20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[g]]></text>
+			</staticText>
+			<image>
+				<reportElement x="419" y="136" width="12" height="13" uuid="6532ac68-1976-4945-a4b3-c1b603944450"/>
+				<imageExpression><![CDATA["delta.png"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="151" width="62" height="18" uuid="2de1c9f9-6de9-4fef-88c0-c738fc0e6f6a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B}.getEssiccamentoPesoCampioneLordo48H().subtract($P{CAMPIONE_B}.getEssiccamentoPesoTeglia() != null ? $P{CAMPIONE_B}.getEssiccamentoPesoTeglia() : BigDecimal.ZERO)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="151" width="16" height="18" uuid="df06ebca-11ba-43d1-97c2-4f464d8debff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[g]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="151" width="73" height="18" uuid="f8333075-8873-416c-84bd-b6c31c78f50e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PESO COSTANTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="192" width="494" height="226" uuid="929902d6-d649-453d-a72f-62a8e93304c9"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="194" width="490" height="14" uuid="d77deb1b-ee06-4945-afe0-490b331be45e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="194" width="490" height="14" uuid="c3798bb4-37f2-4323-ba0b-1defb41513d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARATTERISTICHE MACROSCOPICHE CAMPIONE B]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="2" y="210" width="490" height="206" uuid="12c617a8-7260-4859-9c04-8eb2714225d8"/>
+			</rectangle>
+			<image>
+				<reportElement x="13" y="270" width="14" height="14" uuid="0da55538-5517-4319-82cc-d67970f98b51"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isSabbia() != null && $P{CAMPIONE_B}.isSabbia() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="270" width="451" height="14" uuid="b22131c7-3814-4d1d-8f05-5b63fb70fb82"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Sabbia]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="288" width="14" height="14" uuid="bd62d15e-925f-43d4-87a6-77d8d542575f"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isMaterialeFine() != null && $P{CAMPIONE_B}.isMaterialeFine() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="288" width="451" height="14" uuid="0971ac38-ca18-420e-8a8e-3987fbcb667b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di materiale fine]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="306" width="14" height="14" uuid="fae13685-462b-4493-b06e-472072804f04"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isMaterialeOrganico() != null && $P{CAMPIONE_B}.isMaterialeOrganico() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="306" width="451" height="14" uuid="531d70e8-d46d-4bda-b59d-08ed55700d2d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di materiale organico]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="216" width="14" height="14" uuid="0c3793ac-9e09-41c4-9d73-6469bb6e4545"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isGhiaia() != null && $P{CAMPIONE_B}.isGhiaia() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="216" width="451" height="14" uuid="c5cb0def-e7da-48d4-8270-0ba4f070369b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Ghiaia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="326" width="451" height="14" uuid="abc5d681-1f7e-45a3-9c90-48b688127f3b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di detriti di conglomerato bituminoso]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="362" width="14" height="14" uuid="7a585228-2188-4a0a-89e3-6ec6da7372ba"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isElementiArrotondati() != null && $P{CAMPIONE_B}.isElementiArrotondati() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="13" y="234" width="14" height="14" uuid="28629a3a-4376-4f68-a37a-61c2c6fb532c"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isMaterialeRisultaVagliato() != null && $P{CAMPIONE_B}.isMaterialeRisultaVagliato() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="362" width="451" height="14" uuid="1c9b3ade-2fdf-4dde-806c-b2464ad2a7d3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di elementi arrotondati]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="326" width="14" height="14" uuid="ac6b939c-ccad-40d8-ae8f-c98032509d72"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isDetritiConglomerato() != null && $P{CAMPIONE_B}.isDetritiConglomerato() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="380" width="451" height="14" uuid="ba698076-c5b9-4f1a-9321-c32a0e7ea760"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di elementi irregolari e/o spigolosi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="234" width="451" height="14" uuid="8ed6ca2a-dccc-4bb0-8fb8-b975648210b5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Materiale di risulta opportunamente vagliato]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="380" width="14" height="14" uuid="f2173f07-c153-4ecb-b185-e58f6f0ac550"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isElementiSpigolosi() != null && $P{CAMPIONE_B}.isElementiSpigolosi() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="13" y="398" width="14" height="14" uuid="36e986f4-f644-4b9f-b6f5-1268ef4e2c8f"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isSfabbricidi() != null && $P{CAMPIONE_B}.isSfabbricidi() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="398" width="451" height="14" uuid="9945300e-c332-459b-956a-429a67b242d1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di sfabbricidi]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="1" y="428" width="242" height="177" uuid="b954326f-4602-48a1-b14b-6bd1038e9f1a">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{CAMPIONE_B_FOTO_SACCHETTO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="27" y="610" width="195" height="14" uuid="cba59f24-ca40-415c-a7ea-6ab1687ac110">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Foto campione]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="250" y="428" width="243" height="177" uuid="48b63eb4-8ca3-4d01-b4ad-edfa53a0baa8"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B_FOTO_CAMPIONE}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="272" y="610" width="195" height="14" uuid="27921297-79fa-4ad9-97a4-b63bb96c3e58">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Foto campione]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="631" width="494" height="41" uuid="dd9730eb-5014-47f8-bd98-c6d5a888e25b"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="633" width="490" height="37" uuid="c31737be-3892-44bd-a273-7fbc888b4ef5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="635" width="372" height="18" uuid="63d30085-e856-470d-8ab6-757d99504174"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Normative di riferimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="655" width="472" height="14" uuid="fa851b94-d6ba-440a-ad14-84a5bf9dcfd8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[CNR BU 23/71; UNI EN 933-1:1997 ; UNI EN 933-1:2012 ; UNI EN 933-2:1997]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="344" width="14" height="14" uuid="a87936fa-5588-4435-bfe0-59fcc92ed7ef"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isArgillaMatAlterabile() != null && $P{CAMPIONE_B}.isArgillaMatAlterabile() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="344" width="451" height="14" uuid="8c11ebee-67b5-4bbb-b076-f95a9fe45342"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di argilla e materiale alterabile]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="252" width="14" height="14" uuid="ca799d9b-fdd6-477c-823f-008e779d18e2"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B}.isDetriti() != null && $P{CAMPIONE_B}.isDetriti() ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="252" width="451" height="14" uuid="10089026-9822-44b8-9e8e-8b0c114d31ca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<text><![CDATA[Presenza di detriti]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="87" y="677" width="320" height="41" uuid="90918456-2738-4981-b7f7-1b59f264eecc"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="89" y="679" width="316" height="37" uuid="f67365d8-b273-497e-a4d2-e5142daa3288"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="94" y="680" width="74" height="14" uuid="67c036bc-81cd-4e4f-9c7d-972f51d524d0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vaglio (mm)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="680" width="74" height="14" uuid="5bdf344e-a940-4a2a-8b45-ff8ca3a02ea1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PASSANTE (%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="695" width="74" height="14" uuid="d420633f-fdae-497d-a9ae-5cb653537648"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[100]]></text>
+			</staticText>
+			<image>
+				<reportElement x="307" y="695" width="14" height="14" uuid="3be56160-5573-4f39-88bc-8b9048c01211"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B_PASSANTE_100}.compareTo(new BigDecimal("100")) == 0 ? "checkbox_checked.png" : "checkbox_unchecked.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="355" y="695" width="14" height="14" uuid="b96c391d-86c1-4ed6-81f6-e0b0e98ea510"/>
+				<imageExpression><![CDATA[$P{CAMPIONE_B_PASSANTE_100}.compareTo(new BigDecimal("100")) == 0 ? "checkbox_unchecked.png" : "checkbox_checked.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="321" y="695" width="22" height="14" uuid="0e38edf7-cdd0-4dce-9ae4-203d943feefe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="695" width="22" height="14" uuid="fdb36306-8911-4184-a237-f57ffb5faa0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="210" y="695" width="74" height="14" uuid="3d8952d1-eae5-4405-a122-ebd68a781d57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B_PASSANTE_100}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="431" y="134" width="42" height="18" uuid="8f3a102b-e9e9-4ca2-a481-699482f6cbca"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B}.getEssiccamentoPesoCampioneLordo24H().subtract($P{CAMPIONE_B}.getEssiccamentoPesoCampioneLordoIniziale()).abs()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="481" y="0" width="14" height="12" uuid="646517c2-6fff-4465-b42c-b9f5bad38a94"/>
+				<textElement>
+					<font fontName="ItalgaslabDejaVuSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + 7]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="592" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="8" width="494" height="240" uuid="74c25d67-e8bd-4a4f-9945-1d537a4c49de"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="44" width="490" height="202" uuid="112807df-1105-4c88-a977-291ecdef1372"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="10" width="490" height="32" uuid="42800eb1-33b5-4403-b71d-224cec7064a2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="11" width="474" height="13" uuid="45dcd258-8024-4215-beb1-245f1db75b0e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Classificazione geotecnica:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="46" width="474" height="13" uuid="924f3178-487c-45be-950e-ccd962d8f45c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="24" width="474" height="16" uuid="337bb341-61e7-47a2-aee0-0c90ee887a56"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B_CLASS_GEOTEC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="8" y="62" width="478" height="178" uuid="2a4f9f7f-f565-48c7-bbae-b6e1371b4ed5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="ItalgaslabDejaVuSans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAMPIONE_B_NOTE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

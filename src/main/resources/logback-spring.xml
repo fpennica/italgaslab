@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+<!-- The FILE and ASYNC appenders are here as examples for a production configuration -->
+<!--
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>%d %-5level [%thread] %logger{0}: %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <appender-ref ref="FILE"/>
+    </appender>
+-->
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/tomcat7/itg-lab.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>%d %-5level [%thread] %logger{0}: %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+	<!-- Appenders per la procedura di importazione da Excel -->
+	
+	<!-- <springProperty name="importLogDest" source="spring.application.name"/> -->
+	
+	<timestamp key="bySecond" datePattern="yyyyMMdd_HHmmss" />
+ 
+    <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+ 
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <discriminator>
+            <Key>jobId</Key>
+            <DefaultValue>unknown</DefaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-${jobId}" class="ch.qos.logback.core.FileAppender">
+                <File>${importLogDest}/excel_import_report_${jobId}.log</File>
+                <Append>false</Append>
+                <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                    <layout class="it.cnr.igag.italgas.config.ExcelImportCustomLogLayout" />
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+ 
+    <appender name="SIFT-TRACE" class="ch.qos.logback.classic.sift.SiftingAppender">
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+        <discriminator>
+            <Key>jobId</Key>
+            <DefaultValue>unknown</DefaultValue>
+        </discriminator>
+        <sift>
+            <appender name="TRACE-${jobId}" class="ch.qos.logback.core.FileAppender">
+                <File>${importLogDest}/excel_import_report_TRACE_${jobId}.log</File>
+                <Append>false</Append>
+<!--                 <layout class="ch.qos.logback.classic.PatternLayout"> -->
+<!--                     <Pattern>%d %-5level %logger{5} - %msg%n</Pattern> -->
+<!--                 </layout> -->
+				<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                    <layout class="it.cnr.igag.italgas.config.ExcelImportCustomLogLayout" />
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+    
+    <logger name="it.cnr.igag.italgas.service.ExcelImportService" level="DEBUG">
+    	<appender-ref ref="SIFT" />
+    	<appender-ref ref="SIFT-TRACE" />
+    </logger>
+    
+
+    <logger name="it.cnr.igag.italgas" level="#logback.loglevel#"/>
+
+    <logger name="javax.activation" level="WARN"/>
+    <logger name="javax.mail" level="WARN"/>
+    <logger name="javax.xml.bind" level="WARN"/>
+    <logger name="ch.qos.logback" level="WARN"/>
+    <logger name="com.codahale.metrics" level="WARN"/>
+    <logger name="com.ryantenney" level="WARN"/>
+    <logger name="com.sun" level="WARN"/>
+    <logger name="com.zaxxer" level="WARN"/>
+    <logger name="net.sf.ehcache" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+    <logger name="org.apache.catalina.startup.DigesterFactory" level="OFF"/>
+    <logger name="org.bson" level="WARN"/>
+    <logger name="org.elasticsearch" level="WARN"/>
+    <logger name="org.hibernate.validator" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.hibernate.ejb.HibernatePersistence" level="OFF"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.springframework.security" level="WARN"/>
+    <logger name="org.springframework.cache" level="WARN"/>
+    <logger name="org.thymeleaf" level="WARN"/>
+    <logger name="org.xnio" level="WARN"/>
+    <logger name="springfox" level="WARN"/>
+    <logger name="sun.rmi" level="WARN"/>
+    <logger name="liquibase" level="WARN"/>
+    <logger name="sun.rmi.transport" level="WARN"/>
+    
+    <logger name="net.sf.jasperreports" level="INFO"/>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <root level="#logback.loglevel#">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

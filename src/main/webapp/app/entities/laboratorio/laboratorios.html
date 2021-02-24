@@ -1,0 +1,86 @@
+<div>
+    <h2 translate="italgaslabApp.laboratorio.home.title">Laboratorios</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="laboratorio.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="italgaslabApp.laboratorio.home.createLabel">
+                        Create new Laboratorio
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'italgaslabApp.laboratorio.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="italgaslabApp.laboratorio.nome">Nome</span></th>
+                    <th><span translate="italgaslabApp.laboratorio.istituto">Istituto</span></th>
+                    <th><span translate="italgaslabApp.laboratorio.responsabile">Responsabile</span></th>
+                    <th><span translate="italgaslabApp.laboratorio.indirizzo">Indirizzo</span></th>
+                    <th><span translate="italgaslabApp.laboratorio.logo">Logo</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="laboratorio in vm.laboratorios track by laboratorio.id">
+                    <td><a ui-sref="laboratorio-detail({id:laboratorio.id})">{{laboratorio.id}}</a></td>
+                    <td>{{laboratorio.nome}}</td>
+                    <td>{{laboratorio.istituto}}</td>
+                    <td>{{laboratorio.responsabile}}</td>
+                    <td>{{laboratorio.indirizzo}}</td>
+                    <td>
+                        <a ng-if="laboratorio.logo" ng-click="vm.openFile(laboratorio.logoContentType, laboratorio.logo)">
+                            <img data-ng-src="{{'data:' + laboratorio.logoContentType + ';base64,' + laboratorio.logo}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="laboratorio.logo">{{laboratorio.logoContentType}}, {{vm.byteSize(laboratorio.logo)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="laboratorio-detail({id:laboratorio.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="laboratorio.edit({id:laboratorio.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="laboratorio.delete({id:laboratorio.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

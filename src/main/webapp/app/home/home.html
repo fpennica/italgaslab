@@ -1,0 +1,143 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+            <span class="itg-lab-logo img-responsive img-rounded hidden-print"></span>
+        </div>
+        <div class="col-md-8">
+
+            <div ng-switch="vm.isAuthenticated()">
+                <h1 ng-switch-when="false" translate="home.title">Welcome!</h1>
+                <p ng-switch-when="false" class="lead" translate="home.subtitle">This is your homepage</p>
+                <div class="alert alert-success" ng-switch-when="true" translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                    You are logged in as user "{{vm.account.login}}".
+                </div>
+
+                <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authinfo" translate-compile>
+                    You have to <a class="alert-link" href="" ng-click="vm.login()">sign in</a> to access the database.
+                </div>
+
+                <p><a target="_blank" href="content/guida.html">Guida utilizzo</a></p>
+
+				<!-- <a ng-switch-when="true" class="btn btn-primary" ui-sref="accettazione" translate="global.menu.activities.accettazione">Check-in</a> -->
+
+                <div class="text-center" ng-switch-when="true">
+                    <h3>Attività</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a class="btn btn-primary btn-lg" ui-sref="accettazione"><span class="glyphicon glyphicon-import"></span> <span translate="global.menu.activities.accettazione">Check-in</span></a>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-primary btn-lg" ui-sref="lavorazione"><span class="glyphicon glyphicon-compressed"></span> <span translate="global.menu.activities.lavorazione">Lavorazione</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="blocco col-md-12" ng-switch-when="true" has-authority="ROLE_ADMIN">
+
+                    <table class="table">
+                        <caption>Statistiche generali (tutti i laboratori)</caption>
+
+                        <tbody>
+                            <tr>
+                                <th class="col-md-4" scope="row"><span>Totale consegne inserite</span></th>
+                                <td><span>{{vm.progettoBasicStats.numTotConsegneInserite | number}}</span></td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-4" scope="row"><span>Totale cassette inserite</span></th>
+                                <td><span>{{vm.progettoBasicStats.numTotCassetteInserite | number}}</span></td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-4" scope="row"><span>Totale campioni inseriti</span></th>
+                                <td><span>{{vm.progettoBasicStats.numTotCampioniInseriti | number}}</span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <p>&nbsp;</p>
+
+                <div ng-switch-when="true" has-authority="ROLE_ADMIN" ng-repeat="lab in vm.progettoBasicStats.labMap">
+                    <div class="blocco col-md-12">
+
+                        <table class="table">
+                            <caption>Laboratorio: {{lab.laboratorio.istituto}}</caption>
+
+                            <tbody>
+                                <tr>
+                                    <th class="col-md-4" scope="row"><span>Totale consegne inserite</span></th>
+                                    <td><span>{{lab.numConsegneInserite | number}}</span></td>
+                                </tr>
+                                <tr>
+                                    <th class="col-md-4" scope="row"><span>Totale cassette inserite</span></th>
+                                    <td><span>{{lab.numCassetteInserite | number}}</span></td>
+                                </tr>
+                                <tr>
+                                    <th class="col-md-4" scope="row"><span>Totale campioni inseriti</span></th>
+                                    <td><span>{{lab.numCampioniInseriti | number}}</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <p>&nbsp;</p>
+                </div>
+
+                <div class="blocco col-md-12" ng-switch-when="true">
+
+                    <table class="table">
+                        <caption>Laboratorio: {{vm.laboratorio.istituto}}
+
+                        </caption>
+                        <tbody>
+                            <tr>
+                                <th class="col-md-4" scope="row"><span>Totale consegne inserite</span></th>
+                                <td><span>{{vm.laboratorioStatoCassette.numConsegneInserite}}</span></td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-4" scope="row"><span>Totale cassette inserite</span></th>
+                                <td><span>{{vm.laboratorioStatoCassette.numCassetteInserite}}</span></td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-4" scope="row"><span>Stato cassette inserite</span></th>
+                                <td><span></span></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                    <nvd3 options="vm.options" data="vm.data"></nvd3>
+                </div>
+
+				<!--
+                <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.register" translate-compile>
+                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                </div> -->
+            </div>
+
+			<!--
+            <p translate="home.question">
+                If you have any question on JHipster:
+            </p>
+
+            <ul>
+                <li><a href="http://jhipster.github.io/" target="_blank" translate="home.link.homepage">JHipster homepage</a></li>
+                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
+                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" translate="home.link.bugtracker">JHipster bug tracker</a></li>
+                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" translate="home.link.chat">JHipster public chat room</a></li>
+                <li><a href="https://twitter.com/java_hipster" target="_blank"  translate="home.link.follow">follow @java_hipster on Twitter</a></li>
+            </ul>
+
+            <p>
+             <span translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" translate="home.github">Github</a>!
+            </p>
+            -->
+        </div>
+    </div>
+</div>
